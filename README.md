@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 世界196カ国 国名・首都名クイズ
 
-## Getting Started
+Next.js で作成した、世界196カ国の国名と首都名を入力できる学習アプリです。入力欄にフォーカスした国は白地図上で強調表示されます。
 
-First, run the development server:
+公開URL: https://countryquiz-rho.vercel.app
+
+## データ
+
+- 国数の定義は外務省の「世界の国の数は196か国」という説明に合わせています。
+- 首都の日本語表記は `https://www.siken.net/w_ranking?stat=capital` から生成しています。
+- 国の基礎データは `world-countries`、地図形状は Natural Earth 由来の `world-atlas` を使っています。
+- 生成は `npm run generate:data` で再実行できます。
+
+## 開発
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+[http://localhost:3000](http://localhost:3000) を開きます。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## データ再生成
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run generate:data
+```
 
-## Learn More
+## ビルド
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Vercel デプロイ
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npx vercel --prod
+```
 
-## Deploy on Vercel
+## 主な機能
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- 地域選択、回答入力、答え合わせの3画面構成
+- 国名のみ・首都のみ・国名と首都の3モード
+- 日本語・英語の別名判定
+- メルカトル図法の白地図
+- 地図上の番号と入力欄の番号を対応表示
+- 番号が密集する地域を拡大表示できる地図操作
+- 回答入力中は正解数・正誤状態・答えを非表示
+- 地図を固定し、入力欄だけをスクロールするレイアウト

@@ -1,0 +1,4963 @@
+[
+  {
+    "code": "ISL",
+    "mapKey": "352",
+    "numericCode": "352",
+    "countryJa": "アイスランド",
+    "countryEn": "Iceland",
+    "capitalJa": "レイキャビク",
+    "capitalEn": "Reykjavik",
+    "region": "Europe",
+    "subregion": "Northern Europe",
+    "lat": 65,
+    "lng": -18,
+    "countryAnswers": [
+      "アイスランド",
+      "Iceland",
+      "IS",
+      "Island",
+      "Republic of Iceland",
+      "Lýðveldið Ísland"
+    ],
+    "capitalAnswers": [
+      "レイキャビク",
+      "Reykjavik"
+    ]
+  },
+  {
+    "code": "IRL",
+    "mapKey": "372",
+    "numericCode": "372",
+    "countryJa": "アイルランド",
+    "countryEn": "Ireland",
+    "capitalJa": "ダブリン",
+    "capitalEn": "Dublin",
+    "region": "Europe",
+    "subregion": "Northern Europe",
+    "lat": 53,
+    "lng": -8,
+    "countryAnswers": [
+      "アイルランド",
+      "Ireland",
+      "Republic of Ireland",
+      "IE",
+      "Éire",
+      "Poblacht na hÉireann"
+    ],
+    "capitalAnswers": [
+      "ダブリン",
+      "Dublin"
+    ]
+  },
+  {
+    "code": "AZE",
+    "mapKey": "031",
+    "numericCode": "031",
+    "countryJa": "アゼルバイジャン",
+    "countryEn": "Azerbaijan",
+    "capitalJa": "バク",
+    "capitalEn": "Baku",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "lat": 40.5,
+    "lng": 47.5,
+    "countryAnswers": [
+      "アゼルバイジャン",
+      "アゼルバイジャン共和国",
+      "Azerbaijan",
+      "Republic of Azerbaijan",
+      "AZ",
+      "Azərbaycan Respublikası"
+    ],
+    "capitalAnswers": [
+      "バク",
+      "Baku"
+    ]
+  },
+  {
+    "code": "AFG",
+    "mapKey": "004",
+    "numericCode": "004",
+    "countryJa": "アフガニスタン",
+    "countryEn": "Afghanistan",
+    "capitalJa": "カブール",
+    "capitalEn": "Kabul",
+    "region": "Asia",
+    "subregion": "Southern Asia",
+    "lat": 33,
+    "lng": 65,
+    "countryAnswers": [
+      "アフガニスタン",
+      "アフガニスタン・イスラム共和国",
+      "Afghanistan",
+      "Islamic Republic of Afghanistan",
+      "AF",
+      "Afġānistān"
+    ],
+    "capitalAnswers": [
+      "カブール",
+      "Kabul"
+    ]
+  },
+  {
+    "code": "USA",
+    "mapKey": "840",
+    "numericCode": "840",
+    "countryJa": "アメリカ合衆国",
+    "countryEn": "United States",
+    "capitalJa": "ワシントンD.C.",
+    "capitalEn": "Washington D.C.",
+    "region": "Americas",
+    "subregion": "North America",
+    "lat": 38,
+    "lng": -97,
+    "countryAnswers": [
+      "アメリカ合衆国",
+      "アメリカ",
+      "United States",
+      "United States of America",
+      "US",
+      "USA",
+      "米国"
+    ],
+    "capitalAnswers": [
+      "ワシントンD.C.",
+      "Washington D.C.",
+      "ワシントン",
+      "ワシントンDC",
+      "Washington DC"
+    ]
+  },
+  {
+    "code": "ARE",
+    "mapKey": "784",
+    "numericCode": "784",
+    "countryJa": "アラブ首長国連邦",
+    "countryEn": "United Arab Emirates",
+    "capitalJa": "アブダビ",
+    "capitalEn": "Abu Dhabi",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "lat": 24,
+    "lng": 54,
+    "countryAnswers": [
+      "アラブ首長国連邦",
+      "UAE",
+      "United Arab Emirates",
+      "AE",
+      "Emirates",
+      "アラブ首長国"
+    ],
+    "capitalAnswers": [
+      "アブダビ",
+      "Abu Dhabi"
+    ]
+  },
+  {
+    "code": "DZA",
+    "mapKey": "012",
+    "numericCode": "012",
+    "countryJa": "アルジェリア",
+    "countryEn": "Algeria",
+    "capitalJa": "アルジェ",
+    "capitalEn": "Algiers",
+    "region": "Africa",
+    "subregion": "Northern Africa",
+    "lat": 28,
+    "lng": 3,
+    "countryAnswers": [
+      "アルジェリア",
+      "アルジェリア人民民主共和国",
+      "Algeria",
+      "People's Democratic Republic of Algeria",
+      "DZ",
+      "Dzayer",
+      "Algérie"
+    ],
+    "capitalAnswers": [
+      "アルジェ",
+      "Algiers"
+    ]
+  },
+  {
+    "code": "ARG",
+    "mapKey": "032",
+    "numericCode": "032",
+    "countryJa": "アルゼンチン",
+    "countryEn": "Argentina",
+    "capitalJa": "ブエノスアイレス",
+    "capitalEn": "Buenos Aires",
+    "region": "Americas",
+    "subregion": "South America",
+    "lat": -34,
+    "lng": -64,
+    "countryAnswers": [
+      "アルゼンチン",
+      "アルゼンチン共和国",
+      "Argentina",
+      "Argentine Republic",
+      "AR",
+      "República Argentina"
+    ],
+    "capitalAnswers": [
+      "ブエノスアイレス",
+      "Buenos Aires"
+    ]
+  },
+  {
+    "code": "ALB",
+    "mapKey": "008",
+    "numericCode": "008",
+    "countryJa": "アルバニア",
+    "countryEn": "Albania",
+    "capitalJa": "ティラナ",
+    "capitalEn": "Tirana",
+    "region": "Europe",
+    "subregion": "Southeast Europe",
+    "lat": 41,
+    "lng": 20,
+    "countryAnswers": [
+      "アルバニア",
+      "アルバニア共和国",
+      "Albania",
+      "Republic of Albania",
+      "AL",
+      "Shqipëri",
+      "Shqipëria",
+      "Shqipnia"
+    ],
+    "capitalAnswers": [
+      "ティラナ",
+      "Tirana"
+    ]
+  },
+  {
+    "code": "ARM",
+    "mapKey": "051",
+    "numericCode": "051",
+    "countryJa": "アルメニア",
+    "countryEn": "Armenia",
+    "capitalJa": "エレバン",
+    "capitalEn": "Yerevan",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "lat": 40,
+    "lng": 45,
+    "countryAnswers": [
+      "アルメニア",
+      "アルメニア共和国",
+      "Armenia",
+      "Republic of Armenia",
+      "AM",
+      "Hayastan",
+      "Հայաստանի Հանրապետություն"
+    ],
+    "capitalAnswers": [
+      "エレバン",
+      "Yerevan"
+    ]
+  },
+  {
+    "code": "AGO",
+    "mapKey": "024",
+    "numericCode": "024",
+    "countryJa": "アンゴラ",
+    "countryEn": "Angola",
+    "capitalJa": "ルアンダ",
+    "capitalEn": "Luanda",
+    "region": "Africa",
+    "subregion": "Middle Africa",
+    "lat": -12.5,
+    "lng": 18.5,
+    "countryAnswers": [
+      "アンゴラ",
+      "アンゴラ共和国",
+      "Angola",
+      "Republic of Angola",
+      "AO",
+      "República de Angola",
+      "ʁɛpublika de an'ɡɔla"
+    ],
+    "capitalAnswers": [
+      "ルアンダ",
+      "Luanda"
+    ]
+  },
+  {
+    "code": "ATG",
+    "mapKey": "028",
+    "numericCode": "028",
+    "countryJa": "アンティグア・バーブーダ",
+    "countryEn": "Antigua and Barbuda",
+    "capitalJa": "セントジョンズ",
+    "capitalEn": "Saint John's",
+    "region": "Americas",
+    "subregion": "Caribbean",
+    "lat": 17.05,
+    "lng": -61.8,
+    "countryAnswers": [
+      "アンティグア・バーブーダ",
+      "Antigua and Barbuda",
+      "AG"
+    ],
+    "capitalAnswers": [
+      "セントジョンズ",
+      "Saint John's"
+    ]
+  },
+  {
+    "code": "AND",
+    "mapKey": "020",
+    "numericCode": "020",
+    "countryJa": "アンドラ",
+    "countryEn": "Andorra",
+    "capitalJa": "アンドラ・ラ・ベリャ",
+    "capitalEn": "Andorra la Vella",
+    "region": "Europe",
+    "subregion": "Southern Europe",
+    "lat": 42.5,
+    "lng": 1.5,
+    "countryAnswers": [
+      "アンドラ",
+      "アンドラ公国",
+      "Andorra",
+      "Principality of Andorra",
+      "AD",
+      "Principat d'Andorra"
+    ],
+    "capitalAnswers": [
+      "アンドラ・ラ・ベリャ",
+      "Andorra la Vella"
+    ]
+  },
+  {
+    "code": "YEM",
+    "mapKey": "887",
+    "numericCode": "887",
+    "countryJa": "イエメン",
+    "countryEn": "Yemen",
+    "capitalJa": "サヌア",
+    "capitalEn": "Sana'a",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "lat": 15,
+    "lng": 48,
+    "countryAnswers": [
+      "イエメン",
+      "イエメン共和国",
+      "Yemen",
+      "Republic of Yemen",
+      "YE",
+      "Yemeni Republic",
+      "al-Jumhūriyyah al-Yamaniyyah"
+    ],
+    "capitalAnswers": [
+      "サヌア",
+      "Sana'a"
+    ]
+  },
+  {
+    "code": "GBR",
+    "mapKey": "826",
+    "numericCode": "826",
+    "countryJa": "イギリス",
+    "countryEn": "United Kingdom",
+    "capitalJa": "ロンドン",
+    "capitalEn": "London",
+    "region": "Europe",
+    "subregion": "Northern Europe",
+    "lat": 54,
+    "lng": -2,
+    "countryAnswers": [
+      "イギリス",
+      "グレートブリテン及び北アイルランド連合王国",
+      "United Kingdom",
+      "United Kingdom of Great Britain and Northern Ireland",
+      "GB",
+      "UK",
+      "Great Britain",
+      "英国"
+    ],
+    "capitalAnswers": [
+      "ロンドン",
+      "London"
+    ]
+  },
+  {
+    "code": "ISR",
+    "mapKey": "376",
+    "numericCode": "376",
+    "countryJa": "イスラエル",
+    "countryEn": "Israel",
+    "capitalJa": "エルサレム",
+    "capitalEn": "Jerusalem",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "lat": 31.47,
+    "lng": 35.13,
+    "countryAnswers": [
+      "イスラエル",
+      "イスラエル国",
+      "Israel",
+      "State of Israel",
+      "IL",
+      "Medīnat Yisrā'el"
+    ],
+    "capitalAnswers": [
+      "エルサレム",
+      "Jerusalem"
+    ]
+  },
+  {
+    "code": "ITA",
+    "mapKey": "380",
+    "numericCode": "380",
+    "countryJa": "イタリア",
+    "countryEn": "Italy",
+    "capitalJa": "ローマ",
+    "capitalEn": "Rome",
+    "region": "Europe",
+    "subregion": "Southern Europe",
+    "lat": 42.83333333,
+    "lng": 12.83333333,
+    "countryAnswers": [
+      "イタリア",
+      "イタリア共和国",
+      "Italy",
+      "Italian Republic",
+      "IT",
+      "Repubblica italiana"
+    ],
+    "capitalAnswers": [
+      "ローマ",
+      "Rome"
+    ]
+  },
+  {
+    "code": "IRQ",
+    "mapKey": "368",
+    "numericCode": "368",
+    "countryJa": "イラク",
+    "countryEn": "Iraq",
+    "capitalJa": "バグダッド",
+    "capitalEn": "Baghdad",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "lat": 33,
+    "lng": 44,
+    "countryAnswers": [
+      "イラク",
+      "イラク共和国",
+      "Iraq",
+      "Republic of Iraq",
+      "IQ",
+      "Jumhūriyyat al-‘Irāq"
+    ],
+    "capitalAnswers": [
+      "バグダッド",
+      "Baghdad"
+    ]
+  },
+  {
+    "code": "IRN",
+    "mapKey": "364",
+    "numericCode": "364",
+    "countryJa": "イラン・イスラム共和国",
+    "countryEn": "Iran",
+    "capitalJa": "テヘラン",
+    "capitalEn": "Tehran",
+    "region": "Asia",
+    "subregion": "Southern Asia",
+    "lat": 32,
+    "lng": 53,
+    "countryAnswers": [
+      "イラン・イスラム共和国",
+      "イラン",
+      "Iran",
+      "Islamic Republic of Iran",
+      "IR",
+      "Iran, Islamic Republic of",
+      "Jomhuri-ye Eslāmi-ye Irān"
+    ],
+    "capitalAnswers": [
+      "テヘラン",
+      "Tehran"
+    ]
+  },
+  {
+    "code": "IND",
+    "mapKey": "356",
+    "numericCode": "356",
+    "countryJa": "インド",
+    "countryEn": "India",
+    "capitalJa": "ニューデリー",
+    "capitalEn": "New Delhi",
+    "region": "Asia",
+    "subregion": "Southern Asia",
+    "lat": 20,
+    "lng": 77,
+    "countryAnswers": [
+      "インド",
+      "India",
+      "Republic of India",
+      "IN",
+      "Bhārat",
+      "Bharat Ganrajya",
+      "இந்தியா"
+    ],
+    "capitalAnswers": [
+      "ニューデリー",
+      "New Delhi"
+    ]
+  },
+  {
+    "code": "IDN",
+    "mapKey": "360",
+    "numericCode": "360",
+    "countryJa": "インドネシア",
+    "countryEn": "Indonesia",
+    "capitalJa": "ジャカルタ",
+    "capitalEn": "Jakarta",
+    "region": "Asia",
+    "subregion": "South-Eastern Asia",
+    "lat": -5,
+    "lng": 120,
+    "countryAnswers": [
+      "インドネシア",
+      "インドネシア共和国",
+      "Indonesia",
+      "Republic of Indonesia",
+      "ID",
+      "Republik Indonesia"
+    ],
+    "capitalAnswers": [
+      "ジャカルタ",
+      "Jakarta"
+    ]
+  },
+  {
+    "code": "UGA",
+    "mapKey": "800",
+    "numericCode": "800",
+    "countryJa": "ウガンダ",
+    "countryEn": "Uganda",
+    "capitalJa": "カンパラ",
+    "capitalEn": "Kampala",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "lat": 1,
+    "lng": 32,
+    "countryAnswers": [
+      "ウガンダ",
+      "ウガンダ共和国",
+      "Uganda",
+      "Republic of Uganda",
+      "UG",
+      "Jamhuri ya Uganda"
+    ],
+    "capitalAnswers": [
+      "カンパラ",
+      "Kampala"
+    ]
+  },
+  {
+    "code": "UKR",
+    "mapKey": "804",
+    "numericCode": "804",
+    "countryJa": "ウクライナ",
+    "countryEn": "Ukraine",
+    "capitalJa": "キーウ",
+    "capitalEn": "Kyiv",
+    "region": "Europe",
+    "subregion": "Eastern Europe",
+    "lat": 49,
+    "lng": 32,
+    "countryAnswers": [
+      "ウクライナ",
+      "Ukraine",
+      "UA",
+      "Ukrayina"
+    ],
+    "capitalAnswers": [
+      "キーウ",
+      "Kyiv"
+    ]
+  },
+  {
+    "code": "UZB",
+    "mapKey": "860",
+    "numericCode": "860",
+    "countryJa": "ウズベキスタン",
+    "countryEn": "Uzbekistan",
+    "capitalJa": "タシケント",
+    "capitalEn": "Tashkent",
+    "region": "Asia",
+    "subregion": "Central Asia",
+    "lat": 41,
+    "lng": 64,
+    "countryAnswers": [
+      "ウズベキスタン",
+      "ウズベキスタン共和国",
+      "Uzbekistan",
+      "Republic of Uzbekistan",
+      "UZ",
+      "O‘zbekiston Respublikasi",
+      "Ўзбекистон Республикаси"
+    ],
+    "capitalAnswers": [
+      "タシケント",
+      "Tashkent"
+    ]
+  },
+  {
+    "code": "URY",
+    "mapKey": "858",
+    "numericCode": "858",
+    "countryJa": "ウルグアイ",
+    "countryEn": "Uruguay",
+    "capitalJa": "モンテビデオ",
+    "capitalEn": "Montevideo",
+    "region": "Americas",
+    "subregion": "South America",
+    "lat": -33,
+    "lng": -56,
+    "countryAnswers": [
+      "ウルグアイ",
+      "ウルグアイ東方共和国",
+      "Uruguay",
+      "Oriental Republic of Uruguay",
+      "UY",
+      "República Oriental del Uruguay"
+    ],
+    "capitalAnswers": [
+      "モンテビデオ",
+      "Montevideo"
+    ]
+  },
+  {
+    "code": "ECU",
+    "mapKey": "218",
+    "numericCode": "218",
+    "countryJa": "エクアドル",
+    "countryEn": "Ecuador",
+    "capitalJa": "キト",
+    "capitalEn": "Quito",
+    "region": "Americas",
+    "subregion": "South America",
+    "lat": -2,
+    "lng": -77.5,
+    "countryAnswers": [
+      "エクアドル",
+      "エクアドル共和国",
+      "Ecuador",
+      "Republic of Ecuador",
+      "EC",
+      "República del Ecuador"
+    ],
+    "capitalAnswers": [
+      "キト",
+      "Quito"
+    ]
+  },
+  {
+    "code": "EGY",
+    "mapKey": "818",
+    "numericCode": "818",
+    "countryJa": "エジプト",
+    "countryEn": "Egypt",
+    "capitalJa": "カイロ",
+    "capitalEn": "Cairo",
+    "region": "Africa",
+    "subregion": "Northern Africa",
+    "lat": 27,
+    "lng": 30,
+    "countryAnswers": [
+      "エジプト",
+      "エジプト・アラブ共和国",
+      "Egypt",
+      "Arab Republic of Egypt",
+      "EG"
+    ],
+    "capitalAnswers": [
+      "カイロ",
+      "Cairo"
+    ]
+  },
+  {
+    "code": "EST",
+    "mapKey": "233",
+    "numericCode": "233",
+    "countryJa": "エストニア",
+    "countryEn": "Estonia",
+    "capitalJa": "タリン",
+    "capitalEn": "Tallinn",
+    "region": "Europe",
+    "subregion": "Northern Europe",
+    "lat": 59,
+    "lng": 26,
+    "countryAnswers": [
+      "エストニア",
+      "エストニア共和国",
+      "Estonia",
+      "Republic of Estonia",
+      "EE",
+      "Eesti",
+      "Eesti Vabariik"
+    ],
+    "capitalAnswers": [
+      "タリン",
+      "Tallinn"
+    ]
+  },
+  {
+    "code": "SWZ",
+    "mapKey": "748",
+    "numericCode": "748",
+    "countryJa": "エスワティニ",
+    "countryEn": "Eswatini",
+    "capitalJa": "ムババーネ",
+    "capitalEn": "Lobamba",
+    "region": "Africa",
+    "subregion": "Southern Africa",
+    "lat": -26.5,
+    "lng": 31.5,
+    "countryAnswers": [
+      "エスワティニ",
+      "エスワティニ王国",
+      "Eswatini",
+      "Kingdom of Eswatini",
+      "SZ",
+      "Swaziland",
+      "weSwatini",
+      "Swatini",
+      "Ngwane",
+      "Umbuso weSwatini"
+    ],
+    "capitalAnswers": [
+      "ムババーネ",
+      "Lobamba"
+    ]
+  },
+  {
+    "code": "ETH",
+    "mapKey": "231",
+    "numericCode": "231",
+    "countryJa": "エチオピア",
+    "countryEn": "Ethiopia",
+    "capitalJa": "アディスアベバ",
+    "capitalEn": "Addis Ababa",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "lat": 8,
+    "lng": 38,
+    "countryAnswers": [
+      "エチオピア",
+      "エチオピア連邦民主共和国",
+      "Ethiopia",
+      "Federal Democratic Republic of Ethiopia",
+      "ET",
+      "ʾĪtyōṗṗyā",
+      "የኢትዮጵያ ፌዴራላዊ ዲሞክራሲያዊ ሪፐብሊክ"
+    ],
+    "capitalAnswers": [
+      "アディスアベバ",
+      "Addis Ababa"
+    ]
+  },
+  {
+    "code": "ERI",
+    "mapKey": "232",
+    "numericCode": "232",
+    "countryJa": "エリトリア",
+    "countryEn": "Eritrea",
+    "capitalJa": "アスマラ",
+    "capitalEn": "Asmara",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "lat": 15,
+    "lng": 39,
+    "countryAnswers": [
+      "エリトリア",
+      "エリトリア国",
+      "Eritrea",
+      "State of Eritrea",
+      "ER",
+      "ሃገረ ኤርትራ",
+      "Dawlat Iritriyá",
+      "ʾErtrā",
+      "Iritriyā"
+    ],
+    "capitalAnswers": [
+      "アスマラ",
+      "Asmara"
+    ]
+  },
+  {
+    "code": "SLV",
+    "mapKey": "222",
+    "numericCode": "222",
+    "countryJa": "エルサルバドル",
+    "countryEn": "El Salvador",
+    "capitalJa": "サンサルバドル",
+    "capitalEn": "San Salvador",
+    "region": "Americas",
+    "subregion": "Central America",
+    "lat": 13.83333333,
+    "lng": -88.91666666,
+    "countryAnswers": [
+      "エルサルバドル",
+      "エルサルバドル共和国",
+      "El Salvador",
+      "Republic of El Salvador",
+      "SV",
+      "República de El Salvador"
+    ],
+    "capitalAnswers": [
+      "サンサルバドル",
+      "San Salvador"
+    ]
+  },
+  {
+    "code": "AUS",
+    "mapKey": "036",
+    "numericCode": "036",
+    "countryJa": "オーストラリア",
+    "countryEn": "Australia",
+    "capitalJa": "キャンベラ",
+    "capitalEn": "Canberra",
+    "region": "Oceania",
+    "subregion": "Australia and New Zealand",
+    "lat": -27,
+    "lng": 133,
+    "countryAnswers": [
+      "オーストラリア",
+      "オーストラリア連邦",
+      "Australia",
+      "Commonwealth of Australia",
+      "AU"
+    ],
+    "capitalAnswers": [
+      "キャンベラ",
+      "Canberra"
+    ]
+  },
+  {
+    "code": "AUT",
+    "mapKey": "040",
+    "numericCode": "040",
+    "countryJa": "オーストリア",
+    "countryEn": "Austria",
+    "capitalJa": "ウィーン",
+    "capitalEn": "Vienna",
+    "region": "Europe",
+    "subregion": "Central Europe",
+    "lat": 47.33333333,
+    "lng": 13.33333333,
+    "countryAnswers": [
+      "オーストリア",
+      "オーストリア共和国",
+      "Austria",
+      "Republic of Austria",
+      "AT",
+      "Osterreich",
+      "Oesterreich"
+    ],
+    "capitalAnswers": [
+      "ウィーン",
+      "Vienna"
+    ]
+  },
+  {
+    "code": "OMN",
+    "mapKey": "512",
+    "numericCode": "512",
+    "countryJa": "オマーン",
+    "countryEn": "Oman",
+    "capitalJa": "マスカット",
+    "capitalEn": "Muscat",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "lat": 21,
+    "lng": 57,
+    "countryAnswers": [
+      "オマーン",
+      "オマーン国",
+      "Oman",
+      "Sultanate of Oman",
+      "OM",
+      "Salṭanat ʻUmān"
+    ],
+    "capitalAnswers": [
+      "マスカット",
+      "Muscat"
+    ]
+  },
+  {
+    "code": "NLD",
+    "mapKey": "528",
+    "numericCode": "528",
+    "countryJa": "オランダ",
+    "countryEn": "Netherlands",
+    "capitalJa": "アムステルダム",
+    "capitalEn": "Amsterdam",
+    "region": "Europe",
+    "subregion": "Western Europe",
+    "lat": 52.5,
+    "lng": 5.75,
+    "countryAnswers": [
+      "オランダ",
+      "オランダ王国",
+      "Netherlands",
+      "Kingdom of the Netherlands",
+      "NL",
+      "Holland",
+      "Nederland",
+      "The Netherlands"
+    ],
+    "capitalAnswers": [
+      "アムステルダム",
+      "Amsterdam"
+    ]
+  },
+  {
+    "code": "GHA",
+    "mapKey": "288",
+    "numericCode": "288",
+    "countryJa": "ガーナ",
+    "countryEn": "Ghana",
+    "capitalJa": "アクラ",
+    "capitalEn": "Accra",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "lat": 8,
+    "lng": -2,
+    "countryAnswers": [
+      "ガーナ",
+      "ガーナ共和国",
+      "Ghana",
+      "Republic of Ghana",
+      "GH"
+    ],
+    "capitalAnswers": [
+      "アクラ",
+      "Accra"
+    ]
+  },
+  {
+    "code": "CPV",
+    "mapKey": "132",
+    "numericCode": "132",
+    "countryJa": "カーボベルデ",
+    "countryEn": "Cape Verde",
+    "capitalJa": "プライア",
+    "capitalEn": "Praia",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "lat": 16,
+    "lng": -24,
+    "countryAnswers": [
+      "カーボベルデ",
+      "カーボベルデ共和国",
+      "Cape Verde",
+      "Republic of Cabo Verde",
+      "CV",
+      "República de Cabo Verde"
+    ],
+    "capitalAnswers": [
+      "プライア",
+      "Praia"
+    ]
+  },
+  {
+    "code": "GUY",
+    "mapKey": "328",
+    "numericCode": "328",
+    "countryJa": "ガイアナ",
+    "countryEn": "Guyana",
+    "capitalJa": "ジョージタウン",
+    "capitalEn": "Georgetown",
+    "region": "Americas",
+    "subregion": "South America",
+    "lat": 5,
+    "lng": -59,
+    "countryAnswers": [
+      "ガイアナ",
+      "ガイアナ共和国",
+      "Guyana",
+      "Co-operative Republic of Guyana",
+      "GY"
+    ],
+    "capitalAnswers": [
+      "ジョージタウン",
+      "Georgetown"
+    ]
+  },
+  {
+    "code": "KAZ",
+    "mapKey": "398",
+    "numericCode": "398",
+    "countryJa": "カザフスタン",
+    "countryEn": "Kazakhstan",
+    "capitalJa": "アスタナ",
+    "capitalEn": "Astana",
+    "region": "Asia",
+    "subregion": "Central Asia",
+    "lat": 48,
+    "lng": 68,
+    "countryAnswers": [
+      "カザフスタン",
+      "カザフスタン共和国",
+      "Kazakhstan",
+      "Republic of Kazakhstan",
+      "KZ",
+      "Qazaqstan",
+      "Казахстан",
+      "Қазақстан Республикасы",
+      "Qazaqstan Respublïkası",
+      "Республика Казахстан",
+      "Respublika Kazakhstan"
+    ],
+    "capitalAnswers": [
+      "アスタナ",
+      "Astana"
+    ]
+  },
+  {
+    "code": "QAT",
+    "mapKey": "634",
+    "numericCode": "634",
+    "countryJa": "カタール",
+    "countryEn": "Qatar",
+    "capitalJa": "ドーハ",
+    "capitalEn": "Doha",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "lat": 25.5,
+    "lng": 51.25,
+    "countryAnswers": [
+      "カタール",
+      "カタール国",
+      "Qatar",
+      "State of Qatar",
+      "QA",
+      "Dawlat Qaṭar"
+    ],
+    "capitalAnswers": [
+      "ドーハ",
+      "Doha"
+    ]
+  },
+  {
+    "code": "CAN",
+    "mapKey": "124",
+    "numericCode": "124",
+    "countryJa": "カナダ",
+    "countryEn": "Canada",
+    "capitalJa": "オタワ",
+    "capitalEn": "Ottawa",
+    "region": "Americas",
+    "subregion": "North America",
+    "lat": 60,
+    "lng": -95,
+    "countryAnswers": [
+      "カナダ",
+      "Canada",
+      "CA"
+    ],
+    "capitalAnswers": [
+      "オタワ",
+      "Ottawa"
+    ]
+  },
+  {
+    "code": "GAB",
+    "mapKey": "266",
+    "numericCode": "266",
+    "countryJa": "ガボン",
+    "countryEn": "Gabon",
+    "capitalJa": "リーブルビル",
+    "capitalEn": "Libreville",
+    "region": "Africa",
+    "subregion": "Middle Africa",
+    "lat": -1,
+    "lng": 11.75,
+    "countryAnswers": [
+      "ガボン",
+      "ガボン共和国",
+      "Gabon",
+      "Gabonese Republic",
+      "GA",
+      "République Gabonaise"
+    ],
+    "capitalAnswers": [
+      "リーブルビル",
+      "Libreville"
+    ]
+  },
+  {
+    "code": "CMR",
+    "mapKey": "120",
+    "numericCode": "120",
+    "countryJa": "カメルーン",
+    "countryEn": "Cameroon",
+    "capitalJa": "ヤウンデ",
+    "capitalEn": "Yaoundé",
+    "region": "Africa",
+    "subregion": "Middle Africa",
+    "lat": 6,
+    "lng": 12,
+    "countryAnswers": [
+      "カメルーン",
+      "カメルーン共和国",
+      "Cameroon",
+      "Republic of Cameroon",
+      "CM",
+      "République du Cameroun"
+    ],
+    "capitalAnswers": [
+      "ヤウンデ",
+      "Yaoundé"
+    ]
+  },
+  {
+    "code": "GMB",
+    "mapKey": "270",
+    "numericCode": "270",
+    "countryJa": "ガンビア",
+    "countryEn": "Gambia",
+    "capitalJa": "バンジュール",
+    "capitalEn": "Banjul",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "lat": 13.46666666,
+    "lng": -16.56666666,
+    "countryAnswers": [
+      "ガンビア",
+      "ガンビア共和国",
+      "Gambia",
+      "Republic of the Gambia",
+      "GM"
+    ],
+    "capitalAnswers": [
+      "バンジュール",
+      "Banjul"
+    ]
+  },
+  {
+    "code": "KHM",
+    "mapKey": "116",
+    "numericCode": "116",
+    "countryJa": "カンボジア",
+    "countryEn": "Cambodia",
+    "capitalJa": "プノンペン",
+    "capitalEn": "Phnom Penh",
+    "region": "Asia",
+    "subregion": "South-Eastern Asia",
+    "lat": 13,
+    "lng": 105,
+    "countryAnswers": [
+      "カンボジア",
+      "カンボジア王国",
+      "Cambodia",
+      "Kingdom of Cambodia",
+      "KH"
+    ],
+    "capitalAnswers": [
+      "プノンペン",
+      "Phnom Penh"
+    ]
+  },
+  {
+    "code": "GIN",
+    "mapKey": "324",
+    "numericCode": "324",
+    "countryJa": "ギニア",
+    "countryEn": "Guinea",
+    "capitalJa": "コナクリ",
+    "capitalEn": "Conakry",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "lat": 11,
+    "lng": -10,
+    "countryAnswers": [
+      "ギニア",
+      "ギニア共和国",
+      "Guinea",
+      "Republic of Guinea",
+      "GN",
+      "République de Guinée"
+    ],
+    "capitalAnswers": [
+      "コナクリ",
+      "Conakry"
+    ]
+  },
+  {
+    "code": "GNB",
+    "mapKey": "624",
+    "numericCode": "624",
+    "countryJa": "ギニアビサウ",
+    "countryEn": "Guinea-Bissau",
+    "capitalJa": "ビサウ",
+    "capitalEn": "Bissau",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "lat": 12,
+    "lng": -15,
+    "countryAnswers": [
+      "ギニアビサウ",
+      "ギニアビサウ共和国",
+      "Guinea-Bissau",
+      "Republic of Guinea-Bissau",
+      "GW",
+      "República da Guiné-Bissau"
+    ],
+    "capitalAnswers": [
+      "ビサウ",
+      "Bissau"
+    ]
+  },
+  {
+    "code": "CYP",
+    "mapKey": "196",
+    "numericCode": "196",
+    "countryJa": "キプロス",
+    "countryEn": "Cyprus",
+    "capitalJa": "ニコシア",
+    "capitalEn": "Nicosia",
+    "region": "Europe",
+    "subregion": "Southern Europe",
+    "lat": 35,
+    "lng": 33,
+    "countryAnswers": [
+      "キプロス",
+      "キプロス共和国",
+      "Cyprus",
+      "Republic of Cyprus",
+      "CY",
+      "Kýpros",
+      "Kıbrıs",
+      "Κυπριακή Δημοκρατία",
+      "Kıbrıs Cumhuriyeti"
+    ],
+    "capitalAnswers": [
+      "ニコシア",
+      "Nicosia"
+    ]
+  },
+  {
+    "code": "CUB",
+    "mapKey": "192",
+    "numericCode": "192",
+    "countryJa": "キューバ",
+    "countryEn": "Cuba",
+    "capitalJa": "ハバナ",
+    "capitalEn": "Havana",
+    "region": "Americas",
+    "subregion": "Caribbean",
+    "lat": 21.5,
+    "lng": -80,
+    "countryAnswers": [
+      "キューバ",
+      "キューバ共和国",
+      "Cuba",
+      "Republic of Cuba",
+      "CU",
+      "República de Cuba"
+    ],
+    "capitalAnswers": [
+      "ハバナ",
+      "Havana"
+    ]
+  },
+  {
+    "code": "GRC",
+    "mapKey": "300",
+    "numericCode": "300",
+    "countryJa": "ギリシャ",
+    "countryEn": "Greece",
+    "capitalJa": "アテネ",
+    "capitalEn": "Athens",
+    "region": "Europe",
+    "subregion": "Southern Europe",
+    "lat": 39,
+    "lng": 22,
+    "countryAnswers": [
+      "ギリシャ",
+      "ギリシャ共和国",
+      "Greece",
+      "Hellenic Republic",
+      "GR",
+      "Elláda",
+      "Ελληνική Δημοκρατία"
+    ],
+    "capitalAnswers": [
+      "アテネ",
+      "Athens"
+    ]
+  },
+  {
+    "code": "KIR",
+    "mapKey": "296",
+    "numericCode": "296",
+    "countryJa": "キリバス",
+    "countryEn": "Kiribati",
+    "capitalJa": "タラワ",
+    "capitalEn": "South Tarawa",
+    "region": "Oceania",
+    "subregion": "Micronesia",
+    "lat": 1.41666666,
+    "lng": 173,
+    "countryAnswers": [
+      "キリバス",
+      "キリバス共和国",
+      "Kiribati",
+      "Independent and Sovereign Republic of Kiribati",
+      "KI",
+      "Republic of Kiribati",
+      "Ribaberiki Kiribati"
+    ],
+    "capitalAnswers": [
+      "タラワ",
+      "South Tarawa"
+    ]
+  },
+  {
+    "code": "KGZ",
+    "mapKey": "417",
+    "numericCode": "417",
+    "countryJa": "キルギス",
+    "countryEn": "Kyrgyzstan",
+    "capitalJa": "ビシュケク",
+    "capitalEn": "Bishkek",
+    "region": "Asia",
+    "subregion": "Central Asia",
+    "lat": 41,
+    "lng": 75,
+    "countryAnswers": [
+      "キルギス",
+      "キルギス共和国",
+      "Kyrgyzstan",
+      "Kyrgyz Republic",
+      "KG",
+      "Киргизия",
+      "Кыргыз Республикасы",
+      "Kyrgyz Respublikasy"
+    ],
+    "capitalAnswers": [
+      "ビシュケク",
+      "Bishkek"
+    ]
+  },
+  {
+    "code": "GTM",
+    "mapKey": "320",
+    "numericCode": "320",
+    "countryJa": "グアテマラ",
+    "countryEn": "Guatemala",
+    "capitalJa": "グアテマラ市",
+    "capitalEn": "Guatemala City",
+    "region": "Americas",
+    "subregion": "Central America",
+    "lat": 15.5,
+    "lng": -90.25,
+    "countryAnswers": [
+      "グアテマラ",
+      "グアテマラ共和国",
+      "Guatemala",
+      "Republic of Guatemala",
+      "GT"
+    ],
+    "capitalAnswers": [
+      "グアテマラ市",
+      "Guatemala City"
+    ]
+  },
+  {
+    "code": "KWT",
+    "mapKey": "414",
+    "numericCode": "414",
+    "countryJa": "クウェート",
+    "countryEn": "Kuwait",
+    "capitalJa": "クウェート",
+    "capitalEn": "Kuwait City",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "lat": 29.5,
+    "lng": 45.75,
+    "countryAnswers": [
+      "クウェート",
+      "クウェート国",
+      "Kuwait",
+      "State of Kuwait",
+      "KW",
+      "Dawlat al-Kuwait"
+    ],
+    "capitalAnswers": [
+      "クウェート",
+      "Kuwait City"
+    ]
+  },
+  {
+    "code": "COK",
+    "mapKey": "184",
+    "numericCode": "184",
+    "countryJa": "クック諸島",
+    "countryEn": "Cook Islands",
+    "capitalJa": "アバルア",
+    "capitalEn": "Avarua",
+    "region": "Oceania",
+    "subregion": "Polynesia",
+    "lat": -21.23333333,
+    "lng": -159.76666666,
+    "countryAnswers": [
+      "クック諸島",
+      "Cook Islands",
+      "CK",
+      "Kūki 'Āirani"
+    ],
+    "capitalAnswers": [
+      "アバルア",
+      "Avarua"
+    ]
+  },
+  {
+    "code": "GRD",
+    "mapKey": "308",
+    "numericCode": "308",
+    "countryJa": "グレナダ",
+    "countryEn": "Grenada",
+    "capitalJa": "セントジョージズ",
+    "capitalEn": "St. George's",
+    "region": "Americas",
+    "subregion": "Caribbean",
+    "lat": 12.11666666,
+    "lng": -61.66666666,
+    "countryAnswers": [
+      "グレナダ",
+      "Grenada",
+      "GD"
+    ],
+    "capitalAnswers": [
+      "セントジョージズ",
+      "St. George's"
+    ]
+  },
+  {
+    "code": "HRV",
+    "mapKey": "191",
+    "numericCode": "191",
+    "countryJa": "クロアチア",
+    "countryEn": "Croatia",
+    "capitalJa": "ザグレブ",
+    "capitalEn": "Zagreb",
+    "region": "Europe",
+    "subregion": "Southeast Europe",
+    "lat": 45.16666666,
+    "lng": 15.5,
+    "countryAnswers": [
+      "クロアチア",
+      "クロアチア共和国",
+      "Croatia",
+      "Republic of Croatia",
+      "HR",
+      "Hrvatska",
+      "Republika Hrvatska"
+    ],
+    "capitalAnswers": [
+      "ザグレブ",
+      "Zagreb"
+    ]
+  },
+  {
+    "code": "KEN",
+    "mapKey": "404",
+    "numericCode": "404",
+    "countryJa": "ケニア",
+    "countryEn": "Kenya",
+    "capitalJa": "ナイロビ",
+    "capitalEn": "Nairobi",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "lat": 1,
+    "lng": 38,
+    "countryAnswers": [
+      "ケニア",
+      "ケニア共和国",
+      "Kenya",
+      "Republic of Kenya",
+      "KE",
+      "Jamhuri ya Kenya"
+    ],
+    "capitalAnswers": [
+      "ナイロビ",
+      "Nairobi"
+    ]
+  },
+  {
+    "code": "CIV",
+    "mapKey": "384",
+    "numericCode": "384",
+    "countryJa": "コートジボワール",
+    "countryEn": "Ivory Coast",
+    "capitalJa": "ヤムスクロ",
+    "capitalEn": "Yamoussoukro",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "lat": 8,
+    "lng": -5,
+    "countryAnswers": [
+      "コートジボワール",
+      "コートジボワール共和国",
+      "Ivory Coast",
+      "Republic of Côte d'Ivoire",
+      "CI",
+      "Côte d'Ivoire",
+      "Cote d'Ivoire",
+      "République de Côte d'Ivoire"
+    ],
+    "capitalAnswers": [
+      "ヤムスクロ",
+      "Yamoussoukro"
+    ]
+  },
+  {
+    "code": "CRI",
+    "mapKey": "188",
+    "numericCode": "188",
+    "countryJa": "コスタリカ",
+    "countryEn": "Costa Rica",
+    "capitalJa": "サンホセ",
+    "capitalEn": "San José",
+    "region": "Americas",
+    "subregion": "Central America",
+    "lat": 10,
+    "lng": -84,
+    "countryAnswers": [
+      "コスタリカ",
+      "コスタリカ共和国",
+      "Costa Rica",
+      "Republic of Costa Rica",
+      "CR",
+      "República de Costa Rica"
+    ],
+    "capitalAnswers": [
+      "サンホセ",
+      "San José"
+    ]
+  },
+  {
+    "code": "XKX",
+    "mapKey": "Kosovo",
+    "numericCode": "383",
+    "countryJa": "コソボ共和国",
+    "countryEn": "Kosovo",
+    "capitalJa": "プリシュティナ",
+    "capitalEn": "Pristina",
+    "region": "Europe",
+    "subregion": "Southeast Europe",
+    "lat": 42.6026,
+    "lng": 20.903,
+    "countryAnswers": [
+      "コソボ共和国",
+      "コソボ",
+      "Kosovo",
+      "Republic of Kosovo"
+    ],
+    "capitalAnswers": [
+      "プリシュティナ",
+      "Pristina"
+    ]
+  },
+  {
+    "code": "COM",
+    "mapKey": "174",
+    "numericCode": "174",
+    "countryJa": "コモロ",
+    "countryEn": "Comoros",
+    "capitalJa": "モロニ",
+    "capitalEn": "Moroni",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "lat": -12.16666666,
+    "lng": 44.25,
+    "countryAnswers": [
+      "コモロ",
+      "コモロ連合",
+      "Comoros",
+      "Union of the Comoros",
+      "KM",
+      "Union des Comores",
+      "Udzima wa Komori",
+      "al-Ittiḥād al-Qumurī"
+    ],
+    "capitalAnswers": [
+      "モロニ",
+      "Moroni"
+    ]
+  },
+  {
+    "code": "COL",
+    "mapKey": "170",
+    "numericCode": "170",
+    "countryJa": "コロンビア",
+    "countryEn": "Colombia",
+    "capitalJa": "ボゴタ",
+    "capitalEn": "Bogotá",
+    "region": "Americas",
+    "subregion": "South America",
+    "lat": 4,
+    "lng": -72,
+    "countryAnswers": [
+      "コロンビア",
+      "コロンビア共和国",
+      "Colombia",
+      "Republic of Colombia",
+      "CO",
+      "República de Colombia"
+    ],
+    "capitalAnswers": [
+      "ボゴタ",
+      "Bogotá"
+    ]
+  },
+  {
+    "code": "COG",
+    "mapKey": "178",
+    "numericCode": "178",
+    "countryJa": "コンゴ共和国",
+    "countryEn": "Republic of the Congo",
+    "capitalJa": "ブラザビル",
+    "capitalEn": "Brazzaville",
+    "region": "Africa",
+    "subregion": "Middle Africa",
+    "lat": -1,
+    "lng": 15,
+    "countryAnswers": [
+      "コンゴ共和国",
+      "Republic of the Congo",
+      "CG",
+      "Congo",
+      "Congo-Brazzaville"
+    ],
+    "capitalAnswers": [
+      "ブラザビル",
+      "Brazzaville"
+    ]
+  },
+  {
+    "code": "COD",
+    "mapKey": "180",
+    "numericCode": "180",
+    "countryJa": "コンゴ民主共和国",
+    "countryEn": "DR Congo",
+    "capitalJa": "キンシャサ",
+    "capitalEn": "Kinshasa",
+    "region": "Africa",
+    "subregion": "Middle Africa",
+    "lat": 0,
+    "lng": 25,
+    "countryAnswers": [
+      "コンゴ民主共和国",
+      "DR Congo",
+      "Democratic Republic of the Congo",
+      "CD",
+      "Congo-Kinshasa",
+      "Congo, the Democratic Republic of the",
+      "Democratic Republic of Congo",
+      "DRC"
+    ],
+    "capitalAnswers": [
+      "キンシャサ",
+      "Kinshasa"
+    ]
+  },
+  {
+    "code": "SAU",
+    "mapKey": "682",
+    "numericCode": "682",
+    "countryJa": "サウジアラビア",
+    "countryEn": "Saudi Arabia",
+    "capitalJa": "リヤド",
+    "capitalEn": "Riyadh",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "lat": 25,
+    "lng": 45,
+    "countryAnswers": [
+      "サウジアラビア",
+      "サウジアラビア王国",
+      "Saudi Arabia",
+      "Kingdom of Saudi Arabia",
+      "Saudi",
+      "SA",
+      "Al-Mamlakah al-‘Arabiyyah as-Su‘ūdiyyah"
+    ],
+    "capitalAnswers": [
+      "リヤド",
+      "Riyadh"
+    ]
+  },
+  {
+    "code": "WSM",
+    "mapKey": "882",
+    "numericCode": "882",
+    "countryJa": "サモア",
+    "countryEn": "Samoa",
+    "capitalJa": "アピア",
+    "capitalEn": "Apia",
+    "region": "Oceania",
+    "subregion": "Polynesia",
+    "lat": -13.58333333,
+    "lng": -172.33333333,
+    "countryAnswers": [
+      "サモア",
+      "サモア独立国",
+      "Samoa",
+      "Independent State of Samoa",
+      "WS",
+      "Malo Saʻoloto Tutoʻatasi o Sāmoa"
+    ],
+    "capitalAnswers": [
+      "アピア",
+      "Apia"
+    ]
+  },
+  {
+    "code": "STP",
+    "mapKey": "678",
+    "numericCode": "678",
+    "countryJa": "サントメ・プリンシペ",
+    "countryEn": "São Tomé and Príncipe",
+    "capitalJa": "サントメ",
+    "capitalEn": "São Tomé",
+    "region": "Africa",
+    "subregion": "Middle Africa",
+    "lat": 1,
+    "lng": 7,
+    "countryAnswers": [
+      "サントメ・プリンシペ",
+      "サントメ・プリンシペ民主共和国",
+      "São Tomé and Príncipe",
+      "Democratic Republic of São Tomé and Príncipe",
+      "ST",
+      "Sao Tome and Principe",
+      "República Democrática de São Tomé e Príncipe"
+    ],
+    "capitalAnswers": [
+      "サントメ",
+      "São Tomé"
+    ]
+  },
+  {
+    "code": "ZMB",
+    "mapKey": "894",
+    "numericCode": "894",
+    "countryJa": "ザンビア",
+    "countryEn": "Zambia",
+    "capitalJa": "ルサカ",
+    "capitalEn": "Lusaka",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "lat": -15,
+    "lng": 30,
+    "countryAnswers": [
+      "ザンビア",
+      "ザンビア共和国",
+      "Zambia",
+      "Republic of Zambia",
+      "ZM"
+    ],
+    "capitalAnswers": [
+      "ルサカ",
+      "Lusaka"
+    ]
+  },
+  {
+    "code": "SMR",
+    "mapKey": "674",
+    "numericCode": "674",
+    "countryJa": "サンマリノ",
+    "countryEn": "San Marino",
+    "capitalJa": "サンマリノ",
+    "capitalEn": "City of San Marino",
+    "region": "Europe",
+    "subregion": "Southern Europe",
+    "lat": 43.76666666,
+    "lng": 12.41666666,
+    "countryAnswers": [
+      "サンマリノ",
+      "サンマリノ共和国",
+      "San Marino",
+      "Most Serene Republic of San Marino",
+      "SM",
+      "Republic of San Marino",
+      "Repubblica di San Marino"
+    ],
+    "capitalAnswers": [
+      "サンマリノ",
+      "City of San Marino"
+    ]
+  },
+  {
+    "code": "SLE",
+    "mapKey": "694",
+    "numericCode": "694",
+    "countryJa": "シエラレオネ",
+    "countryEn": "Sierra Leone",
+    "capitalJa": "フリータウン",
+    "capitalEn": "Freetown",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "lat": 8.5,
+    "lng": -11.5,
+    "countryAnswers": [
+      "シエラレオネ",
+      "シエラレオネ共和国",
+      "Sierra Leone",
+      "Republic of Sierra Leone",
+      "SL"
+    ],
+    "capitalAnswers": [
+      "フリータウン",
+      "Freetown"
+    ]
+  },
+  {
+    "code": "DJI",
+    "mapKey": "262",
+    "numericCode": "262",
+    "countryJa": "ジブチ",
+    "countryEn": "Djibouti",
+    "capitalJa": "ジブチ",
+    "capitalEn": "Djibouti",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "lat": 11.5,
+    "lng": 43,
+    "countryAnswers": [
+      "ジブチ",
+      "ジブチ共和国",
+      "Djibouti",
+      "Republic of Djibouti",
+      "DJ",
+      "Jabuuti",
+      "Gabuuti",
+      "République de Djibouti",
+      "Gabuutih Ummuuno",
+      "Jamhuuriyadda Jabuuti"
+    ],
+    "capitalAnswers": [
+      "ジブチ",
+      "Djibouti"
+    ]
+  },
+  {
+    "code": "JAM",
+    "mapKey": "388",
+    "numericCode": "388",
+    "countryJa": "ジャマイカ",
+    "countryEn": "Jamaica",
+    "capitalJa": "キングストン",
+    "capitalEn": "Kingston",
+    "region": "Americas",
+    "subregion": "Caribbean",
+    "lat": 18.25,
+    "lng": -77.5,
+    "countryAnswers": [
+      "ジャマイカ",
+      "Jamaica",
+      "JM"
+    ],
+    "capitalAnswers": [
+      "キングストン",
+      "Kingston"
+    ]
+  },
+  {
+    "code": "GEO",
+    "mapKey": "268",
+    "numericCode": "268",
+    "countryJa": "ジョージア",
+    "countryEn": "Georgia",
+    "capitalJa": "トビリシ",
+    "capitalEn": "Tbilisi",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "lat": 42,
+    "lng": 43.5,
+    "countryAnswers": [
+      "ジョージア",
+      "Georgia",
+      "GE",
+      "Sakartvelo"
+    ],
+    "capitalAnswers": [
+      "トビリシ",
+      "Tbilisi"
+    ]
+  },
+  {
+    "code": "SYR",
+    "mapKey": "760",
+    "numericCode": "760",
+    "countryJa": "シリア・アラブ共和国",
+    "countryEn": "Syria",
+    "capitalJa": "ダマスカス",
+    "capitalEn": "Damascus",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "lat": 35,
+    "lng": 38,
+    "countryAnswers": [
+      "シリア・アラブ共和国",
+      "シリア",
+      "Syria",
+      "Syrian Arab Republic",
+      "SY",
+      "Al-Jumhūrīyah Al-ʻArabīyah As-Sūrīyah"
+    ],
+    "capitalAnswers": [
+      "ダマスカス",
+      "Damascus"
+    ]
+  },
+  {
+    "code": "SGP",
+    "mapKey": "702",
+    "numericCode": "702",
+    "countryJa": "シンガポール",
+    "countryEn": "Singapore",
+    "capitalJa": "Singapore",
+    "capitalEn": "Singapore",
+    "region": "Asia",
+    "subregion": "South-Eastern Asia",
+    "lat": 1.36666666,
+    "lng": 103.8,
+    "countryAnswers": [
+      "シンガポール",
+      "シンガポール共和国",
+      "Singapore",
+      "Republic of Singapore",
+      "SG",
+      "Singapura",
+      "Republik Singapura",
+      "新加坡共和国"
+    ],
+    "capitalAnswers": [
+      "Singapore"
+    ]
+  },
+  {
+    "code": "ZWE",
+    "mapKey": "716",
+    "numericCode": "716",
+    "countryJa": "ジンバブエ",
+    "countryEn": "Zimbabwe",
+    "capitalJa": "ハラレ",
+    "capitalEn": "Harare",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "lat": -20,
+    "lng": 30,
+    "countryAnswers": [
+      "ジンバブエ",
+      "ジンバブエ共和国",
+      "Zimbabwe",
+      "Republic of Zimbabwe",
+      "ZW"
+    ],
+    "capitalAnswers": [
+      "ハラレ",
+      "Harare"
+    ]
+  },
+  {
+    "code": "CHE",
+    "mapKey": "756",
+    "numericCode": "756",
+    "countryJa": "スイス",
+    "countryEn": "Switzerland",
+    "capitalJa": "ベルン",
+    "capitalEn": "Bern",
+    "region": "Europe",
+    "subregion": "Western Europe",
+    "lat": 47,
+    "lng": 8,
+    "countryAnswers": [
+      "スイス",
+      "スイス連邦",
+      "Switzerland",
+      "Swiss Confederation",
+      "CH",
+      "Schweiz",
+      "Suisse",
+      "Svizzera",
+      "Svizra"
+    ],
+    "capitalAnswers": [
+      "ベルン",
+      "Bern"
+    ]
+  },
+  {
+    "code": "SWE",
+    "mapKey": "752",
+    "numericCode": "752",
+    "countryJa": "スウェーデン",
+    "countryEn": "Sweden",
+    "capitalJa": "ストックホルム",
+    "capitalEn": "Stockholm",
+    "region": "Europe",
+    "subregion": "Northern Europe",
+    "lat": 62,
+    "lng": 15,
+    "countryAnswers": [
+      "スウェーデン",
+      "スウェーデン王国",
+      "Sweden",
+      "Kingdom of Sweden",
+      "SE",
+      "Konungariket Sverige"
+    ],
+    "capitalAnswers": [
+      "ストックホルム",
+      "Stockholm"
+    ]
+  },
+  {
+    "code": "SDN",
+    "mapKey": "729",
+    "numericCode": "729",
+    "countryJa": "スーダン",
+    "countryEn": "Sudan",
+    "capitalJa": "ハルツーム",
+    "capitalEn": "Khartoum",
+    "region": "Africa",
+    "subregion": "Northern Africa",
+    "lat": 15,
+    "lng": 30,
+    "countryAnswers": [
+      "スーダン",
+      "スーダン共和国",
+      "Sudan",
+      "Republic of the Sudan",
+      "SD",
+      "Jumhūrīyat as-Sūdān"
+    ],
+    "capitalAnswers": [
+      "ハルツーム",
+      "Khartoum"
+    ]
+  },
+  {
+    "code": "ESP",
+    "mapKey": "724",
+    "numericCode": "724",
+    "countryJa": "スペイン",
+    "countryEn": "Spain",
+    "capitalJa": "マドリード",
+    "capitalEn": "Madrid",
+    "region": "Europe",
+    "subregion": "Southern Europe",
+    "lat": 40,
+    "lng": -4,
+    "countryAnswers": [
+      "スペイン",
+      "Spain",
+      "Kingdom of Spain",
+      "ES",
+      "Reino de España"
+    ],
+    "capitalAnswers": [
+      "マドリード",
+      "Madrid"
+    ]
+  },
+  {
+    "code": "SUR",
+    "mapKey": "740",
+    "numericCode": "740",
+    "countryJa": "スリナム",
+    "countryEn": "Suriname",
+    "capitalJa": "パラマリボ",
+    "capitalEn": "Paramaribo",
+    "region": "Americas",
+    "subregion": "South America",
+    "lat": 4,
+    "lng": -56,
+    "countryAnswers": [
+      "スリナム",
+      "スリナム共和国",
+      "Suriname",
+      "Republic of Suriname",
+      "SR",
+      "Sarnam",
+      "Sranangron",
+      "Republiek Suriname"
+    ],
+    "capitalAnswers": [
+      "パラマリボ",
+      "Paramaribo"
+    ]
+  },
+  {
+    "code": "LKA",
+    "mapKey": "144",
+    "numericCode": "144",
+    "countryJa": "スリランカ",
+    "countryEn": "Sri Lanka",
+    "capitalJa": "スリ・ジャヤワルダナプラ・コッテ",
+    "capitalEn": "Colombo",
+    "region": "Asia",
+    "subregion": "Southern Asia",
+    "lat": 7,
+    "lng": 81,
+    "countryAnswers": [
+      "スリランカ",
+      "スリランカ民主社会主義共和国",
+      "Sri Lanka",
+      "Democratic Socialist Republic of Sri Lanka",
+      "LK",
+      "ilaṅkai"
+    ],
+    "capitalAnswers": [
+      "スリ・ジャヤワルダナプラ・コッテ",
+      "Colombo"
+    ]
+  },
+  {
+    "code": "SVK",
+    "mapKey": "703",
+    "numericCode": "703",
+    "countryJa": "スロバキア",
+    "countryEn": "Slovakia",
+    "capitalJa": "ブラチスラバ",
+    "capitalEn": "Bratislava",
+    "region": "Europe",
+    "subregion": "Central Europe",
+    "lat": 48.66666666,
+    "lng": 19.5,
+    "countryAnswers": [
+      "スロバキア",
+      "スロバキア共和国",
+      "Slovakia",
+      "Slovak Republic",
+      "SK",
+      "Slovenská republika"
+    ],
+    "capitalAnswers": [
+      "ブラチスラバ",
+      "Bratislava"
+    ]
+  },
+  {
+    "code": "SVN",
+    "mapKey": "705",
+    "numericCode": "705",
+    "countryJa": "スロベニア",
+    "countryEn": "Slovenia",
+    "capitalJa": "リュブリャナ",
+    "capitalEn": "Ljubljana",
+    "region": "Europe",
+    "subregion": "Central Europe",
+    "lat": 46.11666666,
+    "lng": 14.81666666,
+    "countryAnswers": [
+      "スロベニア",
+      "スロベニア共和国",
+      "Slovenia",
+      "Republic of Slovenia",
+      "SI",
+      "Republika Slovenija"
+    ],
+    "capitalAnswers": [
+      "リュブリャナ",
+      "Ljubljana"
+    ]
+  },
+  {
+    "code": "SYC",
+    "mapKey": "690",
+    "numericCode": "690",
+    "countryJa": "セーシェル",
+    "countryEn": "Seychelles",
+    "capitalJa": "ビクトリア",
+    "capitalEn": "Victoria",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "lat": -4.58333333,
+    "lng": 55.66666666,
+    "countryAnswers": [
+      "セーシェル",
+      "セーシェル共和国",
+      "Seychelles",
+      "Republic of Seychelles",
+      "SC",
+      "Repiblik Sesel",
+      "République des Seychelles"
+    ],
+    "capitalAnswers": [
+      "ビクトリア",
+      "Victoria"
+    ]
+  },
+  {
+    "code": "SEN",
+    "mapKey": "686",
+    "numericCode": "686",
+    "countryJa": "セネガル",
+    "countryEn": "Senegal",
+    "capitalJa": "ダカール",
+    "capitalEn": "Dakar",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "lat": 14,
+    "lng": -14,
+    "countryAnswers": [
+      "セネガル",
+      "セネガル共和国",
+      "Senegal",
+      "Republic of Senegal",
+      "SN",
+      "République du Sénégal"
+    ],
+    "capitalAnswers": [
+      "ダカール",
+      "Dakar"
+    ]
+  },
+  {
+    "code": "SRB",
+    "mapKey": "688",
+    "numericCode": "688",
+    "countryJa": "セルビア",
+    "countryEn": "Serbia",
+    "capitalJa": "ベオグラード",
+    "capitalEn": "Belgrade",
+    "region": "Europe",
+    "subregion": "Southeast Europe",
+    "lat": 44,
+    "lng": 21,
+    "countryAnswers": [
+      "セルビア",
+      "セルビア共和国",
+      "Serbia",
+      "Republic of Serbia",
+      "RS",
+      "Srbija",
+      "Republika Srbija",
+      "Србија",
+      "Република Србија"
+    ],
+    "capitalAnswers": [
+      "ベオグラード",
+      "Belgrade"
+    ]
+  },
+  {
+    "code": "KNA",
+    "mapKey": "659",
+    "numericCode": "659",
+    "countryJa": "セントクリストファー・ネイビス",
+    "countryEn": "Saint Kitts and Nevis",
+    "capitalJa": "バセテール",
+    "capitalEn": "Basseterre",
+    "region": "Americas",
+    "subregion": "Caribbean",
+    "lat": 17.33333333,
+    "lng": -62.75,
+    "countryAnswers": [
+      "セントクリストファー・ネイビス",
+      "セントキッツ・ネーヴィス連邦",
+      "セントキッツ・ネービス",
+      "Saint Kitts and Nevis",
+      "Federation of Saint Christopher and Nevis",
+      "KN"
+    ],
+    "capitalAnswers": [
+      "バセテール",
+      "Basseterre"
+    ]
+  },
+  {
+    "code": "VCT",
+    "mapKey": "670",
+    "numericCode": "670",
+    "countryJa": "セントビンセントおよびグレナディーン諸島",
+    "countryEn": "Saint Vincent and the Grenadines",
+    "capitalJa": "キングスタウン",
+    "capitalEn": "Kingstown",
+    "region": "Americas",
+    "subregion": "Caribbean",
+    "lat": 13.25,
+    "lng": -61.2,
+    "countryAnswers": [
+      "セントビンセントおよびグレナディーン諸島",
+      "セントビンセント・グレナディーン",
+      "セントビンセント・グレナディーン諸島",
+      "Saint Vincent and the Grenadines",
+      "VC"
+    ],
+    "capitalAnswers": [
+      "キングスタウン",
+      "Kingstown"
+    ]
+  },
+  {
+    "code": "LCA",
+    "mapKey": "662",
+    "numericCode": "662",
+    "countryJa": "セントルシア",
+    "countryEn": "Saint Lucia",
+    "capitalJa": "カストリーズ",
+    "capitalEn": "Castries",
+    "region": "Americas",
+    "subregion": "Caribbean",
+    "lat": 13.88333333,
+    "lng": -60.96666666,
+    "countryAnswers": [
+      "セントルシア",
+      "Saint Lucia",
+      "LC"
+    ],
+    "capitalAnswers": [
+      "カストリーズ",
+      "Castries"
+    ]
+  },
+  {
+    "code": "SOM",
+    "mapKey": "706",
+    "numericCode": "706",
+    "countryJa": "ソマリア",
+    "countryEn": "Somalia",
+    "capitalJa": "モガディシュ",
+    "capitalEn": "Mogadishu",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "lat": 10,
+    "lng": 49,
+    "countryAnswers": [
+      "ソマリア",
+      "ソマリア連邦共和国",
+      "Somalia",
+      "Federal Republic of Somalia",
+      "SO",
+      "aṣ-Ṣūmāl",
+      "Jamhuuriyadda Federaalka Soomaaliya",
+      "Jumhūriyyat aṣ-Ṣūmāl al-Fiderāliyya"
+    ],
+    "capitalAnswers": [
+      "モガディシュ",
+      "Mogadishu"
+    ]
+  },
+  {
+    "code": "SLB",
+    "mapKey": "090",
+    "numericCode": "090",
+    "countryJa": "ソロモン諸島",
+    "countryEn": "Solomon Islands",
+    "capitalJa": "ホニアラ",
+    "capitalEn": "Honiara",
+    "region": "Oceania",
+    "subregion": "Melanesia",
+    "lat": -8,
+    "lng": 159,
+    "countryAnswers": [
+      "ソロモン諸島",
+      "Solomon Islands",
+      "SB"
+    ],
+    "capitalAnswers": [
+      "ホニアラ",
+      "Honiara"
+    ]
+  },
+  {
+    "code": "THA",
+    "mapKey": "764",
+    "numericCode": "764",
+    "countryJa": "タイ",
+    "countryEn": "Thailand",
+    "capitalJa": "バンコク",
+    "capitalEn": "Bangkok",
+    "region": "Asia",
+    "subregion": "South-Eastern Asia",
+    "lat": 15,
+    "lng": 100,
+    "countryAnswers": [
+      "タイ",
+      "タイ王国",
+      "Thailand",
+      "Kingdom of Thailand",
+      "TH",
+      "Prathet",
+      "Thai",
+      "ราชอาณาจักรไทย",
+      "Ratcha Anachak Thai"
+    ],
+    "capitalAnswers": [
+      "バンコク",
+      "Bangkok"
+    ]
+  },
+  {
+    "code": "TJK",
+    "mapKey": "762",
+    "numericCode": "762",
+    "countryJa": "タジキスタン",
+    "countryEn": "Tajikistan",
+    "capitalJa": "ドゥシャンベ",
+    "capitalEn": "Dushanbe",
+    "region": "Asia",
+    "subregion": "Central Asia",
+    "lat": 39,
+    "lng": 71,
+    "countryAnswers": [
+      "タジキスタン",
+      "タジキスタン共和国",
+      "Tajikistan",
+      "Republic of Tajikistan",
+      "TJ",
+      "Toçikiston",
+      "Ҷумҳурии Тоҷикистон",
+      "Çumhuriyi Toçikiston"
+    ],
+    "capitalAnswers": [
+      "ドゥシャンベ",
+      "Dushanbe"
+    ]
+  },
+  {
+    "code": "TZA",
+    "mapKey": "834",
+    "numericCode": "834",
+    "countryJa": "タンザニア",
+    "countryEn": "Tanzania",
+    "capitalJa": "ドドマ",
+    "capitalEn": "Dodoma",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "lat": -6,
+    "lng": 35,
+    "countryAnswers": [
+      "タンザニア",
+      "タンザニア連合共和国",
+      "Tanzania",
+      "United Republic of Tanzania",
+      "TZ",
+      "Tanzania, United Republic of",
+      "Jamhuri ya Muungano wa Tanzania"
+    ],
+    "capitalAnswers": [
+      "ドドマ",
+      "Dodoma"
+    ]
+  },
+  {
+    "code": "CZE",
+    "mapKey": "203",
+    "numericCode": "203",
+    "countryJa": "チェコ",
+    "countryEn": "Czechia",
+    "capitalJa": "プラハ",
+    "capitalEn": "Prague",
+    "region": "Europe",
+    "subregion": "Central Europe",
+    "lat": 49.75,
+    "lng": 15.5,
+    "countryAnswers": [
+      "チェコ",
+      "チェコ共和国",
+      "Czechia",
+      "Czech Republic",
+      "CZ",
+      "Česká republika",
+      "Česko"
+    ],
+    "capitalAnswers": [
+      "プラハ",
+      "Prague"
+    ]
+  },
+  {
+    "code": "TCD",
+    "mapKey": "148",
+    "numericCode": "148",
+    "countryJa": "チャド",
+    "countryEn": "Chad",
+    "capitalJa": "ウンジャメナ",
+    "capitalEn": "N'Djamena",
+    "region": "Africa",
+    "subregion": "Middle Africa",
+    "lat": 15,
+    "lng": 19,
+    "countryAnswers": [
+      "チャド",
+      "チャド共和国",
+      "Chad",
+      "Republic of Chad",
+      "TD",
+      "Tchad",
+      "République du Tchad"
+    ],
+    "capitalAnswers": [
+      "ウンジャメナ",
+      "N'Djamena"
+    ]
+  },
+  {
+    "code": "TUN",
+    "mapKey": "788",
+    "numericCode": "788",
+    "countryJa": "チュニジア",
+    "countryEn": "Tunisia",
+    "capitalJa": "チュニス",
+    "capitalEn": "Tunis",
+    "region": "Africa",
+    "subregion": "Northern Africa",
+    "lat": 34,
+    "lng": 9,
+    "countryAnswers": [
+      "チュニジア",
+      "チュニジア共和国",
+      "Tunisia",
+      "Tunisian Republic",
+      "TN",
+      "Republic of Tunisia",
+      "al-Jumhūriyyah at-Tūnisiyyah"
+    ],
+    "capitalAnswers": [
+      "チュニス",
+      "Tunis"
+    ]
+  },
+  {
+    "code": "CHL",
+    "mapKey": "152",
+    "numericCode": "152",
+    "countryJa": "チリ",
+    "countryEn": "Chile",
+    "capitalJa": "サンティアゴ",
+    "capitalEn": "Santiago",
+    "region": "Americas",
+    "subregion": "South America",
+    "lat": -30,
+    "lng": -71,
+    "countryAnswers": [
+      "チリ",
+      "チリ共和国",
+      "Chile",
+      "Republic of Chile",
+      "CL",
+      "República de Chile"
+    ],
+    "capitalAnswers": [
+      "サンティアゴ",
+      "Santiago"
+    ]
+  },
+  {
+    "code": "TUV",
+    "mapKey": "798",
+    "numericCode": "798",
+    "countryJa": "ツバル",
+    "countryEn": "Tuvalu",
+    "capitalJa": "フナフティ",
+    "capitalEn": "Funafuti",
+    "region": "Oceania",
+    "subregion": "Polynesia",
+    "lat": -8,
+    "lng": 178,
+    "countryAnswers": [
+      "ツバル",
+      "Tuvalu",
+      "TV"
+    ],
+    "capitalAnswers": [
+      "フナフティ",
+      "Funafuti"
+    ]
+  },
+  {
+    "code": "DNK",
+    "mapKey": "208",
+    "numericCode": "208",
+    "countryJa": "デンマーク",
+    "countryEn": "Denmark",
+    "capitalJa": "コペンハーゲン",
+    "capitalEn": "Copenhagen",
+    "region": "Europe",
+    "subregion": "Northern Europe",
+    "lat": 56,
+    "lng": 10,
+    "countryAnswers": [
+      "デンマーク",
+      "デンマーク王国",
+      "Denmark",
+      "Kingdom of Denmark",
+      "DK",
+      "Danmark",
+      "Kongeriget Danmark"
+    ],
+    "capitalAnswers": [
+      "コペンハーゲン",
+      "Copenhagen"
+    ]
+  },
+  {
+    "code": "DEU",
+    "mapKey": "276",
+    "numericCode": "276",
+    "countryJa": "ドイツ",
+    "countryEn": "Germany",
+    "capitalJa": "ベルリン",
+    "capitalEn": "Berlin",
+    "region": "Europe",
+    "subregion": "Western Europe",
+    "lat": 51,
+    "lng": 9,
+    "countryAnswers": [
+      "ドイツ",
+      "ドイツ連邦共和国",
+      "Germany",
+      "Federal Republic of Germany",
+      "DE",
+      "Bundesrepublik Deutschland"
+    ],
+    "capitalAnswers": [
+      "ベルリン",
+      "Berlin"
+    ]
+  },
+  {
+    "code": "TGO",
+    "mapKey": "768",
+    "numericCode": "768",
+    "countryJa": "トーゴ",
+    "countryEn": "Togo",
+    "capitalJa": "ロメ",
+    "capitalEn": "Lomé",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "lat": 8,
+    "lng": 1.16666666,
+    "countryAnswers": [
+      "トーゴ",
+      "トーゴ共和国",
+      "Togo",
+      "Togolese Republic",
+      "TG",
+      "Togolese",
+      "République Togolaise"
+    ],
+    "capitalAnswers": [
+      "ロメ",
+      "Lomé"
+    ]
+  },
+  {
+    "code": "DOM",
+    "mapKey": "214",
+    "numericCode": "214",
+    "countryJa": "ドミニカ共和国",
+    "countryEn": "Dominican Republic",
+    "capitalJa": "サントドミンゴ",
+    "capitalEn": "Santo Domingo",
+    "region": "Americas",
+    "subregion": "Caribbean",
+    "lat": 19,
+    "lng": -70.66666666,
+    "countryAnswers": [
+      "ドミニカ共和国",
+      "Dominican Republic",
+      "DO"
+    ],
+    "capitalAnswers": [
+      "サントドミンゴ",
+      "Santo Domingo"
+    ]
+  },
+  {
+    "code": "DMA",
+    "mapKey": "212",
+    "numericCode": "212",
+    "countryJa": "ドミニカ国",
+    "countryEn": "Dominica",
+    "capitalJa": "ロゾー",
+    "capitalEn": "Roseau",
+    "region": "Americas",
+    "subregion": "Caribbean",
+    "lat": 15.41666666,
+    "lng": -61.33333333,
+    "countryAnswers": [
+      "ドミニカ国",
+      "Dominica",
+      "Commonwealth of Dominica",
+      "DM",
+      "Dominique",
+      "Wai‘tu kubuli"
+    ],
+    "capitalAnswers": [
+      "ロゾー",
+      "Roseau"
+    ]
+  },
+  {
+    "code": "TTO",
+    "mapKey": "780",
+    "numericCode": "780",
+    "countryJa": "トリニダード・トバゴ",
+    "countryEn": "Trinidad and Tobago",
+    "capitalJa": "ポート・オブ・スペイン",
+    "capitalEn": "Port of Spain",
+    "region": "Americas",
+    "subregion": "Caribbean",
+    "lat": 11,
+    "lng": -61,
+    "countryAnswers": [
+      "トリニダード・トバゴ",
+      "トリニダード・トバゴ共和国",
+      "Trinidad and Tobago",
+      "Republic of Trinidad and Tobago",
+      "TT"
+    ],
+    "capitalAnswers": [
+      "ポート・オブ・スペイン",
+      "Port of Spain"
+    ]
+  },
+  {
+    "code": "TKM",
+    "mapKey": "795",
+    "numericCode": "795",
+    "countryJa": "トルクメニスタン",
+    "countryEn": "Turkmenistan",
+    "capitalJa": "アシガバット",
+    "capitalEn": "Ashgabat",
+    "region": "Asia",
+    "subregion": "Central Asia",
+    "lat": 40,
+    "lng": 60,
+    "countryAnswers": [
+      "トルクメニスタン",
+      "Turkmenistan",
+      "TM"
+    ],
+    "capitalAnswers": [
+      "アシガバット",
+      "Ashgabat"
+    ]
+  },
+  {
+    "code": "TUR",
+    "mapKey": "792",
+    "numericCode": "792",
+    "countryJa": "トルコ",
+    "countryEn": "Türkiye",
+    "capitalJa": "アンカラ",
+    "capitalEn": "Ankara",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "lat": 39,
+    "lng": 35,
+    "countryAnswers": [
+      "トルコ",
+      "トルコ共和国",
+      "Türkiye",
+      "Republic of Türkiye",
+      "TR",
+      "Turkiye",
+      "Republic of Turkey",
+      "Türkiye Cumhuriyeti"
+    ],
+    "capitalAnswers": [
+      "アンカラ",
+      "Ankara"
+    ]
+  },
+  {
+    "code": "TON",
+    "mapKey": "776",
+    "numericCode": "776",
+    "countryJa": "トンガ",
+    "countryEn": "Tonga",
+    "capitalJa": "ヌクアロファ",
+    "capitalEn": "Nuku'alofa",
+    "region": "Oceania",
+    "subregion": "Polynesia",
+    "lat": -20,
+    "lng": -175,
+    "countryAnswers": [
+      "トンガ",
+      "トンガ王国",
+      "Tonga",
+      "Kingdom of Tonga",
+      "TO"
+    ],
+    "capitalAnswers": [
+      "ヌクアロファ",
+      "Nuku'alofa"
+    ]
+  },
+  {
+    "code": "NGA",
+    "mapKey": "566",
+    "numericCode": "566",
+    "countryJa": "ナイジェリア",
+    "countryEn": "Nigeria",
+    "capitalJa": "アブジャ",
+    "capitalEn": "Abuja",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "lat": 10,
+    "lng": 8,
+    "countryAnswers": [
+      "ナイジェリア",
+      "ナイジェリア連邦共和国",
+      "Nigeria",
+      "Federal Republic of Nigeria",
+      "NG",
+      "Nijeriya",
+      "Naíjíríà"
+    ],
+    "capitalAnswers": [
+      "アブジャ",
+      "Abuja"
+    ]
+  },
+  {
+    "code": "NRU",
+    "mapKey": "520",
+    "numericCode": "520",
+    "countryJa": "ナウル",
+    "countryEn": "Nauru",
+    "capitalJa": "ヤレン",
+    "capitalEn": "Yaren",
+    "region": "Oceania",
+    "subregion": "Micronesia",
+    "lat": -0.53333333,
+    "lng": 166.91666666,
+    "countryAnswers": [
+      "ナウル",
+      "ナウル共和国",
+      "Nauru",
+      "Republic of Nauru",
+      "NR",
+      "Naoero",
+      "Pleasant Island",
+      "Ripublik Naoero"
+    ],
+    "capitalAnswers": [
+      "ヤレン",
+      "Yaren"
+    ]
+  },
+  {
+    "code": "NAM",
+    "mapKey": "516",
+    "numericCode": "516",
+    "countryJa": "ナミビア",
+    "countryEn": "Namibia",
+    "capitalJa": "ウィントフック",
+    "capitalEn": "Windhoek",
+    "region": "Africa",
+    "subregion": "Southern Africa",
+    "lat": -22,
+    "lng": 17,
+    "countryAnswers": [
+      "ナミビア",
+      "ナミビア共和国",
+      "Namibia",
+      "Republic of Namibia",
+      "NA",
+      "Namibië"
+    ],
+    "capitalAnswers": [
+      "ウィントフック",
+      "Windhoek"
+    ]
+  },
+  {
+    "code": "NIU",
+    "mapKey": "570",
+    "numericCode": "570",
+    "countryJa": "ニウエ",
+    "countryEn": "Niue",
+    "capitalJa": "アロフィ",
+    "capitalEn": "Alofi",
+    "region": "Oceania",
+    "subregion": "Polynesia",
+    "lat": -19.03333333,
+    "lng": -169.86666666,
+    "countryAnswers": [
+      "ニウエ",
+      "Niue",
+      "NU"
+    ],
+    "capitalAnswers": [
+      "アロフィ",
+      "Alofi"
+    ]
+  },
+  {
+    "code": "NIC",
+    "mapKey": "558",
+    "numericCode": "558",
+    "countryJa": "ニカラグア",
+    "countryEn": "Nicaragua",
+    "capitalJa": "マナグア",
+    "capitalEn": "Managua",
+    "region": "Americas",
+    "subregion": "Central America",
+    "lat": 13,
+    "lng": -85,
+    "countryAnswers": [
+      "ニカラグア",
+      "ニカラグア共和国",
+      "Nicaragua",
+      "Republic of Nicaragua",
+      "NI",
+      "República de Nicaragua"
+    ],
+    "capitalAnswers": [
+      "マナグア",
+      "Managua"
+    ]
+  },
+  {
+    "code": "NER",
+    "mapKey": "562",
+    "numericCode": "562",
+    "countryJa": "ニジェール",
+    "countryEn": "Niger",
+    "capitalJa": "ニアメ",
+    "capitalEn": "Niamey",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "lat": 16,
+    "lng": 8,
+    "countryAnswers": [
+      "ニジェール",
+      "ニジェール共和国",
+      "Niger",
+      "Republic of Niger",
+      "NE",
+      "Nijar"
+    ],
+    "capitalAnswers": [
+      "ニアメ",
+      "Niamey"
+    ]
+  },
+  {
+    "code": "NZL",
+    "mapKey": "554",
+    "numericCode": "554",
+    "countryJa": "ニュージーランド",
+    "countryEn": "New Zealand",
+    "capitalJa": "ウェリントン",
+    "capitalEn": "Wellington",
+    "region": "Oceania",
+    "subregion": "Australia and New Zealand",
+    "lat": -41,
+    "lng": 174,
+    "countryAnswers": [
+      "ニュージーランド",
+      "New Zealand",
+      "NZ",
+      "Aotearoa"
+    ],
+    "capitalAnswers": [
+      "ウェリントン",
+      "Wellington"
+    ]
+  },
+  {
+    "code": "NPL",
+    "mapKey": "524",
+    "numericCode": "524",
+    "countryJa": "ネパール",
+    "countryEn": "Nepal",
+    "capitalJa": "カトマンズ",
+    "capitalEn": "Kathmandu",
+    "region": "Asia",
+    "subregion": "Southern Asia",
+    "lat": 28,
+    "lng": 84,
+    "countryAnswers": [
+      "ネパール",
+      "ネパール連邦民主共和国",
+      "Nepal",
+      "Federal Democratic Republic of Nepal",
+      "NP",
+      "Loktāntrik Ganatantra Nepāl"
+    ],
+    "capitalAnswers": [
+      "カトマンズ",
+      "Kathmandu"
+    ]
+  },
+  {
+    "code": "NOR",
+    "mapKey": "578",
+    "numericCode": "578",
+    "countryJa": "ノルウェー",
+    "countryEn": "Norway",
+    "capitalJa": "オスロ",
+    "capitalEn": "Oslo",
+    "region": "Europe",
+    "subregion": "Northern Europe",
+    "lat": 62,
+    "lng": 10,
+    "countryAnswers": [
+      "ノルウェー",
+      "ノルウェー王国",
+      "Norway",
+      "Kingdom of Norway",
+      "NO",
+      "Norge",
+      "Noreg",
+      "Kongeriket Norge",
+      "Kongeriket Noreg"
+    ],
+    "capitalAnswers": [
+      "オスロ",
+      "Oslo"
+    ]
+  },
+  {
+    "code": "BHR",
+    "mapKey": "048",
+    "numericCode": "048",
+    "countryJa": "バーレーン",
+    "countryEn": "Bahrain",
+    "capitalJa": "マナーマ市",
+    "capitalEn": "Manama",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "lat": 26,
+    "lng": 50.55,
+    "countryAnswers": [
+      "バーレーン",
+      "バーレーン王国",
+      "Bahrain",
+      "Kingdom of Bahrain",
+      "BH",
+      "Mamlakat al-Baḥrayn"
+    ],
+    "capitalAnswers": [
+      "マナーマ市",
+      "Manama"
+    ]
+  },
+  {
+    "code": "HTI",
+    "mapKey": "332",
+    "numericCode": "332",
+    "countryJa": "ハイチ",
+    "countryEn": "Haiti",
+    "capitalJa": "ポルトープランス",
+    "capitalEn": "Port-au-Prince",
+    "region": "Americas",
+    "subregion": "Caribbean",
+    "lat": 19,
+    "lng": -72.41666666,
+    "countryAnswers": [
+      "ハイチ",
+      "ハイチ共和国",
+      "Haiti",
+      "Republic of Haiti",
+      "HT",
+      "République d'Haïti",
+      "Repiblik Ayiti"
+    ],
+    "capitalAnswers": [
+      "ポルトープランス",
+      "Port-au-Prince"
+    ]
+  },
+  {
+    "code": "PAK",
+    "mapKey": "586",
+    "numericCode": "586",
+    "countryJa": "パキスタン",
+    "countryEn": "Pakistan",
+    "capitalJa": "イスラマバード",
+    "capitalEn": "Islamabad",
+    "region": "Asia",
+    "subregion": "Southern Asia",
+    "lat": 30,
+    "lng": 70,
+    "countryAnswers": [
+      "パキスタン",
+      "パキスタン・イスラム共和国",
+      "Pakistan",
+      "Islamic Republic of Pakistan",
+      "PK",
+      "Pākistān",
+      "Islāmī Jumhūriya'eh Pākistān"
+    ],
+    "capitalAnswers": [
+      "イスラマバード",
+      "Islamabad"
+    ]
+  },
+  {
+    "code": "VAT",
+    "mapKey": "336",
+    "numericCode": "336",
+    "countryJa": "バチカン市国",
+    "countryEn": "Vatican City",
+    "capitalJa": "バチカン市国",
+    "capitalEn": "Vatican City",
+    "region": "Europe",
+    "subregion": "Southern Europe",
+    "lat": 41.9,
+    "lng": 12.45,
+    "countryAnswers": [
+      "バチカン市国",
+      "バチカン",
+      "Vatican City",
+      "Vatican City State",
+      "VA",
+      "Holy See (Vatican City State)",
+      "Vatican",
+      "Stato della Città del Vaticano"
+    ],
+    "capitalAnswers": [
+      "バチカン市国",
+      "Vatican City",
+      "バチカン",
+      "Vatican"
+    ]
+  },
+  {
+    "code": "PAN",
+    "mapKey": "591",
+    "numericCode": "591",
+    "countryJa": "パナマ",
+    "countryEn": "Panama",
+    "capitalJa": "パナマシティー",
+    "capitalEn": "Panama City",
+    "region": "Americas",
+    "subregion": "Central America",
+    "lat": 9,
+    "lng": -80,
+    "countryAnswers": [
+      "パナマ",
+      "パナマ共和国",
+      "Panama",
+      "Republic of Panama",
+      "PA",
+      "República de Panamá"
+    ],
+    "capitalAnswers": [
+      "パナマシティー",
+      "Panama City"
+    ]
+  },
+  {
+    "code": "VUT",
+    "mapKey": "548",
+    "numericCode": "548",
+    "countryJa": "バヌアツ",
+    "countryEn": "Vanuatu",
+    "capitalJa": "ポートビラ",
+    "capitalEn": "Port Vila",
+    "region": "Oceania",
+    "subregion": "Melanesia",
+    "lat": -16,
+    "lng": 167,
+    "countryAnswers": [
+      "バヌアツ",
+      "バヌアツ共和国",
+      "Vanuatu",
+      "Republic of Vanuatu",
+      "VU",
+      "Ripablik blong Vanuatu",
+      "République de Vanuatu"
+    ],
+    "capitalAnswers": [
+      "ポートビラ",
+      "Port Vila"
+    ]
+  },
+  {
+    "code": "BHS",
+    "mapKey": "044",
+    "numericCode": "044",
+    "countryJa": "バハマ",
+    "countryEn": "Bahamas",
+    "capitalJa": "ナッソー",
+    "capitalEn": "Nassau",
+    "region": "Americas",
+    "subregion": "Caribbean",
+    "lat": 24.25,
+    "lng": -76,
+    "countryAnswers": [
+      "バハマ",
+      "バハマ国",
+      "Bahamas",
+      "Commonwealth of the Bahamas",
+      "BS"
+    ],
+    "capitalAnswers": [
+      "ナッソー",
+      "Nassau"
+    ]
+  },
+  {
+    "code": "PNG",
+    "mapKey": "598",
+    "numericCode": "598",
+    "countryJa": "パプアニューギニア",
+    "countryEn": "Papua New Guinea",
+    "capitalJa": "ポートモレスビー",
+    "capitalEn": "Port Moresby",
+    "region": "Oceania",
+    "subregion": "Melanesia",
+    "lat": -6,
+    "lng": 147,
+    "countryAnswers": [
+      "パプアニューギニア",
+      "パプアニューギニア独立国",
+      "Papua New Guinea",
+      "Independent State of Papua New Guinea",
+      "PG",
+      "Independen Stet bilong Papua Niugini"
+    ],
+    "capitalAnswers": [
+      "ポートモレスビー",
+      "Port Moresby"
+    ]
+  },
+  {
+    "code": "PLW",
+    "mapKey": "585",
+    "numericCode": "585",
+    "countryJa": "パラオ",
+    "countryEn": "Palau",
+    "capitalJa": "マルキョク",
+    "capitalEn": "Ngerulmud",
+    "region": "Oceania",
+    "subregion": "Micronesia",
+    "lat": 7.5,
+    "lng": 134.5,
+    "countryAnswers": [
+      "パラオ",
+      "パラオ共和国",
+      "Palau",
+      "Republic of Palau",
+      "PW",
+      "Beluu er a Belau"
+    ],
+    "capitalAnswers": [
+      "マルキョク",
+      "Ngerulmud"
+    ]
+  },
+  {
+    "code": "PRY",
+    "mapKey": "600",
+    "numericCode": "600",
+    "countryJa": "パラグアイ",
+    "countryEn": "Paraguay",
+    "capitalJa": "アスンシオン",
+    "capitalEn": "Asunción",
+    "region": "Americas",
+    "subregion": "South America",
+    "lat": -23,
+    "lng": -58,
+    "countryAnswers": [
+      "パラグアイ",
+      "パラグアイ共和国",
+      "Paraguay",
+      "Republic of Paraguay",
+      "PY",
+      "República del Paraguay",
+      "Tetã Paraguái"
+    ],
+    "capitalAnswers": [
+      "アスンシオン",
+      "Asunción"
+    ]
+  },
+  {
+    "code": "BRB",
+    "mapKey": "052",
+    "numericCode": "052",
+    "countryJa": "バルバドス",
+    "countryEn": "Barbados",
+    "capitalJa": "ブリッジタウン",
+    "capitalEn": "Bridgetown",
+    "region": "Americas",
+    "subregion": "Caribbean",
+    "lat": 13.16666666,
+    "lng": -59.53333333,
+    "countryAnswers": [
+      "バルバドス",
+      "Barbados",
+      "BB"
+    ],
+    "capitalAnswers": [
+      "ブリッジタウン",
+      "Bridgetown"
+    ]
+  },
+  {
+    "code": "HUN",
+    "mapKey": "348",
+    "numericCode": "348",
+    "countryJa": "ハンガリー",
+    "countryEn": "Hungary",
+    "capitalJa": "ブダペスト",
+    "capitalEn": "Budapest",
+    "region": "Europe",
+    "subregion": "Central Europe",
+    "lat": 47,
+    "lng": 20,
+    "countryAnswers": [
+      "ハンガリー",
+      "Hungary",
+      "HU"
+    ],
+    "capitalAnswers": [
+      "ブダペスト",
+      "Budapest"
+    ]
+  },
+  {
+    "code": "BGD",
+    "mapKey": "050",
+    "numericCode": "050",
+    "countryJa": "バングラデシュ",
+    "countryEn": "Bangladesh",
+    "capitalJa": "ダッカ",
+    "capitalEn": "Dhaka",
+    "region": "Asia",
+    "subregion": "Southern Asia",
+    "lat": 24,
+    "lng": 90,
+    "countryAnswers": [
+      "バングラデシュ",
+      "バングラデシュ人民共和国",
+      "Bangladesh",
+      "People's Republic of Bangladesh",
+      "BD",
+      "Gônôprôjatôntri Bangladesh"
+    ],
+    "capitalAnswers": [
+      "ダッカ",
+      "Dhaka"
+    ]
+  },
+  {
+    "code": "FJI",
+    "mapKey": "242",
+    "numericCode": "242",
+    "countryJa": "フィジー",
+    "countryEn": "Fiji",
+    "capitalJa": "スバ",
+    "capitalEn": "Suva",
+    "region": "Oceania",
+    "subregion": "Melanesia",
+    "lat": -18,
+    "lng": 175,
+    "countryAnswers": [
+      "フィジー",
+      "フィジー諸島共和国",
+      "Fiji",
+      "Republic of Fiji",
+      "FJ",
+      "Viti",
+      "Matanitu ko Viti",
+      "Fijī Gaṇarājya"
+    ],
+    "capitalAnswers": [
+      "スバ",
+      "Suva"
+    ]
+  },
+  {
+    "code": "PHL",
+    "mapKey": "608",
+    "numericCode": "608",
+    "countryJa": "フィリピン",
+    "countryEn": "Philippines",
+    "capitalJa": "マニラ",
+    "capitalEn": "Manila",
+    "region": "Asia",
+    "subregion": "South-Eastern Asia",
+    "lat": 13,
+    "lng": 122,
+    "countryAnswers": [
+      "フィリピン",
+      "フィリピン共和国",
+      "Philippines",
+      "Republic of the Philippines",
+      "PH",
+      "Repúblika ng Pilipinas"
+    ],
+    "capitalAnswers": [
+      "マニラ",
+      "Manila"
+    ]
+  },
+  {
+    "code": "FIN",
+    "mapKey": "246",
+    "numericCode": "246",
+    "countryJa": "フィンランド",
+    "countryEn": "Finland",
+    "capitalJa": "ヘルシンキ",
+    "capitalEn": "Helsinki",
+    "region": "Europe",
+    "subregion": "Northern Europe",
+    "lat": 64,
+    "lng": 26,
+    "countryAnswers": [
+      "フィンランド",
+      "フィンランド共和国",
+      "Finland",
+      "Republic of Finland",
+      "FI",
+      "Suomi",
+      "Suomen tasavalta",
+      "Republiken Finland"
+    ],
+    "capitalAnswers": [
+      "ヘルシンキ",
+      "Helsinki"
+    ]
+  },
+  {
+    "code": "BTN",
+    "mapKey": "064",
+    "numericCode": "064",
+    "countryJa": "ブータン",
+    "countryEn": "Bhutan",
+    "capitalJa": "ティンプー",
+    "capitalEn": "Thimphu",
+    "region": "Asia",
+    "subregion": "Southern Asia",
+    "lat": 27.5,
+    "lng": 90.5,
+    "countryAnswers": [
+      "ブータン",
+      "ブータン王国",
+      "Bhutan",
+      "Kingdom of Bhutan",
+      "BT"
+    ],
+    "capitalAnswers": [
+      "ティンプー",
+      "Thimphu"
+    ]
+  },
+  {
+    "code": "BRA",
+    "mapKey": "076",
+    "numericCode": "076",
+    "countryJa": "ブラジル",
+    "countryEn": "Brazil",
+    "capitalJa": "ブラジリア",
+    "capitalEn": "Brasília",
+    "region": "Americas",
+    "subregion": "South America",
+    "lat": -10,
+    "lng": -55,
+    "countryAnswers": [
+      "ブラジル",
+      "ブラジル連邦共和国",
+      "Brazil",
+      "Federative Republic of Brazil",
+      "BR",
+      "Brasil",
+      "República Federativa do Brasil"
+    ],
+    "capitalAnswers": [
+      "ブラジリア",
+      "Brasília"
+    ]
+  },
+  {
+    "code": "FRA",
+    "mapKey": "250",
+    "numericCode": "250",
+    "countryJa": "フランス",
+    "countryEn": "France",
+    "capitalJa": "パリ",
+    "capitalEn": "Paris",
+    "region": "Europe",
+    "subregion": "Western Europe",
+    "lat": 46,
+    "lng": 2,
+    "countryAnswers": [
+      "フランス",
+      "フランス共和国",
+      "France",
+      "French Republic",
+      "FR",
+      "République française"
+    ],
+    "capitalAnswers": [
+      "パリ",
+      "Paris"
+    ]
+  },
+  {
+    "code": "BGR",
+    "mapKey": "100",
+    "numericCode": "100",
+    "countryJa": "ブルガリア",
+    "countryEn": "Bulgaria",
+    "capitalJa": "ソフィア",
+    "capitalEn": "Sofia",
+    "region": "Europe",
+    "subregion": "Southeast Europe",
+    "lat": 43,
+    "lng": 25,
+    "countryAnswers": [
+      "ブルガリア",
+      "ブルガリア共和国",
+      "Bulgaria",
+      "Republic of Bulgaria",
+      "BG",
+      "Република България"
+    ],
+    "capitalAnswers": [
+      "ソフィア",
+      "Sofia"
+    ]
+  },
+  {
+    "code": "BFA",
+    "mapKey": "854",
+    "numericCode": "854",
+    "countryJa": "ブルキナファソ",
+    "countryEn": "Burkina Faso",
+    "capitalJa": "ワガドゥグ",
+    "capitalEn": "Ouagadougou",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "lat": 13,
+    "lng": -2,
+    "countryAnswers": [
+      "ブルキナファソ",
+      "Burkina Faso",
+      "BF"
+    ],
+    "capitalAnswers": [
+      "ワガドゥグ",
+      "Ouagadougou"
+    ]
+  },
+  {
+    "code": "BRN",
+    "mapKey": "096",
+    "numericCode": "096",
+    "countryJa": "ブルネイ・ダルサラーム",
+    "countryEn": "Brunei",
+    "capitalJa": "バンダル・スリ・ブガワン",
+    "capitalEn": "Bandar Seri Begawan",
+    "region": "Asia",
+    "subregion": "South-Eastern Asia",
+    "lat": 4.5,
+    "lng": 114.66666666,
+    "countryAnswers": [
+      "ブルネイ・ダルサラーム",
+      "ブルネイ",
+      "ブルネイ・ダルサラーム国",
+      "Brunei",
+      "Nation of Brunei, Abode of Peace",
+      "BN",
+      "Brunei Darussalam",
+      "Nation of Brunei",
+      "the Abode of Peace"
+    ],
+    "capitalAnswers": [
+      "バンダル・スリ・ブガワン",
+      "Bandar Seri Begawan"
+    ]
+  },
+  {
+    "code": "BDI",
+    "mapKey": "108",
+    "numericCode": "108",
+    "countryJa": "ブルンジ",
+    "countryEn": "Burundi",
+    "capitalJa": "ブジュンブラ",
+    "capitalEn": "Gitega",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "lat": -3.5,
+    "lng": 30,
+    "countryAnswers": [
+      "ブルンジ",
+      "ブルンジ共和国",
+      "Burundi",
+      "Republic of Burundi",
+      "BI",
+      "Republika y'Uburundi",
+      "République du Burundi"
+    ],
+    "capitalAnswers": [
+      "ブジュンブラ",
+      "Gitega"
+    ]
+  },
+  {
+    "code": "VNM",
+    "mapKey": "704",
+    "numericCode": "704",
+    "countryJa": "ベトナム",
+    "countryEn": "Vietnam",
+    "capitalJa": "ハノイ",
+    "capitalEn": "Hanoi",
+    "region": "Asia",
+    "subregion": "South-Eastern Asia",
+    "lat": 16.16666666,
+    "lng": 107.83333333,
+    "countryAnswers": [
+      "ベトナム",
+      "ベトナム社会主義共和国",
+      "Vietnam",
+      "Socialist Republic of Vietnam",
+      "VN",
+      "Cộng hòa Xã hội chủ nghĩa Việt Nam",
+      "Viet Nam"
+    ],
+    "capitalAnswers": [
+      "ハノイ",
+      "Hanoi"
+    ]
+  },
+  {
+    "code": "BEN",
+    "mapKey": "204",
+    "numericCode": "204",
+    "countryJa": "ベナン",
+    "countryEn": "Benin",
+    "capitalJa": "ポルトノボ",
+    "capitalEn": "Porto-Novo",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "lat": 9.5,
+    "lng": 2.25,
+    "countryAnswers": [
+      "ベナン",
+      "ベナン共和国",
+      "Benin",
+      "Republic of Benin",
+      "BJ",
+      "République du Bénin"
+    ],
+    "capitalAnswers": [
+      "ポルトノボ",
+      "Porto-Novo"
+    ]
+  },
+  {
+    "code": "VEN",
+    "mapKey": "862",
+    "numericCode": "862",
+    "countryJa": "ベネズエラ・ボリバル共和国",
+    "countryEn": "Venezuela",
+    "capitalJa": "カラカス",
+    "capitalEn": "Caracas",
+    "region": "Americas",
+    "subregion": "South America",
+    "lat": 8,
+    "lng": -66,
+    "countryAnswers": [
+      "ベネズエラ・ボリバル共和国",
+      "ベネズエラ",
+      "Venezuela",
+      "Bolivarian Republic of Venezuela",
+      "VE",
+      "Venezuela, Bolivarian Republic of",
+      "República Bolivariana de Venezuela"
+    ],
+    "capitalAnswers": [
+      "カラカス",
+      "Caracas"
+    ]
+  },
+  {
+    "code": "BLR",
+    "mapKey": "112",
+    "numericCode": "112",
+    "countryJa": "ベラルーシ",
+    "countryEn": "Belarus",
+    "capitalJa": "ミンスク",
+    "capitalEn": "Minsk",
+    "region": "Europe",
+    "subregion": "Eastern Europe",
+    "lat": 53,
+    "lng": 28,
+    "countryAnswers": [
+      "ベラルーシ",
+      "ベラルーシ共和国",
+      "Belarus",
+      "Republic of Belarus",
+      "BY",
+      "Bielaruś",
+      "Белоруссия",
+      "Республика Белоруссия"
+    ],
+    "capitalAnswers": [
+      "ミンスク",
+      "Minsk"
+    ]
+  },
+  {
+    "code": "BLZ",
+    "mapKey": "084",
+    "numericCode": "084",
+    "countryJa": "ベリーズ",
+    "countryEn": "Belize",
+    "capitalJa": "ベルモパン",
+    "capitalEn": "Belmopan",
+    "region": "Americas",
+    "subregion": "Central America",
+    "lat": 17.25,
+    "lng": -88.75,
+    "countryAnswers": [
+      "ベリーズ",
+      "Belize",
+      "BZ"
+    ],
+    "capitalAnswers": [
+      "ベルモパン",
+      "Belmopan"
+    ]
+  },
+  {
+    "code": "PER",
+    "mapKey": "604",
+    "numericCode": "604",
+    "countryJa": "ペルー",
+    "countryEn": "Peru",
+    "capitalJa": "リマ",
+    "capitalEn": "Lima",
+    "region": "Americas",
+    "subregion": "South America",
+    "lat": -10,
+    "lng": -76,
+    "countryAnswers": [
+      "ペルー",
+      "ペルー共和国",
+      "Peru",
+      "Republic of Peru",
+      "PE",
+      "República del Perú"
+    ],
+    "capitalAnswers": [
+      "リマ",
+      "Lima"
+    ]
+  },
+  {
+    "code": "BEL",
+    "mapKey": "056",
+    "numericCode": "056",
+    "countryJa": "ベルギー",
+    "countryEn": "Belgium",
+    "capitalJa": "ブリュッセル",
+    "capitalEn": "Brussels",
+    "region": "Europe",
+    "subregion": "Western Europe",
+    "lat": 50.83333333,
+    "lng": 4,
+    "countryAnswers": [
+      "ベルギー",
+      "ベルギー王国",
+      "Belgium",
+      "Kingdom of Belgium",
+      "BE",
+      "België",
+      "Belgie",
+      "Belgien",
+      "Belgique",
+      "Koninkrijk België",
+      "Royaume de Belgique",
+      "Königreich Belgien"
+    ],
+    "capitalAnswers": [
+      "ブリュッセル",
+      "Brussels"
+    ]
+  },
+  {
+    "code": "POL",
+    "mapKey": "616",
+    "numericCode": "616",
+    "countryJa": "ポーランド",
+    "countryEn": "Poland",
+    "capitalJa": "ワルシャワ",
+    "capitalEn": "Warsaw",
+    "region": "Europe",
+    "subregion": "Central Europe",
+    "lat": 52,
+    "lng": 20,
+    "countryAnswers": [
+      "ポーランド",
+      "ポーランド共和国",
+      "Poland",
+      "Republic of Poland",
+      "PL",
+      "Rzeczpospolita Polska"
+    ],
+    "capitalAnswers": [
+      "ワルシャワ",
+      "Warsaw"
+    ]
+  },
+  {
+    "code": "BIH",
+    "mapKey": "070",
+    "numericCode": "070",
+    "countryJa": "ボスニア・ヘルツェゴビナ",
+    "countryEn": "Bosnia and Herzegovina",
+    "capitalJa": "サラエボ",
+    "capitalEn": "Sarajevo",
+    "region": "Europe",
+    "subregion": "Southeast Europe",
+    "lat": 44,
+    "lng": 18,
+    "countryAnswers": [
+      "ボスニア・ヘルツェゴビナ",
+      "Bosnia and Herzegovina",
+      "BA",
+      "Bosnia-Herzegovina",
+      "Босна и Херцеговина"
+    ],
+    "capitalAnswers": [
+      "サラエボ",
+      "Sarajevo"
+    ]
+  },
+  {
+    "code": "BWA",
+    "mapKey": "072",
+    "numericCode": "072",
+    "countryJa": "ボツワナ",
+    "countryEn": "Botswana",
+    "capitalJa": "ハボロネ",
+    "capitalEn": "Gaborone",
+    "region": "Africa",
+    "subregion": "Southern Africa",
+    "lat": -22,
+    "lng": 24,
+    "countryAnswers": [
+      "ボツワナ",
+      "ボツワナ共和国",
+      "Botswana",
+      "Republic of Botswana",
+      "BW",
+      "Lefatshe la Botswana"
+    ],
+    "capitalAnswers": [
+      "ハボロネ",
+      "Gaborone"
+    ]
+  },
+  {
+    "code": "BOL",
+    "mapKey": "068",
+    "numericCode": "068",
+    "countryJa": "ボリビア多民族国",
+    "countryEn": "Bolivia",
+    "capitalJa": "ラパス",
+    "capitalEn": "Sucre",
+    "region": "Americas",
+    "subregion": "South America",
+    "lat": -17,
+    "lng": -65,
+    "countryAnswers": [
+      "ボリビア多民族国",
+      "ボリビア",
+      "Bolivia",
+      "Plurinational State of Bolivia",
+      "BO",
+      "Buliwya",
+      "Wuliwya",
+      "Bolivia, Plurinational State of",
+      "Estado Plurinacional de Bolivia",
+      "Buliwya Mamallaqta",
+      "Wuliwya Suyu",
+      "Tetã Volívia"
+    ],
+    "capitalAnswers": [
+      "ラパス",
+      "Sucre"
+    ]
+  },
+  {
+    "code": "PRT",
+    "mapKey": "620",
+    "numericCode": "620",
+    "countryJa": "ポルトガル",
+    "countryEn": "Portugal",
+    "capitalJa": "リスボン",
+    "capitalEn": "Lisbon",
+    "region": "Europe",
+    "subregion": "Southern Europe",
+    "lat": 39.5,
+    "lng": -8,
+    "countryAnswers": [
+      "ポルトガル",
+      "ポルトガル共和国",
+      "Portugal",
+      "Portuguese Republic",
+      "PT",
+      "Portuguesa",
+      "República Portuguesa"
+    ],
+    "capitalAnswers": [
+      "リスボン",
+      "Lisbon"
+    ]
+  },
+  {
+    "code": "HND",
+    "mapKey": "340",
+    "numericCode": "340",
+    "countryJa": "ホンジュラス",
+    "countryEn": "Honduras",
+    "capitalJa": "テグシガルパ",
+    "capitalEn": "Tegucigalpa",
+    "region": "Americas",
+    "subregion": "Central America",
+    "lat": 15,
+    "lng": -86.5,
+    "countryAnswers": [
+      "ホンジュラス",
+      "ホンジュラス共和国",
+      "Honduras",
+      "Republic of Honduras",
+      "HN",
+      "República de Honduras"
+    ],
+    "capitalAnswers": [
+      "テグシガルパ",
+      "Tegucigalpa"
+    ]
+  },
+  {
+    "code": "MHL",
+    "mapKey": "584",
+    "numericCode": "584",
+    "countryJa": "マーシャル諸島",
+    "countryEn": "Marshall Islands",
+    "capitalJa": "マジュロ",
+    "capitalEn": "Majuro",
+    "region": "Oceania",
+    "subregion": "Micronesia",
+    "lat": 9,
+    "lng": 168,
+    "countryAnswers": [
+      "マーシャル諸島",
+      "マーシャル諸島共和国",
+      "Marshall Islands",
+      "Republic of the Marshall Islands",
+      "MH",
+      "Aolepān Aorōkin M̧ajeļ"
+    ],
+    "capitalAnswers": [
+      "マジュロ",
+      "Majuro"
+    ]
+  },
+  {
+    "code": "MDG",
+    "mapKey": "450",
+    "numericCode": "450",
+    "countryJa": "マダガスカル",
+    "countryEn": "Madagascar",
+    "capitalJa": "アンタナナリボ",
+    "capitalEn": "Antananarivo",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "lat": -20,
+    "lng": 47,
+    "countryAnswers": [
+      "マダガスカル",
+      "マダガスカル共和国",
+      "Madagascar",
+      "Republic of Madagascar",
+      "MG",
+      "Repoblikan'i Madagasikara",
+      "République de Madagascar"
+    ],
+    "capitalAnswers": [
+      "アンタナナリボ",
+      "Antananarivo"
+    ]
+  },
+  {
+    "code": "MWI",
+    "mapKey": "454",
+    "numericCode": "454",
+    "countryJa": "マラウイ",
+    "countryEn": "Malawi",
+    "capitalJa": "リロングウェ",
+    "capitalEn": "Lilongwe",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "lat": -13.5,
+    "lng": 34,
+    "countryAnswers": [
+      "マラウイ",
+      "マラウイ共和国",
+      "Malawi",
+      "Republic of Malawi",
+      "MW"
+    ],
+    "capitalAnswers": [
+      "リロングウェ",
+      "Lilongwe"
+    ]
+  },
+  {
+    "code": "MLI",
+    "mapKey": "466",
+    "numericCode": "466",
+    "countryJa": "マリ",
+    "countryEn": "Mali",
+    "capitalJa": "バマコ",
+    "capitalEn": "Bamako",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "lat": 17,
+    "lng": -4,
+    "countryAnswers": [
+      "マリ",
+      "マリ共和国",
+      "Mali",
+      "Republic of Mali",
+      "ML",
+      "République du Mali"
+    ],
+    "capitalAnswers": [
+      "バマコ",
+      "Bamako"
+    ]
+  },
+  {
+    "code": "MLT",
+    "mapKey": "470",
+    "numericCode": "470",
+    "countryJa": "マルタ",
+    "countryEn": "Malta",
+    "capitalJa": "バレッタ",
+    "capitalEn": "Valletta",
+    "region": "Europe",
+    "subregion": "Southern Europe",
+    "lat": 35.83333333,
+    "lng": 14.58333333,
+    "countryAnswers": [
+      "マルタ",
+      "マルタ共和国",
+      "Malta",
+      "Republic of Malta",
+      "MT",
+      "Repubblika ta' Malta"
+    ],
+    "capitalAnswers": [
+      "バレッタ",
+      "Valletta"
+    ]
+  },
+  {
+    "code": "MYS",
+    "mapKey": "458",
+    "numericCode": "458",
+    "countryJa": "マレーシア",
+    "countryEn": "Malaysia",
+    "capitalJa": "クアラルンプール",
+    "capitalEn": "Kuala Lumpur",
+    "region": "Asia",
+    "subregion": "South-Eastern Asia",
+    "lat": 2.5,
+    "lng": 112.5,
+    "countryAnswers": [
+      "マレーシア",
+      "Malaysia",
+      "MY"
+    ],
+    "capitalAnswers": [
+      "クアラルンプール",
+      "Kuala Lumpur"
+    ]
+  },
+  {
+    "code": "FSM",
+    "mapKey": "583",
+    "numericCode": "583",
+    "countryJa": "ミクロネシア連邦",
+    "countryEn": "Micronesia",
+    "capitalJa": "パリキール",
+    "capitalEn": "Palikir",
+    "region": "Oceania",
+    "subregion": "Micronesia",
+    "lat": 6.91666666,
+    "lng": 158.25,
+    "countryAnswers": [
+      "ミクロネシア連邦",
+      "ミクロネシア",
+      "Micronesia",
+      "Federated States of Micronesia",
+      "FM",
+      "Micronesia, Federated States of"
+    ],
+    "capitalAnswers": [
+      "パリキール",
+      "Palikir"
+    ]
+  },
+  {
+    "code": "MMR",
+    "mapKey": "104",
+    "numericCode": "104",
+    "countryJa": "ミャンマー",
+    "countryEn": "Myanmar",
+    "capitalJa": "ネーピードー",
+    "capitalEn": "Naypyidaw",
+    "region": "Asia",
+    "subregion": "South-Eastern Asia",
+    "lat": 22,
+    "lng": 98,
+    "countryAnswers": [
+      "ミャンマー",
+      "ミャンマー連邦共和国",
+      "Myanmar",
+      "Republic of the Union of Myanmar",
+      "MM",
+      "Burma",
+      "Pyidaunzu Thanmăda Myăma Nainngandaw"
+    ],
+    "capitalAnswers": [
+      "ネーピードー",
+      "Naypyidaw"
+    ]
+  },
+  {
+    "code": "MEX",
+    "mapKey": "484",
+    "numericCode": "484",
+    "countryJa": "メキシコ",
+    "countryEn": "Mexico",
+    "capitalJa": "メキシコシティ",
+    "capitalEn": "Mexico City",
+    "region": "Americas",
+    "subregion": "North America",
+    "lat": 23,
+    "lng": -102,
+    "countryAnswers": [
+      "メキシコ",
+      "メキシコ合衆国",
+      "Mexico",
+      "United Mexican States",
+      "MX",
+      "Mexicanos",
+      "Estados Unidos Mexicanos"
+    ],
+    "capitalAnswers": [
+      "メキシコシティ",
+      "Mexico City"
+    ]
+  },
+  {
+    "code": "MUS",
+    "mapKey": "480",
+    "numericCode": "480",
+    "countryJa": "モーリシャス",
+    "countryEn": "Mauritius",
+    "capitalJa": "ポートルイス",
+    "capitalEn": "Port Louis",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "lat": -20.28333333,
+    "lng": 57.55,
+    "countryAnswers": [
+      "モーリシャス",
+      "モーリシャス共和国",
+      "Mauritius",
+      "Republic of Mauritius",
+      "MU",
+      "République de Maurice"
+    ],
+    "capitalAnswers": [
+      "ポートルイス",
+      "Port Louis"
+    ]
+  },
+  {
+    "code": "MRT",
+    "mapKey": "478",
+    "numericCode": "478",
+    "countryJa": "モーリタニア",
+    "countryEn": "Mauritania",
+    "capitalJa": "ヌアクショット",
+    "capitalEn": "Nouakchott",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "lat": 20,
+    "lng": -12,
+    "countryAnswers": [
+      "モーリタニア",
+      "モーリタニア・イスラム共和国",
+      "Mauritania",
+      "Islamic Republic of Mauritania",
+      "MR",
+      "al-Jumhūriyyah al-ʾIslāmiyyah al-Mūrītāniyyah"
+    ],
+    "capitalAnswers": [
+      "ヌアクショット",
+      "Nouakchott"
+    ]
+  },
+  {
+    "code": "MOZ",
+    "mapKey": "508",
+    "numericCode": "508",
+    "countryJa": "モザンビーク",
+    "countryEn": "Mozambique",
+    "capitalJa": "マプト",
+    "capitalEn": "Maputo",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "lat": -18.25,
+    "lng": 35,
+    "countryAnswers": [
+      "モザンビーク",
+      "モザンビーク共和国",
+      "Mozambique",
+      "Republic of Mozambique",
+      "MZ",
+      "República de Moçambique"
+    ],
+    "capitalAnswers": [
+      "マプト",
+      "Maputo"
+    ]
+  },
+  {
+    "code": "MCO",
+    "mapKey": "492",
+    "numericCode": "492",
+    "countryJa": "モナコ",
+    "countryEn": "Monaco",
+    "capitalJa": "Monaco",
+    "capitalEn": "Monaco",
+    "region": "Europe",
+    "subregion": "Western Europe",
+    "lat": 43.73333333,
+    "lng": 7.4,
+    "countryAnswers": [
+      "モナコ",
+      "モナコ公国",
+      "Monaco",
+      "Principality of Monaco",
+      "MC",
+      "Principauté de Monaco"
+    ],
+    "capitalAnswers": [
+      "Monaco"
+    ]
+  },
+  {
+    "code": "MDV",
+    "mapKey": "462",
+    "numericCode": "462",
+    "countryJa": "モルディブ",
+    "countryEn": "Maldives",
+    "capitalJa": "マレ",
+    "capitalEn": "Malé",
+    "region": "Asia",
+    "subregion": "Southern Asia",
+    "lat": 3.25,
+    "lng": 73,
+    "countryAnswers": [
+      "モルディブ",
+      "モルディブ共和国",
+      "Maldives",
+      "Republic of the Maldives",
+      "MV",
+      "Maldive Islands",
+      "Dhivehi Raajjeyge Jumhooriyya"
+    ],
+    "capitalAnswers": [
+      "マレ",
+      "Malé"
+    ]
+  },
+  {
+    "code": "MDA",
+    "mapKey": "498",
+    "numericCode": "498",
+    "countryJa": "モルドバ共和国",
+    "countryEn": "Moldova",
+    "capitalJa": "キシニョフ",
+    "capitalEn": "Chișinău",
+    "region": "Europe",
+    "subregion": "Eastern Europe",
+    "lat": 47,
+    "lng": 29,
+    "countryAnswers": [
+      "モルドバ共和国",
+      "モルドバ",
+      "Moldova",
+      "Republic of Moldova",
+      "MD",
+      "Moldova, Republic of",
+      "Republica Moldova"
+    ],
+    "capitalAnswers": [
+      "キシニョフ",
+      "Chișinău"
+    ]
+  },
+  {
+    "code": "MAR",
+    "mapKey": "504",
+    "numericCode": "504",
+    "countryJa": "モロッコ",
+    "countryEn": "Morocco",
+    "capitalJa": "ラバト",
+    "capitalEn": "Rabat",
+    "region": "Africa",
+    "subregion": "Northern Africa",
+    "lat": 32,
+    "lng": -5,
+    "countryAnswers": [
+      "モロッコ",
+      "モロッコ王国",
+      "Morocco",
+      "Kingdom of Morocco",
+      "MA",
+      "Al-Mamlakah al-Maġribiyah"
+    ],
+    "capitalAnswers": [
+      "ラバト",
+      "Rabat"
+    ]
+  },
+  {
+    "code": "MNG",
+    "mapKey": "496",
+    "numericCode": "496",
+    "countryJa": "モンゴル",
+    "countryEn": "Mongolia",
+    "capitalJa": "ウランバートル",
+    "capitalEn": "Ulan Bator",
+    "region": "Asia",
+    "subregion": "Eastern Asia",
+    "lat": 46,
+    "lng": 105,
+    "countryAnswers": [
+      "モンゴル",
+      "モンゴル国",
+      "Mongolia",
+      "MN"
+    ],
+    "capitalAnswers": [
+      "ウランバートル",
+      "Ulan Bator"
+    ]
+  },
+  {
+    "code": "MNE",
+    "mapKey": "499",
+    "numericCode": "499",
+    "countryJa": "モンテネグロ",
+    "countryEn": "Montenegro",
+    "capitalJa": "ポドゴリツァ",
+    "capitalEn": "Podgorica",
+    "region": "Europe",
+    "subregion": "Southeast Europe",
+    "lat": 42.5,
+    "lng": 19.3,
+    "countryAnswers": [
+      "モンテネグロ",
+      "Montenegro",
+      "ME",
+      "Crna Gora"
+    ],
+    "capitalAnswers": [
+      "ポドゴリツァ",
+      "Podgorica"
+    ]
+  },
+  {
+    "code": "JOR",
+    "mapKey": "400",
+    "numericCode": "400",
+    "countryJa": "ヨルダン",
+    "countryEn": "Jordan",
+    "capitalJa": "アンマン",
+    "capitalEn": "Amman",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "lat": 31,
+    "lng": 36,
+    "countryAnswers": [
+      "ヨルダン",
+      "ヨルダン・ハシミテ王国",
+      "Jordan",
+      "Hashemite Kingdom of Jordan",
+      "JO",
+      "al-Mamlakah al-Urdunīyah al-Hāshimīyah"
+    ],
+    "capitalAnswers": [
+      "アンマン",
+      "Amman"
+    ]
+  },
+  {
+    "code": "LAO",
+    "mapKey": "418",
+    "numericCode": "418",
+    "countryJa": "ラオス人民民主共和国",
+    "countryEn": "Laos",
+    "capitalJa": "ビエンチャン",
+    "capitalEn": "Vientiane",
+    "region": "Asia",
+    "subregion": "South-Eastern Asia",
+    "lat": 18,
+    "lng": 105,
+    "countryAnswers": [
+      "ラオス人民民主共和国",
+      "ラオス",
+      "Laos",
+      "Lao People's Democratic Republic",
+      "LA",
+      "Lao",
+      "Sathalanalat Paxathipatai Paxaxon Lao"
+    ],
+    "capitalAnswers": [
+      "ビエンチャン",
+      "Vientiane"
+    ]
+  },
+  {
+    "code": "LVA",
+    "mapKey": "428",
+    "numericCode": "428",
+    "countryJa": "ラトビア",
+    "countryEn": "Latvia",
+    "capitalJa": "リガ",
+    "capitalEn": "Riga",
+    "region": "Europe",
+    "subregion": "Northern Europe",
+    "lat": 57,
+    "lng": 25,
+    "countryAnswers": [
+      "ラトビア",
+      "ラトビア共和国",
+      "Latvia",
+      "Republic of Latvia",
+      "LV",
+      "Latvijas Republika"
+    ],
+    "capitalAnswers": [
+      "リガ",
+      "Riga"
+    ]
+  },
+  {
+    "code": "LTU",
+    "mapKey": "440",
+    "numericCode": "440",
+    "countryJa": "リトアニア",
+    "countryEn": "Lithuania",
+    "capitalJa": "ビリニュス",
+    "capitalEn": "Vilnius",
+    "region": "Europe",
+    "subregion": "Northern Europe",
+    "lat": 56,
+    "lng": 24,
+    "countryAnswers": [
+      "リトアニア",
+      "リトアニア共和国",
+      "Lithuania",
+      "Republic of Lithuania",
+      "LT",
+      "Lietuvos Respublika"
+    ],
+    "capitalAnswers": [
+      "ビリニュス",
+      "Vilnius"
+    ]
+  },
+  {
+    "code": "LBY",
+    "mapKey": "434",
+    "numericCode": "434",
+    "countryJa": "リビア",
+    "countryEn": "Libya",
+    "capitalJa": "トリポリ",
+    "capitalEn": "Tripoli",
+    "region": "Africa",
+    "subregion": "Northern Africa",
+    "lat": 25,
+    "lng": 17,
+    "countryAnswers": [
+      "リビア",
+      "Libya",
+      "State of Libya",
+      "LY",
+      "Dawlat Libya"
+    ],
+    "capitalAnswers": [
+      "トリポリ",
+      "Tripoli"
+    ]
+  },
+  {
+    "code": "LIE",
+    "mapKey": "438",
+    "numericCode": "438",
+    "countryJa": "リヒテンシュタイン",
+    "countryEn": "Liechtenstein",
+    "capitalJa": "ファドーツ",
+    "capitalEn": "Vaduz",
+    "region": "Europe",
+    "subregion": "Western Europe",
+    "lat": 47.26666666,
+    "lng": 9.53333333,
+    "countryAnswers": [
+      "リヒテンシュタイン",
+      "リヒテンシュタイン公国",
+      "Liechtenstein",
+      "Principality of Liechtenstein",
+      "LI",
+      "Fürstentum Liechtenstein"
+    ],
+    "capitalAnswers": [
+      "ファドーツ",
+      "Vaduz"
+    ]
+  },
+  {
+    "code": "LBR",
+    "mapKey": "430",
+    "numericCode": "430",
+    "countryJa": "リベリア",
+    "countryEn": "Liberia",
+    "capitalJa": "モンロビア",
+    "capitalEn": "Monrovia",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "lat": 6.5,
+    "lng": -9.5,
+    "countryAnswers": [
+      "リベリア",
+      "リベリア共和国",
+      "Liberia",
+      "Republic of Liberia",
+      "LR"
+    ],
+    "capitalAnswers": [
+      "モンロビア",
+      "Monrovia"
+    ]
+  },
+  {
+    "code": "ROU",
+    "mapKey": "642",
+    "numericCode": "642",
+    "countryJa": "ルーマニア",
+    "countryEn": "Romania",
+    "capitalJa": "ブカレスト",
+    "capitalEn": "Bucharest",
+    "region": "Europe",
+    "subregion": "Southeast Europe",
+    "lat": 46,
+    "lng": 25,
+    "countryAnswers": [
+      "ルーマニア",
+      "Romania",
+      "RO",
+      "Rumania",
+      "Roumania",
+      "România"
+    ],
+    "capitalAnswers": [
+      "ブカレスト",
+      "Bucharest"
+    ]
+  },
+  {
+    "code": "LUX",
+    "mapKey": "442",
+    "numericCode": "442",
+    "countryJa": "ルクセンブルク",
+    "countryEn": "Luxembourg",
+    "capitalJa": "ルクセンブルク",
+    "capitalEn": "Luxembourg",
+    "region": "Europe",
+    "subregion": "Western Europe",
+    "lat": 49.75,
+    "lng": 6.16666666,
+    "countryAnswers": [
+      "ルクセンブルク",
+      "ルクセンブルク大公国",
+      "Luxembourg",
+      "Grand Duchy of Luxembourg",
+      "LU",
+      "Grand-Duché de Luxembourg",
+      "Großherzogtum Luxemburg",
+      "Groussherzogtum Lëtzebuerg"
+    ],
+    "capitalAnswers": [
+      "ルクセンブルク",
+      "Luxembourg"
+    ]
+  },
+  {
+    "code": "RWA",
+    "mapKey": "646",
+    "numericCode": "646",
+    "countryJa": "ルワンダ",
+    "countryEn": "Rwanda",
+    "capitalJa": "キガリ",
+    "capitalEn": "Kigali",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "lat": -2,
+    "lng": 30,
+    "countryAnswers": [
+      "ルワンダ",
+      "ルワンダ共和国",
+      "Rwanda",
+      "Republic of Rwanda",
+      "RW",
+      "Repubulika y'u Rwanda",
+      "République du Rwanda"
+    ],
+    "capitalAnswers": [
+      "キガリ",
+      "Kigali"
+    ]
+  },
+  {
+    "code": "LSO",
+    "mapKey": "426",
+    "numericCode": "426",
+    "countryJa": "レソト",
+    "countryEn": "Lesotho",
+    "capitalJa": "マセル",
+    "capitalEn": "Maseru",
+    "region": "Africa",
+    "subregion": "Southern Africa",
+    "lat": -29.5,
+    "lng": 28.5,
+    "countryAnswers": [
+      "レソト",
+      "レソト王国",
+      "Lesotho",
+      "Kingdom of Lesotho",
+      "LS",
+      "Muso oa Lesotho"
+    ],
+    "capitalAnswers": [
+      "マセル",
+      "Maseru"
+    ]
+  },
+  {
+    "code": "LBN",
+    "mapKey": "422",
+    "numericCode": "422",
+    "countryJa": "レバノン",
+    "countryEn": "Lebanon",
+    "capitalJa": "ベイルート",
+    "capitalEn": "Beirut",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "lat": 33.83333333,
+    "lng": 35.83333333,
+    "countryAnswers": [
+      "レバノン",
+      "レバノン共和国",
+      "Lebanon",
+      "Lebanese Republic",
+      "LB",
+      "Al-Jumhūrīyah Al-Libnānīyah"
+    ],
+    "capitalAnswers": [
+      "ベイルート",
+      "Beirut"
+    ]
+  },
+  {
+    "code": "RUS",
+    "mapKey": "643",
+    "numericCode": "643",
+    "countryJa": "ロシア連邦",
+    "countryEn": "Russia",
+    "capitalJa": "モスクワ",
+    "capitalEn": "Moscow",
+    "region": "Europe",
+    "subregion": "Eastern Europe",
+    "lat": 60,
+    "lng": 100,
+    "countryAnswers": [
+      "ロシア連邦",
+      "ロシア",
+      "Russia",
+      "Russian Federation",
+      "RU",
+      "Российская Федерация"
+    ],
+    "capitalAnswers": [
+      "モスクワ",
+      "Moscow"
+    ]
+  },
+  {
+    "code": "GNQ",
+    "mapKey": "226",
+    "numericCode": "226",
+    "countryJa": "赤道ギニア",
+    "countryEn": "Equatorial Guinea",
+    "capitalJa": "マラボ",
+    "capitalEn": "Malabo",
+    "region": "Africa",
+    "subregion": "Middle Africa",
+    "lat": 2,
+    "lng": 10,
+    "countryAnswers": [
+      "赤道ギニア",
+      "赤道ギニア共和国",
+      "Equatorial Guinea",
+      "Republic of Equatorial Guinea",
+      "GQ",
+      "República de Guinea Ecuatorial",
+      "République de Guinée équatoriale",
+      "República da Guiné Equatorial"
+    ],
+    "capitalAnswers": [
+      "マラボ",
+      "Malabo"
+    ]
+  },
+  {
+    "code": "KOR",
+    "mapKey": "410",
+    "numericCode": "410",
+    "countryJa": "大韓民国",
+    "countryEn": "South Korea",
+    "capitalJa": "ソウル",
+    "capitalEn": "Seoul",
+    "region": "Asia",
+    "subregion": "Eastern Asia",
+    "lat": 37,
+    "lng": 127.5,
+    "countryAnswers": [
+      "大韓民国",
+      "韓国",
+      "South Korea",
+      "Republic of Korea",
+      "KR",
+      "Korea, Republic of",
+      "남한",
+      "남조선"
+    ],
+    "capitalAnswers": [
+      "ソウル",
+      "Seoul"
+    ]
+  },
+  {
+    "code": "CAF",
+    "mapKey": "140",
+    "numericCode": "140",
+    "countryJa": "中央アフリカ共和国",
+    "countryEn": "Central African Republic",
+    "capitalJa": "バンギ",
+    "capitalEn": "Bangui",
+    "region": "Africa",
+    "subregion": "Middle Africa",
+    "lat": 7,
+    "lng": 21,
+    "countryAnswers": [
+      "中央アフリカ共和国",
+      "中央アフリカ",
+      "Central African Republic",
+      "CF",
+      "République centrafricaine"
+    ],
+    "capitalAnswers": [
+      "バンギ",
+      "Bangui"
+    ]
+  },
+  {
+    "code": "CHN",
+    "mapKey": "156",
+    "numericCode": "156",
+    "countryJa": "中華人民共和国",
+    "countryEn": "China",
+    "capitalJa": "北京",
+    "capitalEn": "Beijing",
+    "region": "Asia",
+    "subregion": "Eastern Asia",
+    "lat": 35,
+    "lng": 105,
+    "countryAnswers": [
+      "中華人民共和国",
+      "中国",
+      "China",
+      "People's Republic of China",
+      "CN",
+      "Zhōngguó",
+      "Zhongguo",
+      "Zhonghua",
+      "中华人民共和国",
+      "Zhōnghuá Rénmín Gònghéguó"
+    ],
+    "capitalAnswers": [
+      "北京",
+      "Beijing"
+    ]
+  },
+  {
+    "code": "TLS",
+    "mapKey": "626",
+    "numericCode": "626",
+    "countryJa": "東ティモール",
+    "countryEn": "Timor-Leste",
+    "capitalJa": "ディリ",
+    "capitalEn": "Dili",
+    "region": "Asia",
+    "subregion": "South-Eastern Asia",
+    "lat": -8.83333333,
+    "lng": 125.91666666,
+    "countryAnswers": [
+      "東ティモール",
+      "東ティモール民主共和国",
+      "Timor-Leste",
+      "Democratic Republic of Timor-Leste",
+      "TL",
+      "East Timor",
+      "Timor",
+      "República Democrática de Timor-Leste",
+      "Repúblika Demokrátika Timór-Leste",
+      "Timór Lorosa'e",
+      "Timor Lorosae"
+    ],
+    "capitalAnswers": [
+      "ディリ",
+      "Dili"
+    ]
+  },
+  {
+    "code": "ZAF",
+    "mapKey": "710",
+    "numericCode": "710",
+    "countryJa": "南アフリカ",
+    "countryEn": "South Africa",
+    "capitalJa": "プレトリア",
+    "capitalEn": "Pretoria",
+    "region": "Africa",
+    "subregion": "Southern Africa",
+    "lat": -29,
+    "lng": 24,
+    "countryAnswers": [
+      "南アフリカ",
+      "南アフリカ共和国",
+      "South Africa",
+      "Republic of South Africa",
+      "ZA",
+      "RSA",
+      "Suid-Afrika"
+    ],
+    "capitalAnswers": [
+      "プレトリア",
+      "Pretoria"
+    ]
+  },
+  {
+    "code": "SSD",
+    "mapKey": "728",
+    "numericCode": "728",
+    "countryJa": "南スーダン",
+    "countryEn": "South Sudan",
+    "capitalJa": "ジュバ",
+    "capitalEn": "Juba",
+    "region": "Africa",
+    "subregion": "Middle Africa",
+    "lat": 7,
+    "lng": 30,
+    "countryAnswers": [
+      "南スーダン",
+      "南スーダン共和国",
+      "South Sudan",
+      "Republic of South Sudan",
+      "SS"
+    ],
+    "capitalAnswers": [
+      "ジュバ",
+      "Juba"
+    ]
+  },
+  {
+    "code": "JPN",
+    "mapKey": "392",
+    "numericCode": "392",
+    "countryJa": "日本",
+    "countryEn": "Japan",
+    "capitalJa": "東京",
+    "capitalEn": "Tokyo",
+    "region": "Asia",
+    "subregion": "Eastern Asia",
+    "lat": 36,
+    "lng": 138,
+    "countryAnswers": [
+      "日本",
+      "日本国",
+      "Japan",
+      "JP",
+      "Nippon",
+      "Nihon"
+    ],
+    "capitalAnswers": [
+      "東京",
+      "Tokyo"
+    ]
+  },
+  {
+    "code": "MKD",
+    "mapKey": "807",
+    "numericCode": "807",
+    "countryJa": "北マケドニア",
+    "countryEn": "North Macedonia",
+    "capitalJa": "スコピエ",
+    "capitalEn": "Skopje",
+    "region": "Europe",
+    "subregion": "Southeast Europe",
+    "lat": 41.83333333,
+    "lng": 22,
+    "countryAnswers": [
+      "北マケドニア",
+      "北マケドニア共和国",
+      "North Macedonia",
+      "Republic of North Macedonia",
+      "MK",
+      "The former Yugoslav Republic of Macedonia",
+      "Macedonia, The Former Yugoslav Republic of",
+      "Република Северна Македонија",
+      "Macedonia"
+    ],
+    "capitalAnswers": [
+      "スコピエ",
+      "Skopje"
+    ]
+  }
+]
