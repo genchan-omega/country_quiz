@@ -1,160 +1,84 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { ArrowLeft, Check, CircleHelp, Play, RotateCcw } from "lucide-react";
+import { useRouter } from "next/navigation";
+import {
+  ArrowLeft,
+  Check,
+  CircleHelp,
+  ExternalLink,
+  Play,
+  RotateCcw,
+  Share2,
+  Target,
+} from "lucide-react";
 import countriesData from "@/data/countries.json";
 import WorldMap, { type MarkerStatus } from "./WorldMap";
-
-type Country = (typeof countriesData)[number];
-type RegionMode = "all" | Country["region"];
-type AnswerMode = "country" | "capital" | "both";
-type Step = "select" | "quiz" | "result";
-
-type QuizCountry = Country & {
-  quizNumber: number;
-};
-
-type AnswerState = Record<
-  string,
-  {
-    country: string;
-    capital: string;
-  }
->;
-
-type RowStatus = {
-  countryCorrect: boolean;
-  capitalCorrect: boolean;
-  complete: boolean;
-  attempted: boolean;
-};
+import {
+  answerModeLabels,
+  answerModeOrder,
+  getQuizCountries,
+  getQuizPath,
+  getSharePath,
+  getVisibleFields,
+  regionLabels,
+  regionOrder,
+  type AnswerMode,
+  type QuizCountry,
+  type RegionMode,
+  type Step,
+} from "../lib/quiz-config";
+import {
+  getRowStatus,
+  isCorrect,
+  type AnswerState,
+} from "../lib/answer-check";
+import {
+  getWeakItems,
+  parseWeakList,
+  updateWeakListItem,
+  WEAK_LIST_KEY,
+  type WeakListState,
+} from "../lib/weak-list";
 
 const STORAGE_KEY = "country-quiz-state-v3";
 
-const regionLabels: Record<RegionMode, string> = {
-  all: "全地域",
-  Europe: "ヨーロッパ",
-  Asia: "アジア",
-  Americas: "アメリカ州",
-  Africa: "アフリカ",
-  Oceania: "オセアニア",
+type Props = {
+  initialRegion?: RegionMode;
+  initialAnswerMode?: AnswerMode;
+  initialStep?: Step;
 };
 
-const regionOrder: RegionMode[] = [
-  "all",
-  "Europe",
-  "Asia",
-  "Americas",
-  "Africa",
-  "Oceania",
-];
-
-const answerModeLabels: Record<AnswerMode, string> = {
-  country: "国名のみ",
-  capital: "首都のみ",
-  both: "国名と首都",
-};
-
-const spatialRegionRank: Record<Country["region"], number> = {
-  Americas: 0,
-  Europe: 1,
-  Africa: 2,
-  Asia: 3,
-  Oceania: 4,
-};
-
-const normalizeAnswer = (value: string) =>
-  value
-    .normalize("NFKC")
-    .trim()
-    .toLowerCase()
-    .replace(/[’'`]/g, "")
-    .replace(/[・\s\-.]/g, "");
-
-const isCorrect = (value: string, accepted: string[]) => {
-  const normalized = normalizeAnswer(value);
-  if (!normalized) {
-    return false;
-  }
-
-  return accepted.some((answer) => normalizeAnswer(answer) === normalized);
-};
-
-const getVisibleFields = (answerMode: AnswerMode) => ({
-  country: answerMode === "country" || answerMode === "both",
-  capital: answerMode === "capital" || answerMode === "both",
-});
-
-const getRowStatus = (
-  country: Country,
-  answer: { country: string; capital: string } | undefined,
-  answerMode: AnswerMode
-): RowStatus => {
-  const visible = getVisibleFields(answerMode);
-  const countryCorrect = visible.country
-    ? isCorrect(answer?.country ?? "", country.countryAnswers)
-    : true;
-  const capitalCorrect = visible.capital
-    ? isCorrect(answer?.capital ?? "", country.capitalAnswers)
-    : true;
-  const attempted = Boolean(
-    (visible.country && answer?.country.trim()) ||
-      (visible.capital && answer?.capital.trim())
-  );
-
-  return {
-    countryCorrect,
-    capitalCorrect,
-    complete: countryCorrect && capitalCorrect,
-    attempted,
-  };
-};
-
-const sortSpatially = (source: Country[], region: RegionMode) => {
-  const bandSize = region === "all" ? 14 : 8;
-
-  return [...source].sort((a, b) => {
-    if (region === "all" && a.region !== b.region) {
-      return spatialRegionRank[a.region] - spatialRegionRank[b.region];
-    }
-
-    const aBand = Math.floor((90 - a.lat) / bandSize);
-    const bBand = Math.floor((90 - b.lat) / bandSize);
-
-    if (aBand !== bBand) {
-      return aBand - bBand;
-    }
-
-    const direction = aBand % 2 === 0 ? 1 : -1;
-    const longitudeOrder = direction * (a.lng - b.lng);
-
-    if (longitudeOrder !== 0) {
-      return longitudeOrder;
-    }
-
-    return a.countryJa.localeCompare(b.countryJa, "ja");
-  });
-};
-
-export function CountryQuiz() {
-  const [step, setStep] = useState<Step>("select");
+export function CountryQuiz({
+  initialRegion = "all",
+  initialAnswerMode = "both",
+  initialStep = "select",
+}: Props) {
+  const router = useRouter();
+  const isDirectQuizUrl = initialStep !== "select";
+  const [step, setStep] = useState<Step>(initialStep);
   const [answers, setAnswers] = useState<AnswerState>({});
   const [activeCode, setActiveCode] = useState(countriesData[0]?.code ?? "");
-  const [region, setRegion] = useState<RegionMode>("all");
-  const [answerMode, setAnswerMode] = useState<AnswerMode>("both");
+  const [region, setRegion] = useState<RegionMode>(initialRegion);
+  const [answerMode, setAnswerMode] =
+    useState<AnswerMode>(initialAnswerMode);
+  const [weakList, setWeakList] = useState<WeakListState>({});
+  const [practiceWeakOnly, setPracticeWeakOnly] = useState(false);
+  const [practiceCodes, setPracticeCodes] = useState<string[]>([]);
   const [mapReady, setMapReady] = useState(false);
 
-  const quizCountries = useMemo<QuizCountry[]>(() => {
-    const filtered =
-      region === "all"
-        ? countriesData
-        : countriesData.filter((country) => country.region === region);
+  const weakItems = useMemo(() => getWeakItems(weakList), [weakList]);
+  const weakCodes = useMemo(
+    () =>
+      practiceWeakOnly
+        ? new Set(practiceCodes.length ? practiceCodes : weakItems.map((item) => item.code))
+        : undefined,
+    [practiceCodes, practiceWeakOnly, weakItems]
+  );
 
-    return sortSpatially(filtered, region).map((country, index) => ({
-      ...country,
-      quizNumber: index + 1,
-    }));
-  }, [region]);
+  const quizCountries = useMemo<QuizCountry[]>(() => {
+    return getQuizCountries(region, weakCodes);
+  }, [region, weakCodes]);
 
   const activeCountry =
     quizCountries.find((country) => country.code === activeCode) ??
@@ -175,37 +99,74 @@ export function CountryQuiz() {
           region?: RegionMode;
           answerMode?: AnswerMode;
           step?: Step;
+          practiceWeakOnly?: boolean;
+          practiceCodes?: string[];
         };
 
         setAnswers(saved.answers ?? {});
-        setRegion(saved.region ?? "all");
-        setAnswerMode(saved.answerMode ?? "both");
+        setRegion(isDirectQuizUrl ? initialRegion : (saved.region ?? "all"));
+        setAnswerMode(
+          isDirectQuizUrl ? initialAnswerMode : (saved.answerMode ?? "both")
+        );
         setActiveCode(saved.activeCode ?? countriesData[0]?.code ?? "");
-        setStep(saved.step === "result" ? "result" : saved.step ?? "select");
+        setPracticeWeakOnly(
+          isDirectQuizUrl ? false : Boolean(saved.practiceWeakOnly)
+        );
+        setPracticeCodes(isDirectQuizUrl ? [] : (saved.practiceCodes ?? []));
+        setStep(
+          isDirectQuizUrl
+            ? initialStep
+            : saved.step === "result"
+              ? "result"
+              : saved.step ?? "select"
+        );
       } catch {
-        setStep("select");
+        setStep(initialStep);
       } finally {
+        try {
+          setWeakList(parseWeakList(window.localStorage.getItem(WEAK_LIST_KEY)));
+        } catch {
+          setWeakList({});
+        }
         setMapReady(true);
       }
     }, 0);
 
     return () => window.clearTimeout(timer);
-  }, []);
+  }, [initialAnswerMode, initialRegion, initialStep, isDirectQuizUrl]);
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
       try {
         window.localStorage.setItem(
           STORAGE_KEY,
-          JSON.stringify({ answers, activeCode, region, answerMode, step })
+          JSON.stringify({
+            answers,
+            activeCode,
+            region,
+            answerMode,
+            step,
+            practiceWeakOnly,
+            practiceCodes,
+          })
         );
+        window.localStorage.setItem(WEAK_LIST_KEY, JSON.stringify(weakList));
       } catch {
         // localStorage may be unavailable in private browsing modes.
       }
     }, 0);
 
     return () => window.clearTimeout(timer);
-  }, [answers, activeCode, region, answerMode, step]);
+  }, [
+    answers,
+    activeCode,
+    region,
+    answerMode,
+    step,
+    practiceWeakOnly,
+    practiceCodes,
+    weakList,
+  ]);
 
   useEffect(() => {
     if (!quizCountries.some((country) => country.code === activeCode)) {
@@ -218,6 +179,7 @@ export function CountryQuiz() {
   }, [activeCode, quizCountries]);
 
   const visibleFields = getVisibleFields(answerMode);
+  const quizScopeLabel = practiceWeakOnly ? "苦手リスト" : regionLabels[region];
 
   const stats = useMemo(() => {
     const rows = quizCountries.map((country) =>
@@ -227,10 +189,10 @@ export function CountryQuiz() {
     return {
       score: rows.filter((row) => row.complete).length,
       countryScore: quizCountries.filter((country) =>
-        isCorrect(answers[country.code]?.country ?? "", country.countryAnswers)
+        isCorrect(answers[country.code]?.country ?? "", country, "country")
       ).length,
       capitalScore: quizCountries.filter((country) =>
-        isCorrect(answers[country.code]?.capital ?? "", country.capitalAnswers)
+        isCorrect(answers[country.code]?.capital ?? "", country, "capital")
       ).length,
     };
   }, [answers, answerMode, quizCountries]);
@@ -266,7 +228,7 @@ export function CountryQuiz() {
     setActiveCode(code);
   };
 
-  const startQuiz = () => {
+  const clearAnswersForCurrentQuiz = () => {
     setAnswers((current) => {
       const next = { ...current };
       quizCountries.forEach((country) => {
@@ -275,18 +237,82 @@ export function CountryQuiz() {
       return next;
     });
     setActiveCode(quizCountries[0]?.code ?? "");
+  };
+
+  const startQuiz = () => {
+    setPracticeWeakOnly(false);
+    setPracticeCodes([]);
+    clearAnswersForCurrentQuiz();
+    setStep("quiz");
+    router.push(getQuizPath(region, answerMode));
+  };
+
+  const startWeakQuiz = () => {
+    const nextPracticeCodes = weakItems.map((item) => item.code);
+    setRegion("all");
+    setPracticeWeakOnly(true);
+    setPracticeCodes(nextPracticeCodes);
+    setAnswers((current) => {
+      const next = { ...current };
+      nextPracticeCodes.forEach((code) => {
+        delete next[code];
+      });
+      return next;
+    });
+    setActiveCode(nextPracticeCodes[0] ?? "");
     setStep("quiz");
   };
 
   const resetCurrentAnswers = () => {
-    setAnswers((current) => {
-      const next = { ...current };
-      quizCountries.forEach((country) => {
-        delete next[country.code];
-      });
-      return next;
+    clearAnswersForCurrentQuiz();
+  };
+
+  const goToSelect = () => {
+    setPracticeWeakOnly(false);
+    setPracticeCodes([]);
+    setStep("select");
+    router.push("/");
+  };
+
+  const finishQuiz = () => {
+    const now = new Date().toISOString();
+
+    setWeakList((current) => {
+      return quizCountries.reduce((next, country) => {
+        const answer = answers[country.code] ?? { country: "", capital: "" };
+        const rowStatus = getRowStatus(country, answer, answerMode);
+
+        return updateWeakListItem(
+          next,
+          country,
+          answerMode,
+          answer,
+          rowStatus,
+          now
+        );
+      }, current);
     });
-    setActiveCode(quizCountries[0]?.code ?? "");
+
+    setStep("result");
+  };
+
+  const sharePath = getSharePath(
+    region,
+    answerMode,
+    stats.score,
+    quizCountries.length
+  );
+  const shareUrl =
+    typeof window === "undefined" ? sharePath : `${window.location.origin}${sharePath}`;
+  const shareText = `世界の国名・首都クイズ ${practiceWeakOnly ? "苦手リスト" : regionLabels[region]} ${answerModeLabels[answerMode]}で ${stats.score}/${quizCountries.length} 正解しました。`;
+  const shareImageUrl = `${sharePath}/opengraph-image`;
+
+  const openXShare = () => {
+    const intentUrl = new URL("https://twitter.com/intent/tweet");
+    intentUrl.searchParams.set("text", shareText);
+    intentUrl.searchParams.set("url", shareUrl);
+    intentUrl.searchParams.set("hashtags", "世界地図クイズ,地理クイズ");
+    window.open(intentUrl.toString(), "_blank", "noopener,noreferrer");
   };
 
   if (!mapReady) {
@@ -309,7 +335,10 @@ export function CountryQuiz() {
                 <button
                   className={`mode-card ${region === mode ? "selected" : ""}`}
                   key={mode}
-                  onClick={() => setRegion(mode)}
+                  onClick={() => {
+                    setPracticeWeakOnly(false);
+                    setRegion(mode);
+                  }}
                   type="button"
                 >
                   <strong>{regionLabels[mode]}</strong>
@@ -326,7 +355,7 @@ export function CountryQuiz() {
           <div className="select-section">
             <h2>出題</h2>
             <div className="mode-grid answer-mode-grid">
-              {(Object.keys(answerModeLabels) as AnswerMode[]).map((mode) => (
+              {answerModeOrder.map((mode) => (
                 <button
                   className={`mode-card ${answerMode === mode ? "selected" : ""}`}
                   key={mode}
@@ -337,6 +366,34 @@ export function CountryQuiz() {
                 </button>
               ))}
             </div>
+          </div>
+
+          <div className="select-section weak-section">
+            <div className="weak-heading">
+              <h2>苦手リスト</h2>
+              <span>{weakItems.length}カ国</span>
+            </div>
+            {weakItems.length ? (
+              <div className="weak-list-preview" aria-label="苦手リスト">
+                {weakItems.slice(0, 6).map((item) => (
+                  <span key={item.code}>
+                    {item.countryJa}
+                    <small>{item.misses}回</small>
+                  </span>
+                ))}
+              </div>
+            ) : (
+              <p className="weak-empty">間違えた国がここに保存されます。</p>
+            )}
+            <button
+              className="secondary-action"
+              disabled={!weakItems.length}
+              onClick={startWeakQuiz}
+              type="button"
+            >
+              <Target size={18} />
+              苦手だけ復習
+            </button>
           </div>
 
           <button className="primary-action" onClick={startQuiz} type="button">
@@ -354,14 +411,14 @@ export function CountryQuiz() {
         <header className="quiz-topbar">
           <button
             className="ghost-button"
-            onClick={() => setStep("select")}
+            onClick={goToSelect}
             type="button"
           >
             <ArrowLeft size={18} />
             モード選択
           </button>
           <div>
-            <strong>{regionLabels[region]}</strong>
+            <strong>{quizScopeLabel}</strong>
             <span>{answerModeLabels[answerMode]}</span>
           </div>
           <button
@@ -388,6 +445,16 @@ export function CountryQuiz() {
               {stats.capitalScore}/{quizCountries.length}
             </small>
           ) : null}
+          <div className="share-actions">
+            <button className="x-share-button" onClick={openXShare} type="button">
+              <Share2 size={18} />
+              Xに投稿
+            </button>
+            <a href={shareImageUrl} rel="noreferrer" target="_blank">
+              <ExternalLink size={16} />
+              共有画像
+            </a>
+          </div>
         </section>
 
         <section className="answer-workspace result-workspace">
@@ -473,14 +540,14 @@ export function CountryQuiz() {
       <header className="quiz-topbar">
         <button
           className="ghost-button"
-          onClick={() => setStep("select")}
+          onClick={goToSelect}
           type="button"
         >
           <ArrowLeft size={18} />
           モード選択
         </button>
         <div>
-          <strong>{regionLabels[region]}</strong>
+          <strong>{quizScopeLabel}</strong>
           <span>{answerModeLabels[answerMode]}</span>
         </div>
         <span className="topbar-spacer" aria-hidden="true" />
@@ -562,7 +629,7 @@ export function CountryQuiz() {
 
           <button
             className="submit-button"
-            onClick={() => setStep("result")}
+            onClick={finishQuiz}
             type="button"
           >
             答え合わせ

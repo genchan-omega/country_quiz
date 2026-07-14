@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { siteDescription, siteTitle, siteUrl } from "./lib/quiz-config";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -11,11 +12,6 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
-
-const siteUrl = "https://countryquiz-rho.vercel.app";
-const siteTitle = "世界196カ国 国名・首都名クイズ";
-const siteDescription =
-  "白地図を見ながら世界196カ国の国名と首都名を入力できる学習用地理クイズです。地域別、国名のみ、首都のみ、国名と首都のモードに対応しています。";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

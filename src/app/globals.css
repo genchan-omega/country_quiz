@@ -173,7 +173,11 @@ button:disabled {
 .primary-action,
 .primary-small,
 .ghost-button,
-.submit-button {
+.submit-button,
+.secondary-action,
+.x-share-button,
+.share-actions a,
+.share-card a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -185,7 +189,8 @@ button:disabled {
 
 .primary-action,
 .primary-small,
-.submit-button {
+.submit-button,
+.x-share-button {
   border: 1px solid var(--accent);
   background: var(--accent);
   color: #ffffff;
@@ -194,6 +199,14 @@ button:disabled {
 .primary-action {
   width: 100%;
   margin-top: 28px;
+}
+
+.secondary-action {
+  width: 100%;
+  margin-top: 12px;
+  border: 1px solid var(--line);
+  background: #ffffff;
+  color: var(--accent-strong);
 }
 
 .primary-small,
@@ -205,6 +218,58 @@ button:disabled {
   border: 1px solid var(--line);
   background: var(--panel);
   color: var(--foreground);
+}
+
+.weak-section {
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fdfdfb;
+}
+
+.weak-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.weak-heading h2 {
+  margin: 0;
+}
+
+.weak-heading span,
+.weak-empty {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.weak-list-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.weak-list-preview span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 30px;
+  padding: 4px 9px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--foreground);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.weak-list-preview small {
+  color: var(--danger);
+  font-size: 11px;
+  font-weight: 900;
 }
 
 .quiz-shell {
@@ -534,6 +599,29 @@ button:disabled {
   font-weight: 800;
 }
 
+.share-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.x-share-button,
+.share-actions a {
+  min-height: 38px;
+  padding: 0 13px;
+  border-radius: 8px;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.share-actions a {
+  border: 1px solid var(--line);
+  background: #ffffff;
+  color: var(--accent-strong);
+}
+
 .result-workspace {
   height: calc(100dvh - 206px);
 }
@@ -644,6 +732,57 @@ button:disabled {
 .answer-check.ng {
   background: var(--danger-soft);
   color: var(--danger);
+}
+
+.share-page {
+  display: grid;
+  min-height: 100dvh;
+  place-items: center;
+  padding: 24px;
+}
+
+.share-card {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  width: min(760px, 100%);
+  padding: clamp(22px, 4vw, 42px);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  text-align: center;
+}
+
+.share-card > span {
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.share-card h1 {
+  font-size: clamp(46px, 8vw, 78px);
+  line-height: 1;
+}
+
+.share-card p {
+  color: var(--muted);
+  font-weight: 900;
+}
+
+.share-card img {
+  width: min(100%, 600px);
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.share-card a {
+  padding: 0 18px;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: #ffffff;
+  text-decoration: none;
 }
 
 @media (max-width: 1100px) {
