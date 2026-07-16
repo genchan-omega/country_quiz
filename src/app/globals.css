@@ -572,6 +572,7 @@ button:disabled {
 }
 
 .result-shell {
+  display: grid;
   grid-template-rows: auto auto minmax(0, 1fr);
 }
 
@@ -623,7 +624,7 @@ button:disabled {
 }
 
 .result-workspace {
-  height: calc(100dvh - 206px);
+  height: 100%;
 }
 
 .result-panel {
@@ -803,7 +804,7 @@ button:disabled {
   }
 
   .result-workspace {
-    height: calc(100dvh - 194px);
+    height: 100%;
   }
 }
 
@@ -953,7 +954,7 @@ button:disabled {
   }
 
   .result-workspace {
-    height: calc(100dvh - 176px);
+    height: 100%;
   }
 
   .result-number {

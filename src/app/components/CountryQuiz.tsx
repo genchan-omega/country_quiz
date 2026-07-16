@@ -23,6 +23,7 @@ import {
   getVisibleFields,
   regionLabels,
   regionOrder,
+  siteUrl,
   type AnswerMode,
   type QuizCountry,
   type RegionMode,
@@ -302,16 +303,13 @@ export function CountryQuiz({
     stats.score,
     quizCountries.length
   );
-  const shareUrl =
-    typeof window === "undefined" ? sharePath : `${window.location.origin}${sharePath}`;
-  const shareText = `世界の国名・首都クイズ ${practiceWeakOnly ? "苦手リスト" : regionLabels[region]} ${answerModeLabels[answerMode]}で ${stats.score}/${quizCountries.length} 正解しました。`;
+  const shareUrl = new URL(sharePath, siteUrl).toString();
+  const shareText = `世界の国名・首都クイズ ${practiceWeakOnly ? "苦手リスト" : regionLabels[region]} ${answerModeLabels[answerMode]}で ${stats.score}/${quizCountries.length} 正解しました。\n#世界地図クイズ #地理クイズ\n${shareUrl}`;
   const shareImageUrl = `${sharePath}/opengraph-image`;
 
   const openXShare = () => {
     const intentUrl = new URL("https://twitter.com/intent/tweet");
     intentUrl.searchParams.set("text", shareText);
-    intentUrl.searchParams.set("url", shareUrl);
-    intentUrl.searchParams.set("hashtags", "世界地図クイズ,地理クイズ");
     window.open(intentUrl.toString(), "_blank", "noopener,noreferrer");
   };
 

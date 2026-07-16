@@ -66,6 +66,7 @@ export default async function ShareResultImage({ params }: Props) {
           >
             <div
               style={{
+                display: "flex",
                 color: "#0b6e69",
                 fontSize: 28,
                 fontWeight: 900,
@@ -85,6 +86,7 @@ export default async function ShareResultImage({ params }: Props) {
             >
               <div
                 style={{
+                  display: "flex",
                   fontSize: 118,
                   fontWeight: 900,
                   lineHeight: 0.92,
@@ -95,6 +97,8 @@ export default async function ShareResultImage({ params }: Props) {
               </div>
               <div
                 style={{
+                  display: "flex",
+                  flexDirection: "column",
                   color: "#6c746c",
                   fontSize: 48,
                   fontWeight: 900,
@@ -102,9 +106,8 @@ export default async function ShareResultImage({ params }: Props) {
                   paddingBottom: 8,
                 }}
               >
-                /{total}
-                <br />
-                正解
+                <span>/{total}</span>
+                <span>正解</span>
               </div>
             </div>
             <div
