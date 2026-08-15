@@ -215,7 +215,7 @@ export default function WorldMap({
         aria-label="世界地図"
         className="world-map"
         preserveAspectRatio="xMidYMid meet"
-        role="img"
+        role={onSelectCountry ? "group" : "img"}
         viewBox={viewBox}
       >
         <rect className="map-ocean" height={height} width={width} />
@@ -249,6 +249,12 @@ export default function WorldMap({
                     onSelectCountry?.(marker.code);
                   }
                 }}
+                aria-label={
+                  onSelectCountry
+                    ? `${marker.quizNumber}番 ${marker.countryJa}を選択`
+                    : undefined
+                }
+                aria-pressed={onSelectCountry ? isActive : undefined}
                 role={onSelectCountry ? "button" : undefined}
                 tabIndex={onSelectCountry ? 0 : undefined}
                 transform={`translate(${marker.x}, ${marker.y})`}

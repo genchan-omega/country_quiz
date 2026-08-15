@@ -3,6 +3,7 @@ import countriesData from "@/data/countries.json";
 export type Country = (typeof countriesData)[number];
 export type RegionMode = "all" | Country["region"];
 export type AnswerMode = "country" | "capital" | "both";
+export type QuestionCount = "all" | 10 | 20 | 50;
 export type Step = "select" | "quiz" | "result";
 
 export type QuizCountry = Country & {
@@ -52,6 +53,15 @@ export const answerModeLabels: Record<AnswerMode, string> = {
 };
 
 export const answerModeOrder: AnswerMode[] = ["country", "capital", "both"];
+
+export const questionCountOrder: QuestionCount[] = ["all", 10, 20, 50];
+
+export const questionCountLabels: Record<QuestionCount, string> = {
+  all: "全問",
+  10: "10問",
+  20: "20問",
+  50: "50問",
+};
 
 export const answerModeSlugs: Record<AnswerMode, string> = {
   country: "country",
@@ -118,12 +128,47 @@ export const getRegionCountries = (region: RegionMode) => {
     : countriesData.filter((country) => country.region === region);
 };
 
+const seededRandom = (seed: number) => {
+  let value = seed >>> 0;
+  return () => {
+    value += 0x6d2b79f5;
+    let result = value;
+    result = Math.imul(result ^ (result >>> 15), result | 1);
+    result ^= result + Math.imul(result ^ (result >>> 7), result | 61);
+    return ((result ^ (result >>> 14)) >>> 0) / 4294967296;
+  };
+};
+
+export const getRandomQuizCodes = (
+  countries: QuizCountry[],
+  questionCount: QuestionCount,
+  seed: number
+) => {
+  if (questionCount === "all" || countries.length <= questionCount) {
+    return countries.map((country) => country.code);
+  }
+
+  const random = seededRandom(seed);
+  const shuffled = [...countries];
+  for (let index = shuffled.length - 1; index > 0; index -= 1) {
+    const swapIndex = Math.floor(random() * (index + 1));
+    [shuffled[index], shuffled[swapIndex]] = [
+      shuffled[swapIndex],
+      shuffled[index],
+    ];
+  }
+
+  return shuffled.slice(0, questionCount).map((country) => country.code);
+};
+
 export const getQuizCountries = (
   region: RegionMode,
-  weakCodes?: Set<string>
+  weakCodes?: Set<string>,
+  selectedCodes?: Set<string>
 ): QuizCountry[] => {
   const source = getRegionCountries(region).filter((country) =>
-    weakCodes ? weakCodes.has(country.code) : true
+    (weakCodes ? weakCodes.has(country.code) : true) &&
+    (selectedCodes ? selectedCodes.has(country.code) : true)
   );
 
   return sortSpatially(source, region).map((country, index) => ({

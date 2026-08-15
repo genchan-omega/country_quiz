@@ -56,6 +56,12 @@ button:disabled {
   opacity: 0.45;
 }
 
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid rgba(217, 101, 59, 0.42);
+  outline-offset: 2px;
+}
+
 .loading-screen {
   display: grid;
   min-height: 100dvh;
@@ -411,11 +417,15 @@ button:disabled {
 
 .country-marker {
   opacity: 0.82;
-  outline: none;
 }
 
 .country-marker[role="button"] {
   cursor: pointer;
+}
+
+.country-marker[role="button"]:focus-visible circle {
+  stroke: var(--focus);
+  stroke-width: 3.2;
 }
 
 .country-marker circle {
@@ -663,12 +673,16 @@ button:disabled {
   font-weight: 900;
 }
 
-.result-number.ok {
+.result-number.correct {
   background: var(--success);
 }
 
-.result-number.ng {
+.result-number.incorrect {
   background: var(--danger);
+}
+
+.result-number.unanswered {
+  background: var(--empty);
 }
 
 .result-details {
@@ -698,14 +712,19 @@ button:disabled {
   white-space: nowrap;
 }
 
-.status-chip.ok {
+.status-chip.correct {
   background: var(--success-soft);
   color: var(--success);
 }
 
-.status-chip.ng {
+.status-chip.incorrect {
   background: var(--danger-soft);
   color: var(--danger);
+}
+
+.status-chip.unanswered {
+  background: #eef7fc;
+  color: var(--empty);
 }
 
 .answer-check {
@@ -725,14 +744,24 @@ button:disabled {
   overflow-wrap: anywhere;
 }
 
-.answer-check.ok {
+.answer-check.correct {
   background: var(--success-soft);
   color: var(--success);
 }
 
-.answer-check.ng {
+.answer-check.incorrect {
   background: var(--danger-soft);
   color: var(--danger);
+}
+
+.answer-check.unanswered {
+  background: #eef7fc;
+  color: var(--empty);
+}
+
+.answer-note {
+  color: var(--danger);
+  font-weight: 800;
 }
 
 .share-page {

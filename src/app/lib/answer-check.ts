@@ -1,4 +1,4 @@
-import type { Country, AnswerMode } from "./quiz-config";
+import type { AnswerMode, Country } from "./quiz-config";
 import { getVisibleFields } from "./quiz-config";
 
 export type AnswerState = Record<
@@ -9,74 +9,104 @@ export type AnswerState = Record<
   }
 >;
 
+export type FieldStatus = "correct" | "incorrect" | "unanswered";
+
 export type RowStatus = {
+  countryStatus: FieldStatus;
+  capitalStatus: FieldStatus;
   countryCorrect: boolean;
   capitalCorrect: boolean;
   complete: boolean;
   attempted: boolean;
 };
 
-type AliasMap = Record<string, { country?: string[]; capital?: string[] }>;
+type AnswerVariant = {
+  aliases?: string[];
+  historical?: string[];
+};
 
-const extraAliases: AliasMap = {
-  BDI: { capital: ["ギテガ", "ブジュンブラ"] },
-  BOL: { country: ["ボリビア"], capital: ["スクレ", "ラパス"] },
-  BRN: { country: ["ブルネイ"], capital: ["バンダルスリブガワン"] },
-  CPV: { country: ["カーボベルデ", "ケープベルデ"] },
-  CIV: { country: ["コートジボワール", "象牙海岸"], capital: ["ヤムスクロ"] },
+type AnswerVariantMap = Record<
+  string,
+  { country?: AnswerVariant; capital?: AnswerVariant }
+>;
+
+const answerVariants: AnswerVariantMap = {
+  BDI: { capital: { historical: ["ブジュンブラ"] } },
+  BOL: { capital: { aliases: ["スクレ", "ラパス"] } },
+  BRN: { country: { aliases: ["ブルネイ"] } },
+  CPV: { country: { aliases: ["カーボベルデ", "ケープベルデ"] } },
+  CIV: {
+    country: { aliases: ["コートジボワール", "象牙海岸"] },
+    capital: { aliases: ["ヤムスクロ"] },
+  },
   COD: {
-    country: [
-      "コンゴ民主共和国",
-      "コンゴ民主",
-      "DRコンゴ",
-      "DRC",
-      "Democratic Republic of Congo",
-      "Congo Kinshasa",
-    ],
-    capital: ["キンシャサ"],
+    country: {
+      aliases: [
+        "コンゴ民主共和国",
+        "コンゴ民主",
+        "DRコンゴ",
+        "DRC",
+        "Democratic Republic of Congo",
+        "Congo Kinshasa",
+      ],
+    },
+    capital: { aliases: ["キンシャサ"] },
   },
   COG: {
-    country: ["コンゴ共和国", "コンゴ", "Republic of Congo", "Congo Brazzaville"],
-    capital: ["ブラザビル"],
+    country: {
+      aliases: ["コンゴ共和国", "コンゴ", "Republic of Congo", "Congo Brazzaville"],
+    },
+    capital: { aliases: ["ブラザビル"] },
   },
-  CZE: { country: ["チェコ", "チェコ共和国", "Czechia", "Czech Republic"] },
-  FSM: { country: ["ミクロネシア", "ミクロネシア連邦"] },
-  GBR: { country: ["イギリス", "英国", "連合王国", "UK", "United Kingdom"] },
-  GEO: { country: ["ジョージア", "グルジア"] },
-  GRC: { country: ["ギリシャ", "ギリシア"] },
-  KOR: { country: ["韓国", "大韓民国", "South Korea", "Republic of Korea"] },
-  LAO: { country: ["ラオス", "ラオス人民民主共和国"] },
+  CZE: {
+    country: { aliases: ["チェコ", "チェコ共和国", "Czechia", "Czech Republic"] },
+  },
+  FSM: { country: { aliases: ["ミクロネシア", "ミクロネシア連邦"] } },
+  GBR: {
+    country: { aliases: ["イギリス", "英国", "連合王国", "UK", "United Kingdom"] },
+  },
+  GEO: { country: { aliases: ["ジョージア", "グルジア"] } },
+  GRC: { country: { aliases: ["ギリシャ", "ギリシア"] } },
+  KOR: { country: { aliases: ["韓国", "大韓民国", "South Korea", "Republic of Korea"] } },
+  LAO: { country: { aliases: ["ラオス", "ラオス人民民主共和国"] } },
   MKD: {
-    country: [
-      "北マケドニア",
-      "北マケドニア共和国",
-      "マケドニア",
-      "North Macedonia",
-    ],
+    country: {
+      aliases: [
+        "北マケドニア",
+        "北マケドニア共和国",
+        "マケドニア",
+        "North Macedonia",
+      ],
+    },
   },
-  MMR: { country: ["ミャンマー", "ビルマ"], capital: ["ネピドー", "ネーピードー"] },
-  MDA: { country: ["モルドバ", "モルドバ共和国"] },
-  NLD: { country: ["オランダ", "ネーデルラント"], capital: ["アムステルダム"] },
+  MMR: {
+    country: { aliases: ["ミャンマー", "ビルマ"] },
+    capital: { aliases: ["ネピドー", "ネーピードー"] },
+  },
+  MDA: { country: { aliases: ["モルドバ", "モルドバ共和国"] } },
+  NLD: { country: { aliases: ["オランダ", "ネーデルラント"] } },
   PRK: {
-    country: ["北朝鮮", "朝鮮民主主義人民共和国", "North Korea", "DPRK"],
+    country: {
+      aliases: ["北朝鮮", "朝鮮民主主義人民共和国", "North Korea", "DPRK"],
+    },
   },
-  PSE: { country: ["パレスチナ", "パレスチナ国"] },
-  RUS: { country: ["ロシア", "ロシア連邦"] },
-  SWZ: { country: ["エスワティニ", "スワジランド"] },
-  SYR: { country: ["シリア", "シリア・アラブ共和国"] },
-  TLS: { country: ["東ティモール", "Timor Leste", "East Timor"] },
-  TUR: { country: ["トルコ", "テュルキエ", "Türkiye", "Turkey"] },
-  TZA: { country: ["タンザニア", "タンザニア連合共和国"] },
+  PSE: { country: { aliases: ["パレスチナ", "パレスチナ国"] } },
+  RUS: { country: { aliases: ["ロシア", "ロシア連邦"] } },
+  SWZ: { country: { aliases: ["エスワティニ", "スワジランド"] } },
+  SYR: { country: { aliases: ["シリア", "シリア・アラブ共和国"] } },
+  TLS: { country: { aliases: ["東ティモール", "Timor Leste", "East Timor"] } },
+  TUR: { country: { aliases: ["トルコ", "テュルキエ", "Türkiye", "Turkey"] } },
+  TZA: { country: { aliases: ["タンザニア", "タンザニア連合共和国"] } },
   USA: {
-    country: ["アメリカ", "米国", "アメリカ合衆国", "United States", "USA"],
-    capital: ["ワシントン", "ワシントンDC", "Washington DC"],
+    country: { aliases: ["アメリカ", "米国", "アメリカ合衆国", "United States", "USA"] },
+    capital: { aliases: ["ワシントン", "ワシントンDC", "Washington DC"] },
   },
   VAT: {
-    country: ["バチカン", "バチカン市国", "ローマ教皇庁", "Holy See"],
-    capital: ["バチカン", "バチカン市国", "Vatican"],
+    country: { aliases: ["バチカン", "バチカン市国", "ローマ教皇庁", "Holy See"] },
+    capital: { aliases: ["バチカン", "バチカン市国", "Vatican"] },
   },
-  VEN: { country: ["ベネズエラ", "ベネズエラ・ボリバル共和国"] },
-  VNM: { country: ["ベトナム", "ヴェトナム", "越南"], capital: ["ハノイ"] },
+  VEN: { country: { aliases: ["ベネズエラ", "ベネズエラ・ボリバル共和国"] } },
+  VNM: { country: { aliases: ["ベトナム", "ヴェトナム", "越南"] } },
 };
 
 const toKatakana = (value: string) =>
@@ -98,6 +128,9 @@ export const normalizeAnswer = (value: string) =>
 
 const unique = (values: string[]) => Array.from(new Set(values.filter(Boolean)));
 
+const getVariant = (country: Country, field: "country" | "capital") =>
+  answerVariants[country.code]?.[field];
+
 export const getAcceptedAnswers = (
   country: Country,
   field: "country" | "capital"
@@ -106,10 +139,15 @@ export const getAcceptedAnswers = (
     field === "country" ? country.countryAnswers : country.capitalAnswers;
   const primary = field === "country" ? country.countryJa : country.capitalJa;
   const english = field === "country" ? country.countryEn : country.capitalEn;
-  const aliases = extraAliases[country.code]?.[field] ?? [];
+  const aliases = getVariant(country, field)?.aliases ?? [];
 
   return unique([primary, english, ...base, ...aliases]);
 };
+
+export const getHistoricalAnswers = (
+  country: Country,
+  field: "country" | "capital"
+) => getVariant(country, field)?.historical ?? [];
 
 export const isCorrect = (
   value: string,
@@ -126,27 +164,54 @@ export const isCorrect = (
   );
 };
 
+export const isHistoricalAnswer = (
+  value: string,
+  country: Country,
+  field: "country" | "capital"
+) => {
+  const normalized = normalizeAnswer(value);
+  return Boolean(
+    normalized &&
+      getHistoricalAnswers(country, field).some(
+        (answer) => normalizeAnswer(answer) === normalized
+      )
+  );
+};
+
+export const getFieldStatus = (
+  value: string | undefined,
+  country: Country,
+  field: "country" | "capital"
+): FieldStatus => {
+  if (!value?.trim()) {
+    return "unanswered";
+  }
+
+  return isCorrect(value, country, field) ? "correct" : "incorrect";
+};
+
 export const getRowStatus = (
   country: Country,
   answer: { country: string; capital: string } | undefined,
   answerMode: AnswerMode
 ): RowStatus => {
   const visible = getVisibleFields(answerMode);
-  const countryCorrect = visible.country
-    ? isCorrect(answer?.country ?? "", country, "country")
-    : true;
-  const capitalCorrect = visible.capital
-    ? isCorrect(answer?.capital ?? "", country, "capital")
-    : true;
-  const attempted = Boolean(
-    (visible.country && answer?.country.trim()) ||
-      (visible.capital && answer?.capital.trim())
-  );
+  const countryStatus = visible.country
+    ? getFieldStatus(answer?.country, country, "country")
+    : "correct";
+  const capitalStatus = visible.capital
+    ? getFieldStatus(answer?.capital, country, "capital")
+    : "correct";
+  const attempted =
+    (visible.country && Boolean(answer?.country?.trim())) ||
+    (visible.capital && Boolean(answer?.capital?.trim()));
 
   return {
-    countryCorrect,
-    capitalCorrect,
-    complete: countryCorrect && capitalCorrect,
+    countryStatus,
+    capitalStatus,
+    countryCorrect: countryStatus === "correct",
+    capitalCorrect: capitalStatus === "correct",
+    complete: countryStatus === "correct" && capitalStatus === "correct",
     attempted,
   };
 };
