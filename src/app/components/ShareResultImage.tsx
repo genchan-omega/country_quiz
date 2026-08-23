@@ -1,35 +1,38 @@
 import { ImageResponse } from "next/og";
 import {
-  answerModeBySlug,
   answerModeLabels,
-  regionBySlug,
+  quizDirectionLabels,
   regionLabels,
   siteTitle,
-} from "@/app/lib/quiz-config";
+  type AnswerMode,
+  type QuizDirection,
+  type RegionMode,
+} from "../lib/quiz-config";
 
-export const size = {
+export const shareImageSize = {
   width: 1200,
   height: 630,
 };
 
-export const contentType = "image/png";
-
 type Props = {
-  params: Promise<{
-    region: string;
-    mode: string;
-    score: string;
-    total: string;
-  }>;
+  region: RegionMode;
+  answerMode: AnswerMode;
+  quizDirection: QuizDirection;
+  score: number;
+  total: number;
 };
 
-export default async function ShareResultImage({ params }: Props) {
-  const raw = await params;
-  const region = regionBySlug[raw.region] ?? "all";
-  const answerMode = answerModeBySlug[raw.mode] ?? "both";
-  const score = Math.max(0, Number(raw.score) || 0);
-  const total = Math.max(1, Number(raw.total) || 1);
+export const createShareResultImage = ({
+  region,
+  answerMode,
+  quizDirection,
+  score,
+  total,
+}: Props) => {
   const percent = Math.round((score / total) * 100);
+  const modeLabel =
+    answerModeLabels[answerMode] +
+    (quizDirection === "map" ? "・" + quizDirectionLabels.map : "");
 
   return new ImageResponse(
     (
@@ -115,13 +118,13 @@ export default async function ShareResultImage({ params }: Props) {
                 display: "flex",
                 gap: 14,
                 color: "#064c49",
-                fontSize: 32,
+                fontSize: 30,
                 fontWeight: 900,
               }}
             >
               <span>{regionLabels[region]}</span>
               <span>・</span>
-              <span>{answerModeLabels[answerMode]}</span>
+              <span>{modeLabel}</span>
             </div>
           </div>
           <div
@@ -155,6 +158,6 @@ export default async function ShareResultImage({ params }: Props) {
         </div>
       </div>
     ),
-    size
+    shareImageSize
   );
-}
+};

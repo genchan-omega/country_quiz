@@ -1,10 +1,17 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import { Crosshair, RotateCcw, ZoomIn, ZoomOut } from "lucide-react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import {
+  Crosshair,
+  Globe2,
+  RotateCcw,
+  ZoomIn,
+  ZoomOut,
+} from "lucide-react";
 import { geoMercator, geoPath } from "d3-geo";
 import { feature } from "topojson-client";
 import mapData from "@/data/world-map.json";
+import { unwrapDatelinePoints } from "../lib/map-view";
 
 type MapFeature = {
   type: "Feature";
@@ -31,6 +38,8 @@ type Props = {
   activeCountry?: CountryMarker;
   markerStatuses?: Record<string, MarkerStatus>;
   onSelectCountry?: (code: string) => void;
+  concealCountryNames?: boolean;
+  highlightActiveCountry?: boolean;
 };
 
 const width = 1000;
@@ -40,17 +49,92 @@ const zoomLevels = [1, 1.8, 3.2, 5, 7, 10, 12.5, 15, 20, 25, 30] as const;
 const clamp = (value: number, min: number, max: number) =>
   Math.max(min, Math.min(max, value));
 
+type ProjectedMarker = CountryMarker & { x: number; y: number };
+
+const getFitView = (markers: ProjectedMarker[]) => {
+  if (!markers.length) {
+    return { center: { x: width / 2, y: height / 2 }, zoomIndex: 0 };
+  }
+
+  const xs = markers.map((marker) => marker.x);
+  const ys = markers.map((marker) => marker.y);
+  const minX = Math.min(...xs);
+  const maxX = Math.max(...xs);
+  const minY = Math.min(...ys);
+  const maxY = Math.max(...ys);
+  const contentWidth = Math.max(maxX - minX, 38);
+  const contentHeight = Math.max(maxY - minY, 30);
+  const maximumFitZoom = Math.min(
+    width / (contentWidth + 100),
+    height / (contentHeight + 78),
+    markers.length === 1 ? 10 : 15
+  );
+  let zoomIndex = 0;
+
+  zoomLevels.forEach((level, index) => {
+    if (level <= maximumFitZoom) {
+      zoomIndex = index;
+    }
+  });
+
+  return {
+    center: { x: (minX + maxX) / 2, y: (minY + maxY) / 2 },
+    zoomIndex,
+  };
+};
+
+const findDirectionalMarker = (
+  markers: ProjectedMarker[],
+  currentCode: string,
+  key: "ArrowLeft" | "ArrowRight" | "ArrowUp" | "ArrowDown"
+) => {
+  const current = markers.find((marker) => marker.code === currentCode);
+  if (!current) {
+    return markers[0];
+  }
+
+  const candidates = markers.flatMap((marker) => {
+    if (marker.code === current.code) {
+      return [];
+    }
+
+    const dx = marker.x - current.x;
+    const dy = marker.y - current.y;
+    const isInDirection =
+      (key === "ArrowLeft" && dx < 0) ||
+      (key === "ArrowRight" && dx > 0) ||
+      (key === "ArrowUp" && dy < 0) ||
+      (key === "ArrowDown" && dy > 0);
+    if (!isInDirection) {
+      return [];
+    }
+
+    const primaryDistance =
+      key === "ArrowLeft" || key === "ArrowRight" ? Math.abs(dx) : Math.abs(dy);
+    const crossDistance =
+      key === "ArrowLeft" || key === "ArrowRight" ? Math.abs(dy) : Math.abs(dx);
+
+    return [{ marker, score: primaryDistance + crossDistance * 1.8 }];
+  });
+
+  return candidates.sort((a, b) => a.score - b.score)[0]?.marker;
+};
+
 export default function WorldMap({
   countries,
   activeCountry,
   markerStatuses,
   onSelectCountry,
+  concealCountryNames = false,
+  highlightActiveCountry = true,
 }: Props) {
   const [zoomIndex, setZoomIndex] = useState(0);
   const [center, setCenter] = useState({ x: width / 2, y: height / 2 });
   const [isCompactViewport, setIsCompactViewport] = useState(false);
+  const [rovingCode, setRovingCode] = useState(activeCountry?.code ?? "");
+  const markerRefs = useRef<Record<string, SVGGElement | null>>({});
 
-  const { paths, markers } = useMemo(() => {
+  const { paths, markers, wrapsDateline } = useMemo(() => {
     const topology = mapData as unknown as {
       objects: { countries: unknown };
     };
@@ -78,7 +162,7 @@ export default function WorldMap({
       name: (feature as MapFeature).properties?.name ?? String(feature.id),
       path: path(feature) ?? "",
     }));
-    const markerPoints = countries
+    const projectedMarkers = countries
       .map((country) => {
         const projected = projection([country.lng, country.lat]);
         if (!projected) {
@@ -91,14 +175,20 @@ export default function WorldMap({
           y: projected[1],
         };
       })
-      .filter(Boolean) as (CountryMarker & { x: number; y: number })[];
+      .filter(Boolean) as ProjectedMarker[];
+    const unwrapped = unwrapDatelinePoints(projectedMarkers, width);
 
-    return { paths: featurePaths, markers: markerPoints };
+    return {
+      paths: featurePaths,
+      markers: unwrapped.points,
+      wrapsDateline: unwrapped.wrapsDateline,
+    };
   }, [countries]);
 
   const activeMarker = markers.find(
     (marker) => marker.code === activeCountry?.code
   );
+  const fitView = useMemo(() => getFitView(markers), [markers]);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(max-width: 720px)");
@@ -116,6 +206,29 @@ export default function WorldMap({
   }, []);
 
   useEffect(() => {
+    const timer = window.setTimeout(() => {
+      setZoomIndex(fitView.zoomIndex);
+      setCenter(fitView.center);
+      setRovingCode((current) =>
+        markers.some((marker) => marker.code === current)
+          ? current
+          : markers[0]?.code ?? ""
+      );
+    }, 0);
+
+    return () => window.clearTimeout(timer);
+  }, [fitView, markers]);
+
+  useEffect(() => {
+    if (!activeCountry?.code) {
+      return;
+    }
+
+    const timer = window.setTimeout(() => setRovingCode(activeCountry.code), 0);
+    return () => window.clearTimeout(timer);
+  }, [activeCountry?.code]);
+
+  useEffect(() => {
     if (!activeMarker || zoomIndex === 0) {
       return;
     }
@@ -130,7 +243,8 @@ export default function WorldMap({
   const zoom = zoomLevels[zoomIndex];
   const viewWidth = width / zoom;
   const viewHeight = height / zoom;
-  const viewX = clamp(center.x - viewWidth / 2, 0, width - viewWidth);
+  const mapWidth = wrapsDateline ? width * 2 : width;
+  const viewX = clamp(center.x - viewWidth / 2, 0, mapWidth - viewWidth);
   const viewY = clamp(center.y - viewHeight / 2, 0, height - viewHeight);
   const viewBox = `${viewX} ${viewY} ${viewWidth} ${viewHeight}`;
   const markerRadius = (isCompactViewport ? 14 : 12) / zoom;
@@ -154,9 +268,27 @@ export default function WorldMap({
     setZoomIndex((current) => Math.max(current - 1, 0));
   };
 
-  const resetZoom = () => {
+  const resetToFit = () => {
+    setZoomIndex(fitView.zoomIndex);
+    setCenter(fitView.center);
+  };
+
+  const showWorld = () => {
     setZoomIndex(0);
-    setCenter({ x: width / 2, y: height / 2 });
+    setCenter({ x: wrapsDateline ? width : width / 2, y: height / 2 });
+  };
+
+  const moveMarkerFocus = (
+    currentCode: string,
+    key: "ArrowLeft" | "ArrowRight" | "ArrowUp" | "ArrowDown"
+  ) => {
+    const next = findDirectionalMarker(markers, currentCode, key);
+    if (!next) {
+      return;
+    }
+
+    setRovingCode(next.code);
+    markerRefs.current[next.code]?.focus();
   };
 
   return (
@@ -190,12 +322,20 @@ export default function WorldMap({
           <Crosshair size={18} />
         </button>
         <button
-          aria-label="表示をリセット"
-          onClick={resetZoom}
-          title="表示をリセット"
+          aria-label="出題範囲に戻す"
+          onClick={resetToFit}
+          title="出題範囲に戻す"
           type="button"
         >
           <RotateCcw size={18} />
+        </button>
+        <button
+          aria-label="世界全体を表示"
+          onClick={showWorld}
+          title="世界全体を表示"
+          type="button"
+        >
+          <Globe2 size={18} />
         </button>
         <label className="zoom-meter">
           <span>{zoomLabel}x</span>
@@ -218,20 +358,42 @@ export default function WorldMap({
         role={onSelectCountry ? "group" : "img"}
         viewBox={viewBox}
       >
-        <rect className="map-ocean" height={height} width={width} />
+        <rect
+          className="map-ocean"
+          height={height}
+          width={wrapsDateline ? width * 2 : width}
+        />
         <g>
           {paths.map((feature) => (
             <path
               className={`country-shape ${
-                feature.id === activeCountry?.mapKey ? "active" : ""
+                highlightActiveCountry && feature.id === activeCountry?.mapKey
+                  ? "active"
+                  : ""
               }`}
               d={feature.path}
               key={feature.key}
             >
-              <title>{feature.name}</title>
+              {concealCountryNames ? null : <title>{feature.name}</title>}
             </path>
           ))}
         </g>
+        {wrapsDateline ? (
+          <g aria-hidden="true" transform={`translate(${width}, 0)`}>
+            {paths.map((feature) => (
+              <path
+                className={`country-shape ${
+                  highlightActiveCountry &&
+                  feature.id === activeCountry?.mapKey
+                    ? "active"
+                    : ""
+                }`}
+                d={feature.path}
+                key={`wrapped-${feature.key}`}
+              />
+            ))}
+          </g>
+        ) : null}
         <g className="marker-layer">
           {markers.map((marker) => {
             const status = markerStatuses?.[marker.code];
@@ -243,20 +405,44 @@ export default function WorldMap({
                 } ${status ? `status-${status}` : ""}`}
                 key={marker.code}
                 onClick={() => onSelectCountry?.(marker.code)}
+                onFocus={() => setRovingCode(marker.code)}
                 onKeyDown={(event) => {
                   if (event.key === "Enter" || event.key === " ") {
                     event.preventDefault();
                     onSelectCountry?.(marker.code);
+                    return;
+                  }
+
+                  if (
+                    event.key === "ArrowLeft" ||
+                    event.key === "ArrowRight" ||
+                    event.key === "ArrowUp" ||
+                    event.key === "ArrowDown"
+                  ) {
+                    event.preventDefault();
+                    moveMarkerFocus(marker.code, event.key);
                   }
                 }}
                 aria-label={
                   onSelectCountry
-                    ? `${marker.quizNumber}番 ${marker.countryJa}を選択`
+                    ? concealCountryNames
+                      ? `候補位置 ${marker.quizNumber}を選択`
+                      : `${marker.quizNumber}番 ${marker.countryJa}を選択`
                     : undefined
                 }
                 aria-pressed={onSelectCountry ? isActive : undefined}
                 role={onSelectCountry ? "button" : undefined}
-                tabIndex={onSelectCountry ? 0 : undefined}
+                ref={(element) => {
+                  markerRefs.current[marker.code] = element;
+                }}
+                tabIndex={
+                  onSelectCountry
+                    ? marker.code ===
+                      (rovingCode || activeCountry?.code || markers[0]?.code)
+                      ? 0
+                      : -1
+                    : undefined
+                }
                 transform={`translate(${marker.x}, ${marker.y})`}
               >
                 <circle r={isActive ? activeMarkerRadius : markerRadius} />
@@ -268,7 +454,11 @@ export default function WorldMap({
                 >
                   {marker.quizNumber}
                 </text>
-                <title>{`${marker.quizNumber}. ${marker.countryJa}`}</title>
+                <title>
+                  {concealCountryNames
+                    ? `候補位置 ${marker.quizNumber}`
+                    : `${marker.quizNumber}. ${marker.countryJa}`}
+                </title>
               </g>
             );
           })}

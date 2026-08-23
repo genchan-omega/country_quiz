@@ -1,4 +1,4 @@
-import type { AnswerMode, Country } from "./quiz-config";
+import type { AnswerMode, Country, VisibleFields } from "./quiz-config";
 import { getVisibleFields } from "./quiz-config";
 
 export type AnswerState = Record<
@@ -18,6 +18,12 @@ export type RowStatus = {
   capitalCorrect: boolean;
   complete: boolean;
   attempted: boolean;
+};
+
+export type RowResultFlags = {
+  correct: boolean;
+  incorrect: boolean;
+  unanswered: boolean;
 };
 
 type AnswerVariant = {
@@ -195,7 +201,18 @@ export const getRowStatus = (
   answer: { country: string; capital: string } | undefined,
   answerMode: AnswerMode
 ): RowStatus => {
-  const visible = getVisibleFields(answerMode);
+  return getRowStatusForFields(
+    country,
+    answer,
+    getVisibleFields(answerMode)
+  );
+};
+
+export const getRowStatusForFields = (
+  country: Country,
+  answer: { country: string; capital: string } | undefined,
+  visible: VisibleFields
+): RowStatus => {
   const countryStatus = visible.country
     ? getFieldStatus(answer?.country, country, "country")
     : "correct";
@@ -213,5 +230,33 @@ export const getRowStatus = (
     capitalCorrect: capitalStatus === "correct",
     complete: countryStatus === "correct" && capitalStatus === "correct",
     attempted,
+  };
+};
+
+export const getLocationStatus = (
+  selectedCode: string | undefined,
+  country: Country
+): FieldStatus => {
+  if (!selectedCode) {
+    return "unanswered";
+  }
+
+  return selectedCode === country.code ? "correct" : "incorrect";
+};
+
+export const getRowResultFlags = (
+  rowStatus: RowStatus,
+  visible: VisibleFields
+): RowResultFlags => {
+  const statuses = [
+    ...(visible.country ? [rowStatus.countryStatus] : []),
+    ...(visible.capital ? [rowStatus.capitalStatus] : []),
+  ];
+
+  return {
+    correct:
+      statuses.length > 0 && statuses.every((status) => status === "correct"),
+    incorrect: statuses.some((status) => status === "incorrect"),
+    unanswered: statuses.some((status) => status === "unanswered"),
   };
 };

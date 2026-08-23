@@ -1,210 +1,361 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type KeyboardEvent as ReactKeyboardEvent,
+} from "react";
 import { useRouter } from "next/navigation";
 import {
   ArrowLeft,
-  Check,
-  CircleX,
-  CircleHelp,
   ExternalLink,
+  ListRestart,
   RotateCcw,
   Share2,
 } from "lucide-react";
 import countriesData from "@/data/countries.json";
 import WorldMap, { type MarkerStatus } from "./WorldMap";
-import QuizSelector from "./QuizSelector";
+import QuizAnswerPanel from "./QuizAnswerPanel";
+import QuizResultPanel, {
+  type ResultCounts,
+  type ResultFilter,
+} from "./QuizResultPanel";
+import QuizSelector, { type ResumeSummary } from "./QuizSelector";
 import {
   answerModeLabels,
   getQuizCountries,
   getQuizPath,
-  getSharePath,
   getRandomQuizCodes,
+  getRegionCountries,
+  getSharePath,
   getVisibleFields,
+  quizDirectionLabels,
   regionLabels,
+  shuffleQuizCodes,
   siteUrl,
   type AnswerMode,
-  type QuizCountry,
   type QuestionCount,
+  type QuizCountry,
+  type QuizDirection,
   type RegionMode,
   type Step,
+  type VisibleFields,
 } from "../lib/quiz-config";
 import {
-  getRowStatus,
-  isCorrect,
-  isHistoricalAnswer,
+  getLocationStatus,
+  getRowResultFlags,
+  getRowStatusForFields,
   type AnswerState,
 } from "../lib/answer-check";
+import {
+  getDueReviewPlan,
+  LEARNING_PROGRESS_KEY,
+  parseLearningProgress,
+  updateLearningProgressForFields,
+  updateLearningProgressForLocation,
+  type LearningProgressState,
+} from "../lib/learning-progress";
+import {
+  type FieldMaskState,
+  LEGACY_QUIZ_STORAGE_KEY,
+  type LocationAnswerState,
+  parseCodeList,
+  parsePersistedQuizState,
+  parseQuizPreferences,
+  type PersistedQuizState,
+  type PracticeKind,
+  QUIZ_PREFERENCES_KEY,
+  QUIZ_STORAGE_KEY,
+  isAnswerMode,
+  isQuestionCount,
+  isQuizDirection,
+  isRegion,
+} from "../lib/quiz-storage";
 import {
   getWeakItems,
   LEGACY_WEAK_LIST_KEY,
   parseStoredWeakList,
-  updateWeakListItem,
+  PREVIOUS_WEAK_LIST_KEY,
+  updateWeakListItemForFields,
+  updateWeakLocationItem,
   WEAK_LIST_KEY,
   type WeakListState,
 } from "../lib/weak-list";
-
-const STORAGE_KEY = "country-quiz-state-v3";
+import { createShareText } from "../lib/share-text";
 
 type Props = {
   initialRegion?: RegionMode;
   initialAnswerMode?: AnswerMode;
+  initialQuizDirection?: QuizDirection;
   initialStep?: Step;
+};
+
+type OverallStatus = "correct" | "incorrect" | "unanswered";
+
+const practiceLabels: Record<Exclude<PracticeKind, "standard">, string> = {
+  weak: "苦手リスト",
+  daily: "今日の復習",
+  incorrect: "間違えた項目",
+  unanswered: "未回答の続き",
 };
 
 export function CountryQuiz({
   initialRegion = "all",
   initialAnswerMode = "both",
+  initialQuizDirection = "write",
   initialStep = "select",
 }: Props) {
   const router = useRouter();
   const isDirectQuizUrl = initialStep !== "select";
   const [step, setStep] = useState<Step>(initialStep);
   const [answers, setAnswers] = useState<AnswerState>({});
+  const [locationAnswers, setLocationAnswers] =
+    useState<LocationAnswerState>({});
   const [activeCode, setActiveCode] = useState(countriesData[0]?.code ?? "");
   const [region, setRegion] = useState<RegionMode>(initialRegion);
   const [answerMode, setAnswerMode] =
     useState<AnswerMode>(initialAnswerMode);
+  const [quizDirection, setQuizDirection] =
+    useState<QuizDirection>(initialQuizDirection);
   const [weakList, setWeakList] = useState<WeakListState>({});
-  const [practiceWeakOnly, setPracticeWeakOnly] = useState(false);
+  const [learningProgress, setLearningProgress] =
+    useState<LearningProgressState>({});
+  const [practiceKind, setPracticeKind] =
+    useState<PracticeKind>("standard");
   const [practiceCodes, setPracticeCodes] = useState<string[]>([]);
-  const [questionCount, setQuestionCount] = useState<QuestionCount>("all");
+  const [practiceFields, setPracticeFields] =
+    useState<FieldMaskState>({});
+  const [questionCount, setQuestionCount] =
+    useState<QuestionCount>("all");
   const [questionCodes, setQuestionCodes] = useState<string[] | null>(null);
+  const [promptCodes, setPromptCodes] = useState<string[]>([]);
   const [questionSeed, setQuestionSeed] = useState(0);
+  const [resultFilter, setResultFilter] = useState<ResultFilter>("all");
+  const [resumeSession, setResumeSession] =
+    useState<PersistedQuizState | null>(null);
   const [mapReady, setMapReady] = useState(false);
-  const answerRowRefs = useRef<Record<string, HTMLDivElement | null>>({});
-  const resultRowRefs = useRef<Record<string, HTMLButtonElement | null>>({});
+  const rowRefs = useRef<Record<string, HTMLElement | null>>({});
   const answerInputRefs = useRef<Record<string, HTMLInputElement | null>>({});
+  const submitButtonRef = useRef<HTMLButtonElement | null>(null);
+  const autoAdvanceTimerRef = useRef<number | null>(null);
 
   const weakItems = useMemo(() => getWeakItems(weakList), [weakList]);
-  const weakCodes = useMemo(
+  const dailyReviewPlan = useMemo(
     () =>
-      practiceWeakOnly
-        ? new Set(practiceCodes.length ? practiceCodes : weakItems.map((item) => item.code))
-        : undefined,
-    [practiceCodes, practiceWeakOnly, weakItems]
+      getDueReviewPlan(
+        learningProgress,
+        weakList,
+        quizDirection,
+        new Date().toISOString(),
+        10
+      ),
+    [learningProgress, quizDirection, weakList]
   );
-
-  const selectedCodes = useMemo(
+  const practiceCodeSet = useMemo(
+    () => (practiceCodes.length ? new Set(practiceCodes) : undefined),
+    [practiceCodes]
+  );
+  const selectedCodeSet = useMemo(
     () => (questionCodes ? new Set(questionCodes) : undefined),
     [questionCodes]
   );
+  const quizCountries = useMemo<QuizCountry[]>(
+    () => getQuizCountries(region, practiceCodeSet, selectedCodeSet),
+    [practiceCodeSet, region, selectedCodeSet]
+  );
+  const promptCountries = useMemo(() => {
+    if (quizDirection !== "map" || !promptCodes.length) {
+      return quizCountries;
+    }
 
-  const quizCountries = useMemo<QuizCountry[]>(() => {
-    return getQuizCountries(region, weakCodes, selectedCodes);
-  }, [region, selectedCodes, weakCodes]);
-
+    const byCode = new Map(
+      quizCountries.map((country) => [country.code, country])
+    );
+    const ordered = promptCodes.flatMap((code) => {
+      const country = byCode.get(code);
+      return country ? [country] : [];
+    });
+    const included = new Set(ordered.map((country) => country.code));
+    return [
+      ...ordered,
+      ...quizCountries.filter((country) => !included.has(country.code)),
+    ];
+  }, [promptCodes, quizCountries, quizDirection]);
+  const orderedCountries =
+    quizDirection === "map" ? promptCountries : quizCountries;
   const activeCountry =
-    quizCountries.find((country) => country.code === activeCode) ??
-    quizCountries[0];
+    orderedCountries.find((country) => country.code === activeCode) ??
+    orderedCountries[0];
+  const mapNumberByCode = useMemo(
+    () =>
+      new Map(
+        quizCountries.map((country) => [country.code, country.quizNumber])
+      ),
+    [quizCountries]
+  );
+  const selectedLocationCountry =
+    quizDirection === "map" && step === "quiz" && activeCountry
+      ? quizCountries.find(
+          (country) =>
+            country.code === locationAnswers[activeCountry.code]
+        )
+      : undefined;
+  const mapActiveCountry =
+    quizDirection === "map" && step === "quiz"
+      ? selectedLocationCountry
+      : activeCountry;
+
+  const getFieldsForCountry = (code: string): VisibleFields =>
+    practiceFields[code] ?? getVisibleFields(answerMode);
+
+  const currentSnapshot = useMemo<PersistedQuizState>(
+    () => ({
+      answers,
+      locationAnswers,
+      activeCode,
+      region,
+      answerMode,
+      quizDirection,
+      step: step === "result" ? "result" : "quiz",
+      practiceKind,
+      practiceCodes,
+      practiceFields,
+      questionCount,
+      questionCodes,
+      promptCodes,
+      questionSeed,
+    }),
+    [
+      activeCode,
+      answerMode,
+      answers,
+      locationAnswers,
+      practiceCodes,
+      practiceFields,
+      practiceKind,
+      promptCodes,
+      questionCodes,
+      questionCount,
+      questionSeed,
+      quizDirection,
+      region,
+      step,
+    ]
+  );
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
       try {
-        const raw = window.localStorage.getItem(STORAGE_KEY);
-        if (!raw) {
-          setMapReady(true);
-          return;
+        const storedSession = parsePersistedQuizState(
+          window.localStorage.getItem(QUIZ_STORAGE_KEY) ??
+            window.localStorage.getItem(LEGACY_QUIZ_STORAGE_KEY)
+        );
+        const preferences = parseQuizPreferences(
+          window.localStorage.getItem(QUIZ_PREFERENCES_KEY)
+        );
+        const savedMatchesDirectRoute =
+          storedSession?.region === initialRegion &&
+          storedSession.answerMode === initialAnswerMode &&
+          storedSession.quizDirection === initialQuizDirection;
+
+        if (isDirectQuizUrl) {
+          if (storedSession && savedMatchesDirectRoute) {
+            applySession(storedSession);
+          } else {
+            setAnswers({});
+            setLocationAnswers({});
+            setPracticeKind("standard");
+            setPracticeCodes([]);
+            setPracticeFields({});
+            setQuestionCount("all");
+            setQuestionCodes(null);
+            setPromptCodes([]);
+            setQuestionSeed(0);
+            setStep("quiz");
+          }
+
+          setRegion(initialRegion);
+          setAnswerMode(initialAnswerMode);
+          setQuizDirection(initialQuizDirection);
+        } else {
+          setRegion(
+            preferences && isRegion(preferences.region)
+              ? preferences.region
+              : storedSession?.region ?? "all"
+          );
+          setAnswerMode(
+            preferences && isAnswerMode(preferences.answerMode)
+              ? preferences.answerMode
+              : storedSession?.answerMode ?? "both"
+          );
+          setQuizDirection(
+            preferences && isQuizDirection(preferences.quizDirection)
+              ? preferences.quizDirection
+              : storedSession?.quizDirection ?? "write"
+          );
+          setQuestionCount(
+            preferences && isQuestionCount(preferences.questionCount)
+              ? preferences.questionCount
+              : "all"
+          );
+          setResumeSession(storedSession);
+          setStep("select");
         }
 
-        const saved = JSON.parse(raw) as {
-          answers?: AnswerState;
-          activeCode?: string;
-          region?: RegionMode;
-          answerMode?: AnswerMode;
-          step?: Step;
-          practiceWeakOnly?: boolean;
-          practiceCodes?: string[];
-          questionCount?: QuestionCount;
-          questionCodes?: string[] | null;
-          questionSeed?: number;
-        };
-        const savedMatchesDirectRoute =
-          saved.region === initialRegion && saved.answerMode === initialAnswerMode;
-
-        setAnswers(
-          isDirectQuizUrl && !savedMatchesDirectRoute
-            ? {}
-            : saved.answers ?? {}
+        setWeakList(
+          parseStoredWeakList(
+            window.localStorage.getItem(WEAK_LIST_KEY),
+            window.localStorage.getItem(PREVIOUS_WEAK_LIST_KEY),
+            window.localStorage.getItem(LEGACY_WEAK_LIST_KEY)
+          )
         );
-        setRegion(isDirectQuizUrl ? initialRegion : (saved.region ?? "all"));
-        setAnswerMode(
-          isDirectQuizUrl ? initialAnswerMode : (saved.answerMode ?? "both")
-        );
-        setActiveCode(
-          isDirectQuizUrl && !savedMatchesDirectRoute
-            ? countriesData[0]?.code ?? ""
-            : saved.activeCode ?? countriesData[0]?.code ?? ""
-        );
-        setPracticeWeakOnly(
-          isDirectQuizUrl ? false : Boolean(saved.practiceWeakOnly)
-        );
-        setPracticeCodes(isDirectQuizUrl ? [] : (saved.practiceCodes ?? []));
-        setQuestionCount(
-          isDirectQuizUrl && !savedMatchesDirectRoute
-            ? "all"
-            : saved.questionCount ?? "all"
-        );
-        setQuestionCodes(
-          isDirectQuizUrl && !savedMatchesDirectRoute
-            ? null
-            : Array.isArray(saved.questionCodes)
-              ? saved.questionCodes
-              : null
-        );
-        setQuestionSeed(
-          isDirectQuizUrl && !savedMatchesDirectRoute
-            ? 0
-            : Number.isFinite(saved.questionSeed)
-              ? saved.questionSeed!
-              : 0
-        );
-        setStep(
-          isDirectQuizUrl
-            ? initialStep
-            : saved.step === "result"
-              ? "result"
-              : saved.step ?? "select"
+        setLearningProgress(
+          parseLearningProgress(
+            window.localStorage.getItem(LEARNING_PROGRESS_KEY)
+          )
         );
       } catch {
         setStep(initialStep);
+        setWeakList({});
+        setLearningProgress({});
       } finally {
-        try {
-          setWeakList(
-            parseStoredWeakList(
-              window.localStorage.getItem(WEAK_LIST_KEY),
-              window.localStorage.getItem(LEGACY_WEAK_LIST_KEY)
-            )
-          );
-        } catch {
-          setWeakList({});
-        }
         setMapReady(true);
       }
     }, 0);
 
     return () => window.clearTimeout(timer);
-  }, [initialAnswerMode, initialRegion, initialStep, isDirectQuizUrl]);
+  }, [
+    initialAnswerMode,
+    initialQuizDirection,
+    initialRegion,
+    initialStep,
+    isDirectQuizUrl,
+  ]);
 
   useEffect(() => {
+    if (!mapReady) {
+      return;
+    }
+
     const timer = window.setTimeout(() => {
       try {
-        window.localStorage.setItem(
-          STORAGE_KEY,
-          JSON.stringify({
-            answers,
-            activeCode,
-            region,
-            answerMode,
-            step,
-            practiceWeakOnly,
-            practiceCodes,
-            questionCount,
-            questionCodes,
-            questionSeed,
-          })
-        );
         window.localStorage.setItem(WEAK_LIST_KEY, JSON.stringify(weakList));
+        window.localStorage.setItem(
+          LEARNING_PROGRESS_KEY,
+          JSON.stringify(learningProgress)
+        );
+        window.localStorage.setItem(
+          QUIZ_PREFERENCES_KEY,
+          JSON.stringify({ region, answerMode, quizDirection, questionCount })
+        );
+        if (step !== "select") {
+          window.localStorage.setItem(
+            QUIZ_STORAGE_KEY,
+            JSON.stringify(currentSnapshot)
+          );
+        }
       } catch {
         // localStorage may be unavailable in private browsing modes.
       }
@@ -212,65 +363,183 @@ export function CountryQuiz({
 
     return () => window.clearTimeout(timer);
   }, [
-    answers,
-    activeCode,
-    region,
     answerMode,
-    step,
-    practiceWeakOnly,
-    practiceCodes,
+    currentSnapshot,
+    learningProgress,
+    mapReady,
     questionCount,
-    questionCodes,
-    questionSeed,
+    quizDirection,
+    region,
+    step,
     weakList,
   ]);
 
   useEffect(() => {
-    if (!quizCountries.some((country) => country.code === activeCode)) {
+    if (!orderedCountries.some((country) => country.code === activeCode)) {
       const timer = window.setTimeout(() => {
-        setActiveCode(quizCountries[0]?.code ?? "");
+        setActiveCode(orderedCountries[0]?.code ?? "");
       }, 0);
-
       return () => window.clearTimeout(timer);
     }
-  }, [activeCode, quizCountries]);
+  }, [activeCode, orderedCountries]);
 
-  const visibleFields = getVisibleFields(answerMode);
-  const quizScopeLabel = practiceWeakOnly ? "苦手リスト" : regionLabels[region];
+  useEffect(
+    () => () => {
+      if (autoAdvanceTimerRef.current !== null) {
+        window.clearTimeout(autoAdvanceTimerRef.current);
+      }
+    },
+    []
+  );
 
+  function applySession(session: PersistedQuizState) {
+    setAnswers(session.answers);
+    setLocationAnswers(session.locationAnswers);
+    setActiveCode(session.activeCode);
+    setRegion(session.region);
+    setAnswerMode(session.answerMode);
+    setQuizDirection(session.quizDirection);
+    setPracticeKind(session.practiceKind);
+    setPracticeCodes(session.practiceCodes);
+    setPracticeFields(session.practiceFields);
+    setQuestionCount(session.questionCount);
+    setQuestionCodes(session.questionCodes);
+    setPromptCodes(session.promptCodes);
+    setQuestionSeed(session.questionSeed);
+    setResultFilter("all");
+    setStep(session.step);
+  }
+
+  const quizScopeLabel =
+    practiceKind === "standard"
+      ? regionLabels[region]
+      : practiceLabels[practiceKind];
+  const modeLabel =
+    (practiceKind !== "standard" && quizDirection === "write"
+      ? "対象項目"
+      : answerModeLabels[answerMode]) +
+    (quizDirection === "map" ? "・" + quizDirectionLabels.map : "");
+
+  const writeRows = useMemo(
+    () =>
+      quizCountries.map((country) => {
+        const fields =
+          practiceFields[country.code] ?? getVisibleFields(answerMode);
+        const status = getRowStatusForFields(
+          country,
+          answers[country.code],
+          fields
+        );
+        return { country, fields, status };
+      }),
+    [answerMode, answers, practiceFields, quizCountries]
+  );
+  const locationRows = useMemo(
+    () =>
+      promptCountries.map((country) => ({
+        country,
+        status: getLocationStatus(locationAnswers[country.code], country),
+      })),
+    [locationAnswers, promptCountries]
+  );
   const stats = useMemo(() => {
-    const rows = quizCountries.map((country) =>
-      getRowStatus(country, answers[country.code], answerMode)
-    );
+    if (quizDirection === "map") {
+      return {
+        score: locationRows.filter((row) => row.status === "correct").length,
+        countryScore: 0,
+        countryTotal: 0,
+        capitalScore: 0,
+        capitalTotal: 0,
+      };
+    }
 
+    const countryRows = writeRows.filter((row) => row.fields.country);
+    const capitalRows = writeRows.filter((row) => row.fields.capital);
     return {
-      score: rows.filter((row) => row.complete).length,
-      countryScore: quizCountries.filter((country) =>
-        isCorrect(answers[country.code]?.country ?? "", country, "country")
+      score: writeRows.filter((row) => row.status.complete).length,
+      countryScore: countryRows.filter(
+        (row) => row.status.countryStatus === "correct"
       ).length,
-      capitalScore: quizCountries.filter((country) =>
-        isCorrect(answers[country.code]?.capital ?? "", country, "capital")
+      countryTotal: countryRows.length,
+      capitalScore: capitalRows.filter(
+        (row) => row.status.capitalStatus === "correct"
       ).length,
+      capitalTotal: capitalRows.length,
     };
-  }, [answers, answerMode, quizCountries]);
+  }, [locationRows, quizDirection, writeRows]);
+  const totalQuestions = orderedCountries.length;
 
   const markerStatuses = useMemo<Record<string, MarkerStatus>>(() => {
+    if (quizDirection === "map") {
+      return Object.fromEntries(
+        locationRows.map(({ country, status }) => [
+          country.code,
+          status === "correct"
+            ? "ok"
+            : status === "incorrect"
+              ? "ng"
+              : "empty",
+        ])
+      );
+    }
+
     return Object.fromEntries(
-      quizCountries.map((country) => {
-        const status = getRowStatus(country, answers[country.code], answerMode);
+      writeRows.map(({ country, status }) => {
         const hasIncorrectField =
           status.countryStatus === "incorrect" ||
           status.capitalStatus === "incorrect";
-        const markerStatus: MarkerStatus = status.complete
-          ? "ok"
-          : hasIncorrectField
-            ? "ng"
-            : "empty";
-
-        return [country.code, markerStatus];
+        return [
+          country.code,
+          status.complete ? "ok" : hasIncorrectField ? "ng" : "empty",
+        ];
       })
     );
-  }, [answers, answerMode, quizCountries]);
+  }, [locationRows, quizDirection, writeRows]);
+
+  const resultRows = useMemo(
+    () =>
+      quizDirection === "map"
+        ? locationRows.map(({ country, status }) => ({
+            country,
+            overallStatus: status as OverallStatus,
+            correct: status === "correct",
+            incorrect: status === "incorrect",
+            unanswered: status === "unanswered",
+          }))
+        : writeRows.map(({ country, fields, status }) => {
+            const flags = getRowResultFlags(status, fields);
+            return {
+              country,
+              overallStatus: flags.correct
+                ? ("correct" as const)
+                : flags.incorrect
+                  ? ("incorrect" as const)
+                  : ("unanswered" as const),
+              ...flags,
+            };
+          }),
+    [locationRows, quizDirection, writeRows]
+  );
+  const resultCounts = useMemo<ResultCounts>(
+    () => ({
+      all: resultRows.length,
+      correct: resultRows.filter((row) => row.correct).length,
+      incorrect: resultRows.filter((row) => row.incorrect).length,
+      unanswered: resultRows.filter((row) => row.unanswered).length,
+    }),
+    [resultRows]
+  );
+  const filteredResultCountries = useMemo(() => {
+    const allowed = new Set(
+      resultRows
+        .filter(
+          (row) =>
+            resultFilter === "all" || row[resultFilter]
+        )
+        .map((row) => row.country.code)
+    );
+    return orderedCountries.filter((country) => allowed.has(country.code));
+  }, [orderedCountries, resultFilter, resultRows]);
 
   const selectCountry = (
     code: string,
@@ -278,19 +547,19 @@ export function CountryQuiz({
   ) => {
     setActiveCode(code);
     window.requestAnimationFrame(() => {
-      const answerRow = answerRowRefs.current[code];
-      const resultRow = resultRowRefs.current[code];
-      (answerRow ?? resultRow)?.scrollIntoView({
+      rowRefs.current[code]?.scrollIntoView({
         behavior: "smooth",
         block: "center",
       });
 
       if (
         options.focusInput &&
+        quizDirection === "write" &&
         !window.matchMedia("(max-width: 720px)").matches
       ) {
-        const firstField = visibleFields.country ? "country" : "capital";
-        answerInputRefs.current[`${code}:${firstField}`]?.focus({
+        const fields = getFieldsForCountry(code);
+        const firstField = fields.country ? "country" : "capital";
+        answerInputRefs.current[code + ":" + firstField]?.focus({
           preventScroll: true,
         });
       }
@@ -313,107 +582,421 @@ export function CountryQuiz({
     setActiveCode(code);
   };
 
-  const clearAnswersForCurrentQuiz = () => {
-    setAnswers((current) => {
-      const next = { ...current };
-      quizCountries.forEach((country) => {
-        delete next[country.code];
-      });
-      return next;
+  const inputSequence = useMemo(
+    () =>
+      quizCountries.flatMap((country) => {
+        const fields =
+          practiceFields[country.code] ?? getVisibleFields(answerMode);
+        return [
+          ...(fields.country
+            ? [{ code: country.code, field: "country" as const }]
+            : []),
+          ...(fields.capital
+            ? [{ code: country.code, field: "capital" as const }]
+            : []),
+        ];
+      }),
+    [answerMode, practiceFields, quizCountries]
+  );
+
+  const handleInputKeyDown = (
+    event: ReactKeyboardEvent<HTMLInputElement>,
+    code: string,
+    field: "country" | "capital"
+  ) => {
+    if (
+      event.key !== "Enter" ||
+      event.nativeEvent.isComposing ||
+      event.altKey ||
+      event.ctrlKey ||
+      event.metaKey
+    ) {
+      return;
+    }
+
+    event.preventDefault();
+    const currentIndex = inputSequence.findIndex(
+      (item) => item.code === code && item.field === field
+    );
+    const next = inputSequence[
+      currentIndex + (event.shiftKey ? -1 : 1)
+    ];
+    if (!next) {
+      submitButtonRef.current?.focus();
+      return;
+    }
+
+    selectCountry(next.code);
+    window.requestAnimationFrame(() => {
+      answerInputRefs.current[next.code + ":" + next.field]?.focus();
     });
-    setActiveCode(quizCountries[0]?.code ?? "");
+  };
+
+  const selectLocation = (selectedCode: string) => {
+    if (!activeCountry) {
+      return;
+    }
+
+    const targetCode = activeCountry.code;
+    setLocationAnswers((current) => ({
+      ...current,
+      [targetCode]: selectedCode,
+    }));
+
+    if (autoAdvanceTimerRef.current !== null) {
+      window.clearTimeout(autoAdvanceTimerRef.current);
+    }
+    autoAdvanceTimerRef.current = window.setTimeout(() => {
+      const currentIndex = promptCountries.findIndex(
+        (country) => country.code === targetCode
+      );
+      const next = Array.from(
+        { length: promptCountries.length },
+        (_, offset) =>
+          promptCountries[
+            (currentIndex + offset + 1) % promptCountries.length
+          ]
+      ).find(
+        (country) =>
+          country.code !== targetCode && !locationAnswers[country.code]
+      );
+      if (next) {
+        selectCountry(next.code);
+      }
+    }, 220);
+  };
+
+  const clearAnswersForCurrentQuiz = () => {
+    const codes = new Set(quizCountries.map((country) => country.code));
+    setAnswers((current) =>
+      Object.fromEntries(
+        Object.entries(current).filter(([code]) => !codes.has(code))
+      )
+    );
+    setLocationAnswers((current) =>
+      Object.fromEntries(
+        Object.entries(current).filter(([code]) => !codes.has(code))
+      )
+    );
+    setActiveCode(orderedCountries[0]?.code ?? "");
+    setResultFilter("all");
   };
 
   const startQuiz = () => {
-    const candidates = getQuizCountries(region, weakCodes);
+    const candidates = getQuizCountries(region);
     const nextSeed = Date.now();
     const nextQuestionCodes =
       questionCount === "all"
         ? null
         : getRandomQuizCodes(candidates, questionCount, nextSeed);
-    setPracticeWeakOnly(false);
+    const chosenSet = nextQuestionCodes
+      ? new Set(nextQuestionCodes)
+      : undefined;
+    const chosenCountries = candidates.filter((country) =>
+      chosenSet ? chosenSet.has(country.code) : true
+    );
+    const nextPromptCodes =
+      quizDirection === "map"
+        ? shuffleQuizCodes(chosenCountries, nextSeed + 1)
+        : [];
+
+    setPracticeKind("standard");
     setPracticeCodes([]);
+    setPracticeFields({});
     setQuestionSeed(nextSeed);
     setQuestionCodes(nextQuestionCodes);
-    setAnswers((current) => {
-      const next = { ...current };
-      candidates.forEach((country) => delete next[country.code]);
-      return next;
-    });
-    setActiveCode(nextQuestionCodes?.[0] ?? candidates[0]?.code ?? "");
+    setPromptCodes(nextPromptCodes);
+    setAnswers({});
+    setLocationAnswers({});
+    setActiveCode(
+      quizDirection === "map"
+        ? nextPromptCodes[0] ?? ""
+        : chosenCountries[0]?.code ?? ""
+    );
+    setResultFilter("all");
+    setResumeSession(null);
     setStep("quiz");
-    router.push(getQuizPath(region, answerMode));
+    router.push(getQuizPath(region, answerMode, quizDirection));
+  };
+
+  const startTargetedPractice = (
+    kind: Exclude<PracticeKind, "standard">,
+    codes: string[],
+    fields: FieldMaskState,
+    direction: QuizDirection,
+    mode: AnswerMode
+  ) => {
+    const nextCodes = parseCodeList(codes);
+    if (!nextCodes.length) {
+      return;
+    }
+
+    const nextSeed = Date.now();
+    const candidateSet = new Set(nextCodes);
+    const candidates = getQuizCountries("all", candidateSet);
+    const nextPromptCodes =
+      direction === "map"
+        ? shuffleQuizCodes(candidates, nextSeed + 1)
+        : [];
+
+    setRegion("all");
+    setAnswerMode(mode);
+    setQuizDirection(direction);
+    setPracticeKind(kind);
+    setPracticeCodes(nextCodes);
+    setPracticeFields(fields);
+    setQuestionCount("all");
+    setQuestionCodes(null);
+    setPromptCodes(nextPromptCodes);
+    setQuestionSeed(nextSeed);
+    setAnswers({});
+    setLocationAnswers({});
+    setActiveCode(
+      direction === "map"
+        ? nextPromptCodes[0] ?? ""
+        : candidates[0]?.code ?? ""
+    );
+    setResultFilter("all");
+    setResumeSession(null);
+    setStep("quiz");
+    router.push(getQuizPath("all", mode, direction));
   };
 
   const startWeakQuiz = () => {
-    const nextPracticeCodes = weakItems.map((item) => item.code);
-    setRegion("all");
-    setPracticeWeakOnly(true);
-    setPracticeCodes(nextPracticeCodes);
-    setQuestionCount("all");
-    setQuestionCodes(null);
-    setQuestionSeed(0);
-    setAnswers((current) => {
-      const next = { ...current };
-      nextPracticeCodes.forEach((code) => {
-        delete next[code];
-      });
-      return next;
-    });
-    setActiveCode(nextPracticeCodes[0] ?? "");
-    setStep("quiz");
+    if (quizDirection === "map") {
+      const codes = weakItems
+        .filter((item) => item.location.weak)
+        .map((item) => item.code);
+      startTargetedPractice("weak", codes, {}, "map", answerMode);
+      return;
+    }
+
+    const fields = Object.fromEntries(
+      weakItems.flatMap((item) => {
+        const visible = {
+          country: item.country.weak,
+          capital: item.capital.weak,
+        };
+        return visible.country || visible.capital
+          ? [[item.code, visible]]
+          : [];
+      })
+    ) as FieldMaskState;
+    startTargetedPractice(
+      "weak",
+      Object.keys(fields),
+      fields,
+      "write",
+      "both"
+    );
   };
 
-  const resetCurrentAnswers = () => {
-    clearAnswersForCurrentQuiz();
+  const startDailyReview = () => {
+    if (quizDirection === "map") {
+      startTargetedPractice(
+        "daily",
+        dailyReviewPlan.map((item) => item.code),
+        {},
+        "map",
+        answerMode
+      );
+      return;
+    }
+
+    const fields = Object.fromEntries(
+      dailyReviewPlan.map((item) => [item.code, item.fields])
+    ) as FieldMaskState;
+    startTargetedPractice(
+      "daily",
+      dailyReviewPlan.map((item) => item.code),
+      fields,
+      "write",
+      "both"
+    );
+  };
+
+  const persistSnapshot = (snapshot: PersistedQuizState) => {
+    try {
+      window.localStorage.setItem(QUIZ_STORAGE_KEY, JSON.stringify(snapshot));
+    } catch {
+      // The in-memory resume action still remains available.
+    }
   };
 
   const goToSelect = () => {
-    setPracticeWeakOnly(false);
-    setPracticeCodes([]);
-    setQuestionCodes(null);
-    setQuestionSeed(0);
+    persistSnapshot(currentSnapshot);
+    setResumeSession(currentSnapshot);
     setStep("select");
     router.push("/");
+  };
+
+  const resumeQuiz = () => {
+    if (!resumeSession) {
+      return;
+    }
+
+    applySession(resumeSession);
+    router.push(
+      getQuizPath(
+        resumeSession.region,
+        resumeSession.answerMode,
+        resumeSession.quizDirection
+      )
+    );
   };
 
   const finishQuiz = () => {
     const now = new Date().toISOString();
 
-    setWeakList((current) => {
-      return quizCountries.reduce((next, country) => {
-        const answer = answers[country.code] ?? { country: "", capital: "" };
-        const rowStatus = getRowStatus(country, answer, answerMode);
+    if (quizDirection === "map") {
+      setWeakList((current) =>
+        promptCountries.reduce((next, country) => {
+          const status = getLocationStatus(
+            locationAnswers[country.code],
+            country
+          );
+          return updateWeakLocationItem(
+            next,
+            country,
+            status,
+            locationAnswers[country.code] ?? "",
+            now
+          );
+        }, current)
+      );
+      setLearningProgress((current) =>
+        promptCountries.reduce((next, country) => {
+          const status = getLocationStatus(
+            locationAnswers[country.code],
+            country
+          );
+          return updateLearningProgressForLocation(
+            next,
+            country,
+            status,
+            now
+          );
+        }, current)
+      );
+    } else {
+      setWeakList((current) =>
+        writeRows.reduce(
+          (next, { country, fields, status }) =>
+            updateWeakListItemForFields(
+              next,
+              country,
+              fields,
+              answers[country.code] ?? { country: "", capital: "" },
+              status,
+              now
+            ),
+          current
+        )
+      );
+      setLearningProgress((current) =>
+        writeRows.reduce(
+          (next, { country, fields, status }) =>
+            updateLearningProgressForFields(
+              next,
+              country,
+              fields,
+              status,
+              now
+            ),
+          current
+        )
+      );
+    }
 
-        return updateWeakListItem(
-          next,
-          country,
-          answerMode,
-          answer,
-          rowStatus,
-          now
-        );
-      }, current);
-    });
-
+    setResultFilter("all");
     setStep("result");
+  };
+
+  const startResultPractice = (
+    statusToRetry: "incorrect" | "unanswered"
+  ) => {
+    if (quizDirection === "map") {
+      const codes = locationRows
+        .filter((row) => row.status === statusToRetry)
+        .map((row) => row.country.code);
+      startTargetedPractice(
+        statusToRetry,
+        codes,
+        {},
+        "map",
+        answerMode
+      );
+      return;
+    }
+
+    const fields = Object.fromEntries(
+      writeRows.flatMap(({ country, fields: visible, status }) => {
+        const retryFields = {
+          country:
+            visible.country && status.countryStatus === statusToRetry,
+          capital:
+            visible.capital && status.capitalStatus === statusToRetry,
+        };
+        return retryFields.country || retryFields.capital
+          ? [[country.code, retryFields]]
+          : [];
+      })
+    ) as FieldMaskState;
+    startTargetedPractice(
+      statusToRetry,
+      Object.keys(fields),
+      fields,
+      "write",
+      "both"
+    );
   };
 
   const sharePath = getSharePath(
     region,
     answerMode,
     stats.score,
-    quizCountries.length
+    totalQuestions,
+    quizDirection
   );
   const shareUrl = new URL(sharePath, siteUrl).toString();
-  const shareText = `世界の国名・首都クイズ ${practiceWeakOnly ? "苦手リスト" : regionLabels[region]} ${answerModeLabels[answerMode]}で ${stats.score}/${quizCountries.length} 正解しました。\n#世界地図クイズ #地理クイズ\n${shareUrl}`;
-  const shareImageUrl = `${sharePath}/opengraph-image`;
+  const shareMode =
+    answerModeLabels[answerMode] +
+    (quizDirection === "map" ? "・" + quizDirectionLabels.map : "");
+  const shareText = createShareText({
+    scope: quizScopeLabel,
+    mode: shareMode,
+    score: stats.score,
+    total: totalQuestions,
+    url: shareUrl,
+  });
+  const shareImageUrl = sharePath + "/opengraph-image";
 
   const openXShare = () => {
     const intentUrl = new URL("https://twitter.com/intent/tweet");
     intentUrl.searchParams.set("text", shareText);
     window.open(intentUrl.toString(), "_blank", "noopener,noreferrer");
   };
+
+  const resumeSummary = useMemo<ResumeSummary | undefined>(() => {
+    if (!resumeSession) {
+      return undefined;
+    }
+
+    const count = resumeSession.practiceCodes.length
+      ? resumeSession.practiceCodes.length
+      : resumeSession.questionCodes?.length ??
+        getRegionCountries(resumeSession.region).length;
+    return {
+      scope:
+        resumeSession.practiceKind === "standard"
+          ? regionLabels[resumeSession.region]
+          : practiceLabels[resumeSession.practiceKind],
+      mode: answerModeLabels[resumeSession.answerMode],
+      direction: quizDirectionLabels[resumeSession.quizDirection],
+      count,
+      step: resumeSession.step,
+    };
+  }, [resumeSession]);
 
   if (!mapReady) {
     return <main className="loading-screen">読み込み中...</main>;
@@ -423,28 +1006,28 @@ export function CountryQuiz({
     return (
       <QuizSelector
         answerMode={answerMode}
+        dailyReviewCount={dailyReviewPlan.length}
         onAnswerModeChange={(nextAnswerMode) => {
           setAnswerMode(nextAnswerMode);
           setQuestionCount("all");
-          setQuestionCodes(null);
-          setQuestionSeed(0);
         }}
-        onQuestionCountChange={(nextQuestionCount) => {
-          setQuestionCount(nextQuestionCount);
-          setQuestionCodes(null);
-          setQuestionSeed(0);
+        onQuestionCountChange={setQuestionCount}
+        onQuizDirectionChange={(nextDirection) => {
+          setQuizDirection(nextDirection);
+          setQuestionCount("all");
         }}
         onRegionChange={(nextRegion) => {
-          setPracticeWeakOnly(false);
           setRegion(nextRegion);
           setQuestionCount("all");
-          setQuestionCodes(null);
-          setQuestionSeed(0);
         }}
+        onResume={resumeQuiz}
         onStart={startQuiz}
+        onStartDailyReview={startDailyReview}
         onStartWeak={startWeakQuiz}
         questionCount={questionCount}
+        quizDirection={quizDirection}
         region={region}
+        resumeSummary={resumeSummary}
         weakItems={weakItems}
       />
     );
@@ -454,22 +1037,18 @@ export function CountryQuiz({
     return (
       <main className="quiz-shell result-shell">
         <header className="quiz-topbar">
-          <button
-            className="ghost-button"
-            onClick={goToSelect}
-            type="button"
-          >
+          <button className="ghost-button" onClick={goToSelect} type="button">
             <ArrowLeft size={18} />
             モード選択
           </button>
           <div>
             <strong>{quizScopeLabel}</strong>
-            <span>{answerModeLabels[answerMode]}</span>
+            <span>{modeLabel}</span>
           </div>
           <button
             className="ghost-button"
             onClick={() => {
-              resetCurrentAnswers();
+              clearAnswersForCurrentQuiz();
               setStep("quiz");
             }}
             type="button"
@@ -482,16 +1061,44 @@ export function CountryQuiz({
         <section className="score-hero" aria-label="採点結果">
           <span>あなたの得点</span>
           <strong>
-            {stats.score}/{quizCountries.length}
+            {stats.score}/{totalQuestions}
           </strong>
-          {answerMode === "both" ? (
+          {quizDirection === "write" &&
+          stats.countryTotal > 0 &&
+          stats.capitalTotal > 0 ? (
             <small>
-              国名 {stats.countryScore}/{quizCountries.length}・首都{" "}
-              {stats.capitalScore}/{quizCountries.length}
+              国名 {stats.countryScore}/{stats.countryTotal}・首都{" "}
+              {stats.capitalScore}/{stats.capitalTotal}
             </small>
           ) : null}
+          <div className="result-primary-actions">
+            {resultCounts.incorrect ? (
+              <button
+                className="primary-small"
+                onClick={() => startResultPractice("incorrect")}
+                type="button"
+              >
+                <ListRestart size={17} />
+                間違えた項目を復習
+              </button>
+            ) : null}
+            {resultCounts.unanswered ? (
+              <button
+                className="ghost-button"
+                onClick={() => startResultPractice("unanswered")}
+                type="button"
+              >
+                <ListRestart size={17} />
+                未回答を続ける
+              </button>
+            ) : null}
+          </div>
           <div className="share-actions">
-            <button className="x-share-button" onClick={openXShare} type="button">
+            <button
+              className="x-share-button"
+              onClick={openXShare}
+              type="button"
+            >
               <Share2 size={18} />
               Xに投稿
             </button>
@@ -505,99 +1112,28 @@ export function CountryQuiz({
         <section className="answer-workspace result-workspace">
           <div className="map-column">
             <WorldMap
-              activeCountry={activeCountry}
+              activeCountry={mapActiveCountry}
               countries={quizCountries}
               markerStatuses={markerStatuses}
-              onSelectCountry={(code) => selectCountry(code, { focusInput: true })}
+              onSelectCountry={(code) => selectCountry(code)}
             />
           </div>
-
-          <div className="input-panel result-panel">
-            <div className="panel-title">
-              <h2>答え合わせ</h2>
-            </div>
-            <div className="result-list" aria-label="回答一覧">
-              {quizCountries.map((country) => {
-                const answer = answers[country.code] ?? {
-                  country: "",
-                  capital: "",
-                };
-                const rowStatus = getRowStatus(country, answer, answerMode);
-                const overallStatus = !rowStatus.attempted
-                  ? "unanswered"
-                  : rowStatus.complete
-                    ? "correct"
-                    : "incorrect";
-
-                return (
-                  <button
-                    className={`result-row ${activeCountry.code === country.code ? "active" : ""}`}
-                    key={country.code}
-                    onClick={() => selectCountry(country.code)}
-                    ref={(element) => {
-                      resultRowRefs.current[country.code] = element;
-                    }}
-                    type="button"
-                  >
-                    <span
-                      className={`result-number ${overallStatus}`}
-                    >
-                      {country.quizNumber}
-                    </span>
-                    <div className="result-details">
-                      <div className="result-row-head">
-                        <strong>{country.countryJa}</strong>
-                        {overallStatus === "correct" ? (
-                          <span className="status-chip correct">
-                            <Check size={14} />
-                            正解
-                          </span>
-                        ) : overallStatus === "incorrect" ? (
-                          <span className="status-chip incorrect">
-                            <CircleHelp size={14} />
-                            不正解
-                          </span>
-                        ) : (
-                          <span className="status-chip unanswered">
-                            <CircleX size={14} />
-                            未回答
-                          </span>
-                        )}
-                      </div>
-                      {visibleFields.country ? (
-                        <div
-                          className={`answer-check ${rowStatus.countryStatus}`}
-                        >
-                          <span>国名</span>
-                          <strong>正解: {country.countryJa}</strong>
-                          <small>回答: {answer.country || "未回答"}</small>
-                          {isHistoricalAnswer(answer.country, country, "country") ? (
-                            <small className="answer-note">
-                              以前の表記です。現在の名称は「{country.countryJa}」です。
-                            </small>
-                          ) : null}
-                        </div>
-                      ) : null}
-                      {visibleFields.capital ? (
-                        <div
-                          className={`answer-check ${rowStatus.capitalStatus}`}
-                        >
-                          <span>首都</span>
-                          <strong>正解: {country.capitalJa}</strong>
-                          <small>回答: {answer.capital || "未回答"}</small>
-                          {isHistoricalAnswer(answer.capital, country, "capital") ? (
-                            <small className="answer-note">
-                              旧首都です。現在の首都は「{country.capitalJa}」です。
-                            </small>
-                          ) : null}
-                        </div>
-                      ) : null}
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
+          <QuizResultPanel
+            activeCountry={activeCountry}
+            answers={answers}
+            countries={filteredResultCountries}
+            getFields={getFieldsForCountry}
+            locationAnswers={locationAnswers}
+            mapNumberByCode={mapNumberByCode}
+            onFilterChange={setResultFilter}
+            onSelectCountry={selectCountry}
+            quizDirection={quizDirection}
+            registerRow={(code, element) => {
+              rowRefs.current[code] = element;
+            }}
+            resultCounts={resultCounts}
+            resultFilter={resultFilter}
+          />
         </section>
       </main>
     );
@@ -606,17 +1142,13 @@ export function CountryQuiz({
   return (
     <main className="quiz-shell">
       <header className="quiz-topbar">
-        <button
-          className="ghost-button"
-          onClick={goToSelect}
-          type="button"
-        >
+        <button className="ghost-button" onClick={goToSelect} type="button">
           <ArrowLeft size={18} />
           モード選択
         </button>
         <div>
           <strong>{quizScopeLabel}</strong>
-          <span>{answerModeLabels[answerMode]}</span>
+          <span>{modeLabel}</span>
         </div>
         <span className="topbar-spacer" aria-hidden="true" />
       </header>
@@ -624,94 +1156,40 @@ export function CountryQuiz({
       <section className="answer-workspace">
         <div className="map-column">
           <WorldMap
-              activeCountry={activeCountry}
-              countries={quizCountries}
-              onSelectCountry={(code) => selectCountry(code, { focusInput: true })}
+            activeCountry={mapActiveCountry}
+            concealCountryNames={quizDirection === "map"}
+            countries={quizCountries}
+            highlightActiveCountry={quizDirection !== "map"}
+            onSelectCountry={(code) =>
+              quizDirection === "map"
+                ? selectLocation(code)
+                : selectCountry(code, { focusInput: true })
+            }
           />
         </div>
-
-        <div className="input-panel">
-          <div className="panel-title">
-            <h2>回答欄</h2>
-            <span>{quizCountries.length}カ国</span>
-          </div>
-
-          <div className="input-list">
-            {quizCountries.map((country) => (
-              <div
-                className={`answer-row ${activeCountry.code === country.code ? "active" : ""}`}
-                key={country.code}
-                ref={(element) => {
-                  answerRowRefs.current[country.code] = element;
-                }}
-              >
-                <button
-                  className="answer-number"
-                  onClick={() => selectCountry(country.code)}
-                  type="button"
-                >
-                  {country.quizNumber}
-                </button>
-                <div className="answer-fields">
-                  {visibleFields.country ? (
-                    <label>
-                      <span>国名</span>
-                      <input
-                        autoComplete="off"
-                        inputMode="text"
-                        onChange={(event) =>
-                          updateAnswer(
-                            country.code,
-                            "country",
-                            event.target.value
-                          )
-                        }
-                        onFocus={() => selectCountry(country.code)}
-                        placeholder="国名"
-                        type="text"
-                        value={answers[country.code]?.country ?? ""}
-                        ref={(element) => {
-                          answerInputRefs.current[`${country.code}:country`] = element;
-                        }}
-                      />
-                    </label>
-                  ) : null}
-                  {visibleFields.capital ? (
-                    <label>
-                      <span>首都</span>
-                      <input
-                        autoComplete="off"
-                        inputMode="text"
-                        onChange={(event) =>
-                          updateAnswer(
-                            country.code,
-                            "capital",
-                            event.target.value
-                          )
-                        }
-                        onFocus={() => selectCountry(country.code)}
-                        placeholder="首都"
-                        type="text"
-                        value={answers[country.code]?.capital ?? ""}
-                        ref={(element) => {
-                          answerInputRefs.current[`${country.code}:capital`] = element;
-                        }}
-                      />
-                    </label>
-                  ) : null}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <button
-            className="submit-button"
-            onClick={finishQuiz}
-            type="button"
-          >
-            答え合わせ
-          </button>
-        </div>
+        <QuizAnswerPanel
+          activeCountry={activeCountry}
+          answerMode={answerMode}
+          answers={answers}
+          countries={quizCountries}
+          getFields={getFieldsForCountry}
+          locationAnswers={locationAnswers}
+          onFinish={finishQuiz}
+          onInputKeyDown={handleInputKeyDown}
+          onSelectCountry={selectCountry}
+          onUpdateAnswer={updateAnswer}
+          promptCountries={promptCountries}
+          quizDirection={quizDirection}
+          registerInput={(key, element) => {
+            answerInputRefs.current[key] = element;
+          }}
+          registerRow={(code, element) => {
+            rowRefs.current[code] = element;
+          }}
+          registerSubmit={(element) => {
+            submitButtonRef.current = element;
+          }}
+        />
       </section>
     </main>
   );

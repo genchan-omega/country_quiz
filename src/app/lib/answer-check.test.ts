@@ -2,7 +2,10 @@ import { describe, expect, it } from "vitest";
 import countriesData from "@/data/countries.json";
 import {
   getHistoricalAnswers,
+  getLocationStatus,
   getRowStatus,
+  getRowResultFlags,
+  getRowStatusForFields,
   isCorrect,
   isHistoricalAnswer,
   normalizeAnswer,
@@ -81,5 +84,40 @@ describe("getRowStatus", () => {
     expect(incorrect.countryStatus).toBe("correct");
     expect(incorrect.capitalStatus).toBe("incorrect");
     expect(incorrect.attempted).toBe(true);
+  });
+  it("checks only the fields included in a targeted retry", () => {
+    const usa = getCountry("USA");
+    const status = getRowStatusForFields(
+      usa,
+      { country: "", capital: "ワシントンDC" },
+      { country: false, capital: true }
+    );
+
+    expect(status.countryStatus).toBe("correct");
+    expect(status.capitalStatus).toBe("correct");
+    expect(status.complete).toBe(true);
+  });
+
+  it("includes mixed rows in both incorrect and unanswered result groups", () => {
+    const usa = getCountry("USA");
+    const fields = { country: true, capital: true };
+    const status = getRowStatusForFields(
+      usa,
+      { country: "カナダ", capital: "" },
+      fields
+    );
+
+    expect(getRowResultFlags(status, fields)).toEqual({
+      correct: false,
+      incorrect: true,
+      unanswered: true,
+    });
+  });
+
+  it("distinguishes selected, incorrect, and unanswered map locations", () => {
+    const usa = getCountry("USA");
+    expect(getLocationStatus("USA", usa)).toBe("correct");
+    expect(getLocationStatus("JPN", usa)).toBe("incorrect");
+    expect(getLocationStatus("", usa)).toBe("unanswered");
   });
 });

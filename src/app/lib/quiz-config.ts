@@ -3,8 +3,10 @@ import countriesData from "@/data/countries.json";
 export type Country = (typeof countriesData)[number];
 export type RegionMode = "all" | Country["region"];
 export type AnswerMode = "country" | "capital" | "both";
+export type QuizDirection = "write" | "map";
 export type QuestionCount = "all" | 10 | 20 | 50;
 export type Step = "select" | "quiz" | "result";
+export type VisibleFields = { country: boolean; capital: boolean };
 
 export type QuizCountry = Country & {
   quizNumber: number;
@@ -13,7 +15,7 @@ export type QuizCountry = Country & {
 export const siteUrl = "https://countryquiz-rho.vercel.app";
 export const siteTitle = "世界196カ国 国名・首都名クイズ";
 export const siteDescription =
-  "白地図を見ながら世界196カ国の国名と首都名を入力できる学習用地理クイズです。地域別、国名のみ、首都のみ、国名と首都のモードに対応しています。";
+  "白地図で世界196カ国の国名・首都・位置を学べる地理クイズです。地域別、ランダム出題、苦手復習、地図から選ぶ逆引き問題に対応しています。";
 
 export const regionLabels: Record<RegionMode, string> = {
   all: "全地域",
@@ -54,6 +56,22 @@ export const answerModeLabels: Record<AnswerMode, string> = {
 
 export const answerModeOrder: AnswerMode[] = ["country", "capital", "both"];
 
+export const quizDirectionLabels: Record<QuizDirection, string> = {
+  write: "地図から回答",
+  map: "地図で選択",
+};
+
+export const quizDirectionOrder: QuizDirection[] = ["write", "map"];
+
+export const quizDirectionSlugs: Record<QuizDirection, string> = {
+  write: "write",
+  map: "map",
+};
+
+export const quizDirectionBySlug = Object.fromEntries(
+  Object.entries(quizDirectionSlugs).map(([direction, slug]) => [slug, direction])
+) as Record<string, QuizDirection>;
+
 export const questionCountOrder: QuestionCount[] = ["all", 10, 20, 50];
 
 export const questionCountLabels: Record<QuestionCount, string> = {
@@ -81,20 +99,30 @@ export const spatialRegionRank: Record<Country["region"], number> = {
   Oceania: 4,
 };
 
-export const getVisibleFields = (answerMode: AnswerMode) => ({
+export const getVisibleFields = (answerMode: AnswerMode): VisibleFields => ({
   country: answerMode === "country" || answerMode === "both",
   capital: answerMode === "capital" || answerMode === "both",
 });
 
-export const getQuizPath = (region: RegionMode, answerMode: AnswerMode) =>
-  `/quiz/${regionSlugs[region]}/${answerModeSlugs[answerMode]}`;
+export const getQuizPath = (
+  region: RegionMode,
+  answerMode: AnswerMode,
+  quizDirection: QuizDirection = "write"
+) =>
+  quizDirection === "write"
+    ? `/quiz/${regionSlugs[region]}/${answerModeSlugs[answerMode]}`
+    : `/quiz/${regionSlugs[region]}/${answerModeSlugs[answerMode]}/${quizDirectionSlugs[quizDirection]}`;
 
 export const getSharePath = (
   region: RegionMode,
   answerMode: AnswerMode,
   score: number,
-  total: number
-) => `/share/${regionSlugs[region]}/${answerModeSlugs[answerMode]}/${score}/${total}`;
+  total: number,
+  quizDirection: QuizDirection = "write"
+) =>
+  quizDirection === "write"
+    ? `/share/${regionSlugs[region]}/${answerModeSlugs[answerMode]}/${score}/${total}`
+    : `/share/${regionSlugs[region]}/${answerModeSlugs[answerMode]}/${quizDirectionSlugs[quizDirection]}/${score}/${total}`;
 
 export const sortSpatially = (source: Country[], region: RegionMode) => {
   const bandSize = region === "all" ? 14 : 8;
@@ -148,8 +176,15 @@ export const getRandomQuizCodes = (
     return countries.map((country) => country.code);
   }
 
+  return shuffleQuizCodes(countries, seed).slice(0, questionCount);
+};
+
+export const shuffleQuizCodes = (
+  countries: Pick<QuizCountry, "code">[],
+  seed: number
+) => {
   const random = seededRandom(seed);
-  const shuffled = [...countries];
+  const shuffled = countries.map((country) => country.code);
   for (let index = shuffled.length - 1; index > 0; index -= 1) {
     const swapIndex = Math.floor(random() * (index + 1));
     [shuffled[index], shuffled[swapIndex]] = [
@@ -158,7 +193,7 @@ export const getRandomQuizCodes = (
     ];
   }
 
-  return shuffled.slice(0, questionCount).map((country) => country.code);
+  return shuffled;
 };
 
 export const getQuizCountries = (

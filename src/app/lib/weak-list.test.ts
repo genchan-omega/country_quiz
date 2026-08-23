@@ -3,8 +3,11 @@ import countriesData from "@/data/countries.json";
 import { getRowStatus } from "./answer-check";
 import {
   getWeakFields,
+  getWeakFieldCounts,
   getWeakItemMisses,
   parseWeakList,
+  parseStoredWeakList,
+  updateWeakLocationItem,
   updateWeakListItem,
   type WeakListState,
 } from "./weak-list";
@@ -136,5 +139,69 @@ describe("weak list", () => {
     );
     expect(migrated.USA.capital.weak).toBe(true);
     expect(migrated.USA.country.weak).toBe(false);
+  });
+
+  it("migrates v2 field data with an independent empty location field", () => {
+    const previous = JSON.stringify({
+      USA: {
+        code: "USA",
+        countryJa: "アメリカ合衆国",
+        capitalJa: "ワシントンD.C.",
+        region: "Americas",
+        country: { weak: false, misses: 1 },
+        capital: {
+          weak: true,
+          misses: 2,
+          lastMissedAt: "2026-08-16T00:00:00.000Z",
+          lastAnswer: "東京",
+        },
+      },
+    });
+    const migrated = parseStoredWeakList(null, previous, null);
+
+    expect(migrated.USA.capital.weak).toBe(true);
+    expect(migrated.USA.location).toEqual({ weak: false, misses: 0 });
+  });
+
+  it("tracks map-location weaknesses without changing name fields", () => {
+    const wrong = updateWeakLocationItem(
+      emptyList(),
+      usa,
+      "incorrect",
+      "JPN",
+      "2026-08-16T00:00:00.000Z"
+    );
+
+    expect(wrong.USA.location.weak).toBe(true);
+    expect(wrong.USA.location.misses).toBe(1);
+    expect(wrong.USA.country.weak).toBe(false);
+    expect(wrong.USA.capital.weak).toBe(false);
+    expect(getWeakFields(wrong.USA)).toEqual(["位置"]);
+    expect(getWeakFieldCounts(Object.values(wrong))).toEqual({
+      country: 0,
+      capital: 0,
+      location: 1,
+    });
+
+    const resolved = updateWeakLocationItem(
+      wrong,
+      usa,
+      "correct",
+      "USA",
+      "2026-08-16T00:01:00.000Z"
+    );
+    expect(resolved).toEqual({});
+  });
+
+  it("does not register an unanswered map location", () => {
+    expect(
+      updateWeakLocationItem(
+        emptyList(),
+        usa,
+        "unanswered",
+        "",
+        "2026-08-16T00:00:00.000Z"
+      )
+    ).toEqual({});
   });
 });
